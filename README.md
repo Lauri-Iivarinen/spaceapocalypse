@@ -22,3 +22,19 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Player can take damage from 'Zombies'</li>
   <li>Rough sketch for UI to test how different classes interact</li>
 </details>
+<details>
+  <Summary>
+        Part 2 - Basics under control
+    </Summary>
+<h3>Day 2</h3>
+  <img height="300px" src="https://github.com/Lauri-Iivarinen/zombacopalypse/assets/94760484/aa0896a8-06c2-454d-99aa-6b13bab9f29e"/>
+
+  Continued where I left off, sketched new model prototypes, need to create sprites soon. A lot of tutorials on YouTube which help a lot. Planning to extend player stats building. Need to look into different views (Menu/death screen etc.)
+  <li>Removed excess models from the world and created prefabs</li>
+  <li>Mobs spawn on timer and outside of player view</li>
+  <li>Mobs chase player, no pathfinding if/when obstacles are created in the future</li>
+  <li>Player has multiple guns that can be switched between</li>
+  <li>Guns have different stats that affect gameplay (firerate/damage etc.)</li>
+  <li>Player can level up</li>
+  <li>UI changes</li>
+</details>
