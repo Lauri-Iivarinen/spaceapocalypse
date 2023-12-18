@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
- public float movementSpeed;
+    public float movementSpeed;
     public float x;
     public float y;
-
+    Player player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -21,9 +21,10 @@ public class PlayerCamera : MonoBehaviour
     }
 
     void FixedUpdate(){
-        this.x = Input.GetAxis("Horizontal");
-        this.y = Input.GetAxis("Vertical");
-
-        transform.Translate(this.x * movementSpeed, this.y * movementSpeed, 0);
+        if (player.getHealth() > 0){
+            this.x = Input.GetAxis("Horizontal");
+            this.y = Input.GetAxis("Vertical");
+            transform.Translate(this.x * movementSpeed, this.y * movementSpeed, 0);
+        }
     }
 }

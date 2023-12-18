@@ -6,37 +6,55 @@ using UnityEngine;
 public class Mob : MonoBehaviour
 {
 
-    private int health = 10;
+    private float health = 5.0f;
     public Player player;
+    Rigidbody2D m_Rigidbody;
+    private float mobSpeed = 4.0f;
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
-        Debug.Log(objectName.gameObject.name + " " + health);
+        if (objectName != null && objectName.gameObject.name.Contains("Bullet"))
         {
-            
-        }
-        if(!objectName.gameObject.name.Equals("Player")){
-            this.health--;
+            Bullet bullet = objectName.gameObject.GetComponent<Bullet>();
+
+            if (bullet != null && bullet.specs != null)
+            {
+                this.health -= bullet.specs.weaponDamage;
+            }
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("HEHEE ZOMBIE HERE");
+        this.m_Rigidbody = GetComponent<Rigidbody2D>();
         this.player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     private void Die(){
         Destroy(gameObject);
-        this.player.gainXp(26);
+        this.player.stats.gainXp(26);
+    }
+
+    private void ChasePlayer(){
+        float playerX = player.GetX();
+        float playerY = player.GetY();
+		float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
+		transform.rotation = Quaternion.Euler (new Vector3(0f,0f,angle));
+        Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
+        this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * -1;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        this.ChasePlayer();
         if (health <= 0){
             this.Die();
         }
     }
+
+    float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
+		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+	}
 }

@@ -6,31 +6,34 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private int lifetime = 60;
-    private bool destroyable = false;
-
+    private bool destroyable = true;
     private float vel = 10.02f;
-
     private int bulletPen = 2;
-
+    private float damage;
     Rigidbody2D m_Rigidbody;
+    public WeaponSpecs specs;
     // Start is called before the first frame update
     void Start() //On bullet spawn get dir and pos
     {
-        if (Input.GetKey("mouse 1")){
-            this.destroyable = true;
-        }
+        this.getWeaponSpecs();
         m_Rigidbody = GetComponent<Rigidbody2D>();
         //Get the Screen positions of the object
-		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint (transform.position);
-		
+		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
 		//Get the Screen position of the mouse
 		Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-		
 		//Get the angle between the points
 		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-
-		//Ta Daaa
 		transform.rotation = Quaternion.Euler (new Vector3(0f,0f,angle+180));
+        transform.TransformDirection(Vector3.forward * 10);
+    }
+
+    private void getWeaponSpecs(){
+        Player pl = GameObject.Find("Player").GetComponent<Player>();
+        this.specs = pl.activeWeapon;
+        this.lifetime = this.specs.projectileLifetime;
+        this.bulletPen = this.specs.penetration;
+        this.vel = this.specs.projectileSpeed;
+        this.damage = this.specs.weaponDamage;
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
@@ -49,7 +52,8 @@ public class Bullet : MonoBehaviour
 
             // Set the velocity using the calculated direction
             m_Rigidbody.velocity = movementDirection * vel;
-                lifetime--;
+            
+            lifetime--;
 
             if (lifetime <= 0 || bulletPen <= 0){
                 DestroyGameObject();
@@ -61,7 +65,7 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D objectName)
     {
         if (!objectName.gameObject.name.Equals("Player")){
-            this.bulletPen--;
+            this.bulletPen--; //if bullet has penetration power
         }
     }
 }

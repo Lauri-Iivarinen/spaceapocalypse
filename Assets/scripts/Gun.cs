@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-
-	private int fireRate = 30;
-	private int gunCooldown = 0;
+	[SerializeField]
+    private GameObject bulletPrefab;
+	private float fireRate = 30f;
+	private float gunCooldown = 0f;
 	public Rigidbody2D projectile;
+	private Player player;
+
+	void Start(){
+		Player pl = GameObject.Find("Player").GetComponent<Player>();
+		this.player = pl;
+	}
+
     //https://discussions.unity.com/t/make-a-player-model-rotate-towards-mouse-location/125354/5
     void Update(){
         //Get the Screen positions of the object
@@ -25,18 +33,15 @@ public class Gun : MonoBehaviour
 	}
 
 	void FixedUpdate(){
-		if (this.gunCooldown <= 0) {
+		if (this.gunCooldown <= 0 && !this.player.switchingGun) {
 			bool shooting = Input.GetKey("mouse 1");
 			if (shooting)
 			{
+				this.fireRate = this.player.activeWeapon.fireRate;
 				this.gunCooldown = fireRate;
 				// Instantiate the projectile at the position and rotation of this transform
-				Rigidbody2D clone;
-				clone = Instantiate(projectile, transform.position, transform.rotation);
+				Instantiate(bulletPrefab, transform.position, transform.rotation);
 
-				// Give the cloned object an initial velocity along the current
-				// object's Z axis
-				clone.velocity = transform.TransformDirection(Vector3.forward * 10);
 			}
 		}else{
 			this.gunCooldown--;
