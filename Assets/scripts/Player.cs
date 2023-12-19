@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -36,7 +37,6 @@ public class Player : MonoBehaviour
         if(!obj.gameObject.name.Contains("Bullet")){
             if (this.damageInterval <= 0){
                 this.stats.currHealth -= 15;
-                display.setHealth(this.stats.currHealth);
                 this.damageInterval = DAMAGETICK;
             }
         }
@@ -46,7 +46,6 @@ public class Player : MonoBehaviour
         if(!obj.gameObject.name.Contains("Bullet")){
             if (this.damageInterval <= 0){
                 this.stats.currHealth -= 15;
-                display.setHealth(this.stats.currHealth);
                 this.damageInterval = DAMAGETICK;
             }
         }
@@ -64,9 +63,12 @@ public class Player : MonoBehaviour
         this.weapons = new List<WeaponSpecs>{pistol,sniper, smg};
         this.activeWeapon = pistol;
         this.display = GameObject.Find("Canvas").GetComponent<UiDisplay>();
-        display.setHealth(this.stats.currHealth);
         display.setWeaponName(this.activeWeapon.weaponName);
         Debug.Log("Logging started");
+    }
+
+    void playerDies(){
+        SceneManager.LoadScene("DeathScreen");
     }
 
     // Update is called once per frame
@@ -102,6 +104,8 @@ public class Player : MonoBehaviour
             this.x = Input.GetAxis("Horizontal");
             this.y = Input.GetAxis("Vertical");
             transform.Translate(this.x * movementSpeed, this.y * movementSpeed, 0);
+        }else{
+            playerDies();
         }
         if (damageInterval > 0){
             damageInterval--;

@@ -1,5 +1,4 @@
 Todo:
-Dying stops game
 Sprites
 World building
 Leveling up

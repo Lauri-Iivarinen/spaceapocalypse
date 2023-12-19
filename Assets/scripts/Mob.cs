@@ -40,7 +40,7 @@ public class Mob : MonoBehaviour
         float playerX = player.GetX();
         float playerY = player.GetY();
 		float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
-		transform.rotation = Quaternion.Euler (new Vector3(0f,0f,angle));
+		transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle));
         Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
         this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * -1;
     }

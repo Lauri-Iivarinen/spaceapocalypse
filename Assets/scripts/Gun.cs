@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
 		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
 
 		//Ta Daaa
-		transform.rotation = Quaternion.Euler (new Vector3(0f,0f,angle));
+		transform.rotation = Quaternion.Euler (new Vector3(angle -30f, -90f,90f));
 	}
 
 	void FixedUpdate(){
