@@ -38,3 +38,10 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Player can level up</li>
   <li>UI changes</li>
 </details>
+<details>
+  <Summary>
+        Part 3 - WIP
+    </Summary>
+<h3>Day 3</h3>
+ 
+</details>
