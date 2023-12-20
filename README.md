@@ -40,8 +40,21 @@ This readme will be in a form of a diary of sorts where I track the progress I h
 </details>
 <details>
   <Summary>
-        Part 3 - WIP
+        Part 3 - Models and mistakes
     </Summary>
 <h3>Day 3</h3>
- 
+  <img height="200px" src="https://github.com/Lauri-Iivarinen/zombapocalypse/assets/94760484/b7ce6ca5-7367-4a9d-a3b6-a0cfb4591f5f" />
+  <img height="200px" src="https://github.com/Lauri-Iivarinen/zombapocalypse/assets/94760484/6b8f9940-da88-42f3-bc9c-ad143fd248a7" />
+
+  Looked into sprites and decided on art direction (was thinking about pixel/cartoon but ended up using free models from <a href="https://www.mixamo.com/#/">Mixamo</a>
+
+  **Then ended up messing up git version** control and had to backtrack quite a lot to redo things :(
+
+  Next up need to look into level creation, probably in blender
+   <li>Barebones main menu and navigation</li>
+   <li>Pause menu</li>
+   <li>Player model and baseline walking animation</li>
+   <li>Zombie model and animation</li>
+  <li>Refined some game logics</li>
+  <li>Tested out building project into executable</li>
 </details>
