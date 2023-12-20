@@ -58,3 +58,13 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Refined some game logics</li>
   <li>Tested out building project into executable</li>
 </details>
+<details>
+  <Summary>
+        Part 4 - Rusting off blender
+    </Summary>
+<h3>Day 4</h3>
+  Did some fine tuning with collision detection, now player can be confined within a play area, affects mobs also. Started doing some rough mocks for some models what I could include in the world, also created some guns for the player.
+  <li>Collision detection</li>
+  <li>Weapon models and basic weapon animation</li>
+  <li>Some basic models for cars</li>
+</details>
