@@ -13,6 +13,7 @@ public class Mob : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
+        //Debug.Log(objectName.gameObject.name);
         if (objectName != null && objectName.gameObject.name.Contains("Bullet"))
         {
             Bullet bullet = objectName.gameObject.GetComponent<Bullet>();

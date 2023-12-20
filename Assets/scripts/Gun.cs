@@ -18,8 +18,8 @@ public class Gun : MonoBehaviour
 	}
 
     //https://discussions.unity.com/t/make-a-player-model-rotate-towards-mouse-location/125354/5
-    void Update(){
-        //Get the Screen positions of the object
+	void FixedUpdate(){
+		//Get the Screen positions of the object
 		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint (transform.position);
 		
 		//Get the Screen position of the mouse
@@ -30,9 +30,6 @@ public class Gun : MonoBehaviour
 
 		//Ta Daaa
 		transform.rotation = Quaternion.Euler (new Vector3(angle -30f, -90f,90f));
-	}
-
-	void FixedUpdate(){
 		if (this.gunCooldown <= 0 && !this.player.switchingGun) {
 			bool shooting = Input.GetKey("mouse 1");
 			if (shooting)
@@ -41,7 +38,6 @@ public class Gun : MonoBehaviour
 				this.gunCooldown = fireRate;
 				// Instantiate the projectile at the position and rotation of this transform
 				Instantiate(bulletPrefab, transform.position, transform.rotation);
-
 			}
 		}else{
 			this.gunCooldown--;
