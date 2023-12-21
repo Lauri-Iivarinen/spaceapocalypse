@@ -68,3 +68,27 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Weapon models and basic weapon animation</li>
   <li>Some basic models for cars</li>
 </details>
+<details>
+  <Summary>
+        Part 5 - Massive art overhaul and new direction 
+    </Summary>
+<h3>Day 5</h3>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/zombapocalypse/assets/94760484/9e14ccb6-1924-4fcc-910e-d222d77d8152"/>  
+
+
+  After sleeping on the modeling and how the animations turned out I was extremely disappointed and thought what could I do... A thought came into mind, what if I change the gameplay from a "soldier" to a space rocket....
+
+  This way I was able to create easy pixelated sprites and animating sprites was much easier as well since they require only few keyframes.
+
+  After thinking about it for a while I did my testrun with the rocket and was extremely happy how it turned out so I decided to "full send" and I could not be more pleased...
+
+  Luckily all mechanics are applicable here as well
+  
+  <li>New player sprites and animating</li>
+  <li>New mob sprite and animating</li>
+  <li>New background and parallax effect</li>
+  <li>Asteroids to fill the play area (and block it off)</li>
+  <li>Decided on "class/itemization"</li>
+  <li>Got rid of some access code and cleaned up classes</li>
+</details>
