@@ -3,7 +3,7 @@
 This readme will be in a form of a diary of sorts where I track the progress I have made in Unity and C#
 
 
-## Idea is to make a 2d roguelike where player fights waves of zombies and can gain perks when leveling up
+## Idea is to make a 2d roguelike where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
 
 <details>
   <Summary>
