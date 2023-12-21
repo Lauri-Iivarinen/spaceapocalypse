@@ -6,7 +6,7 @@ using UnityEngine;
 public class Mob : MonoBehaviour
 {
 
-    private float health = 5.0f;
+    private float health = 10.0f; //While hitreg issue continues, mob health is doubled from 5 to 10
     public Player player;
     Rigidbody2D m_Rigidbody;
     private float mobSpeed = 4.0f;
@@ -18,7 +18,7 @@ public class Mob : MonoBehaviour
         {
             Bullet bullet = objectName.gameObject.GetComponent<Bullet>();
 
-            if (bullet != null && bullet.specs != null)
+            if (bullet != null && bullet.specs != null && !bullet.destroyed)
             {
                 this.health -= bullet.specs.weaponDamage;
             }
@@ -44,6 +44,7 @@ public class Mob : MonoBehaviour
 		transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle));
         Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
         this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * -1;
+        transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle+90));
     }
 
     // Update is called once per frame

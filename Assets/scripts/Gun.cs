@@ -29,15 +29,18 @@ public class Gun : MonoBehaviour
 		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
 
 		//Ta Daaa
-		transform.rotation = Quaternion.Euler (new Vector3(angle -30f, -90f,90f));
+		//transform.rotation = Quaternion.Euler (new Vector3(angle -30f, -90f,90f));
+		transform.rotation = Quaternion.Euler (new Vector3(0f, 0f,angle+90f));
 		if (this.gunCooldown <= 0 && !this.player.switchingGun) {
 			bool shooting = Input.GetKey("mouse 1");
 			if (shooting)
 			{
 				this.fireRate = this.player.activeWeapon.fireRate;
 				this.gunCooldown = fireRate;
+				Vector3 pos = transform.position;
+				pos.z = -0.5f; //Makes bullets appear "under ship, but over mobs/rocks for explosion anim"
 				// Instantiate the projectile at the position and rotation of this transform
-				Instantiate(bulletPrefab, transform.position, transform.rotation);
+				Instantiate(bulletPrefab, pos, transform.rotation);
 			}
 		}else{
 			this.gunCooldown--;

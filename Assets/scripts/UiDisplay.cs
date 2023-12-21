@@ -34,7 +34,7 @@ public class UiDisplay : MonoBehaviour
     {
         this.xpBar.value = (float)player.stats.currXp / player.stats.xpRequired;
         this.healthBar.value = (float)player.stats.currHealth / player.stats.maxHealth;
-        this.gunDisplay.text="Weapon: " + this.gunName;
+        this.gunDisplay.text= this.gunName;
         this.levelDisplay.text = "" + player.stats.level;
     }
 }

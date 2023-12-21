@@ -6,22 +6,21 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private int lifetime = 60;
-    private bool destroyable = true;
     private float vel = 10.02f;
     private int bulletPen = 2;
     private float damage;
     Rigidbody2D m_Rigidbody;
     public WeaponSpecs specs;
-    // Start is called before the first frame update
+    Animator anim;
+    public bool destroyed = false;
+
     void Start() //On bullet spawn get dir and pos
     {
+        anim = GetComponent<Animator>();
         this.getWeaponSpecs();
         m_Rigidbody = GetComponent<Rigidbody2D>();
-        //Get the Screen positions of the object
 		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-		//Get the Screen position of the mouse
 		Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-		//Get the angle between the points
 		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
 		transform.rotation = Quaternion.Euler (new Vector3(0f,0f,angle+180));
         transform.TransformDirection(Vector3.forward * 10);
@@ -45,17 +44,26 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void FixedUpdate(){
-        if (destroyable){
-            // Calculate the movement direction based on the rotation angle
-            Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
+    IEnumerator ExplodeGameObject(){
+        anim.SetBool("Contact", true);
+        
+        yield return new WaitForSeconds(0.2f);
+        DestroyGameObject();
+    }
 
-            // Set the velocity using the calculated direction
+    void FixedUpdate(){
+        if (destroyed){
+             Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
+            m_Rigidbody.velocity = movementDirection * 1f;
+        }else{
+            Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
             m_Rigidbody.velocity = movementDirection * vel;
-            
             lifetime--;
 
-            if (lifetime <= 0 || bulletPen <= 0){
+            if (bulletPen <= 0){
+                destroyed = true;
+                StartCoroutine(ExplodeGameObject());
+            }else if (lifetime <= 0){
                 DestroyGameObject();
             }
         }

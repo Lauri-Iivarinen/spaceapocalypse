@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5589694918893119325}
   - component: {fileID: 4202905971058424513}
-  - component: {fileID: 3218618375685298779}
   m_Layer: 5
   m_Name: health_bar
   m_TagString: Untagged
@@ -90,19 +89,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3218618375685298779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296861871052003194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01c9d1e940675a04d8850e5860ec3609, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
 --- !u!1 &310551263979209436
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,8 +447,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4284919832
+  m_fontColor: {r: 0.09420614, g: 0.6886792, b: 0.40162706, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -642,7 +628,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7605431633475356495}
   - component: {fileID: 8432805208677168323}
-  - component: {fileID: 4442567619378866290}
   m_Layer: 5
   m_Name: xp_bar
   m_TagString: Untagged
@@ -722,19 +707,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4442567619378866290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384460214350710811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01c9d1e940675a04d8850e5860ec3609, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
 --- !u!1 &7236955737205988037
 GameObject:
   m_ObjectHideFlags: 0

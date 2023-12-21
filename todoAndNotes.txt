@@ -6,3 +6,37 @@ Stats + perks
 
 Notes:
 Models folder too large for github
+
+Camera:
+Ortographic -> less modeling work, not so immersive, less work on exact positioning of models
+Perspective -> More indepth world, a lot more modeling work
+
+Gameplay style:
+2d / 2.5d? -> 2d for now
+
+Art style:
+Pixelated, how can I make models and animations? sprites make keyframing easier
+cartoon, same as pixelated but cleaner
+"realistic", can use free models aivailable in many places for items, inconsistancy, keyframing harder
+
+
+WHAT IF
+instead of zombies, have the game take place in space, 
+spacecraft require less animating and can be self created easier, 
+all weapons and mechanics can be re-used
+
+Weapons:
+Classes or everything aivailable?
+Weapons could be divided into classes which would reduce coding requirements for switching between etc
+also would allow for more challenges instead of using the best one possible
+
+Perks:
+Speed
+damage
+health
+health regen?
+projectile size? type?
+
+Mobs:
+Melee "zombie"
+Ranged caster, reach X range from player, shoot projectiles -> indicators?
