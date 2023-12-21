@@ -1,8 +1,9 @@
 Todo:
-Sprites
-World building
-Leveling up
-Stats + perks
+Levels and level selection
+Saving progress
+Level progression
+New mobs
+Leveling up gives Stats + perks
 
 Notes:
 Models folder too large for github

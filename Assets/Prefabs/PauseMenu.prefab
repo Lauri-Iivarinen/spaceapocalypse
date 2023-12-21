@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7a7c1d54df2874983d7a8e66eb6816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  PauseMenuPrefab: {fileID: 0}
 --- !u!1 &7694097868925933782
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7a7c1d54df2874983d7a8e66eb6816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  PauseMenuPrefab: {fileID: 0}
 --- !u!1 &8320326685620650015
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9137586994050011698
 RectTransform:
   m_ObjectHideFlags: 0

@@ -66,8 +66,14 @@ public class Player : MonoBehaviour
         Debug.Log("Logging started");
     }
 
-    void playerDies(){
+
+    IEnumerator DestroySprite(){
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("DeathScreen");
+    }
+
+    void playerDies(){
+        StartCoroutine(DestroySprite());
     }
 
     // Update is called once per frame

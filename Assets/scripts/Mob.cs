@@ -10,6 +10,8 @@ public class Mob : MonoBehaviour
     public Player player;
     Rigidbody2D m_Rigidbody;
     private float mobSpeed = 4.0f;
+    Animator anim;
+    bool alive = true;
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
@@ -28,12 +30,20 @@ public class Mob : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         this.m_Rigidbody = GetComponent<Rigidbody2D>();
         this.player = GameObject.Find("Player").GetComponent<Player>();
     }
 
-    private void Die(){
+    IEnumerator DestroySprite(){
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
+    }
+
+    private void Die(){
+        alive = false;
+        anim.SetBool("Alive", alive);
+        StartCoroutine(DestroySprite());
         this.player.stats.gainXp(26);
     }
 
@@ -51,7 +61,7 @@ public class Mob : MonoBehaviour
     void FixedUpdate()
     {
         this.ChasePlayer();
-        if (health <= 0){
+        if (health <= 0 && alive){
             this.Die();
         }
     }
