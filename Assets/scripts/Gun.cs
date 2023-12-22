@@ -35,7 +35,7 @@ public class Gun : MonoBehaviour
 			bool shooting = Input.GetKey("mouse 1");
 			if (shooting)
 			{
-				this.fireRate = this.player.activeWeapon.fireRate;
+				this.fireRate = this.player.activeClass.fireRate;
 				this.gunCooldown = fireRate;
 				Vector3 pos = transform.position;
 				pos.z = -0.5f; //Makes bullets appear "under ship, but over mobs/rocks for explosion anim"

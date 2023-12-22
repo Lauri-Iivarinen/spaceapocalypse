@@ -12,6 +12,7 @@ public class Mob : MonoBehaviour
     private float mobSpeed = 4.0f;
     Animator anim;
     bool alive = true;
+    public int damage;
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
@@ -19,7 +20,6 @@ public class Mob : MonoBehaviour
         if (objectName != null && objectName.gameObject.name.Contains("Bullet"))
         {
             Bullet bullet = objectName.gameObject.GetComponent<Bullet>();
-
             if (bullet != null && bullet.specs != null && !bullet.destroyed)
             {
                 this.health -= bullet.specs.weaponDamage;
@@ -40,14 +40,14 @@ public class Mob : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Die(){
+    public void Die(){
         alive = false;
         anim.SetBool("Alive", alive);
         StartCoroutine(DestroySprite());
         this.player.stats.gainXp(26);
     }
 
-    private void ChasePlayer(){
+    public void ChasePlayer(){
         float playerX = player.GetX();
         float playerY = player.GetY();
 		float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));

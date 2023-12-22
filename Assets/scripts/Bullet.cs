@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private int bulletPen = 2;
     private float damage;
     Rigidbody2D m_Rigidbody;
-    public WeaponSpecs specs;
+    public ClassSpecs specs;
     Animator anim;
     public bool destroyed = false;
 
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
 
     private void getWeaponSpecs(){
         Player pl = GameObject.Find("Player").GetComponent<Player>();
-        this.specs = pl.activeWeapon;
+        this.specs = pl.activeClass;
         this.lifetime = this.specs.projectileLifetime;
         this.bulletPen = this.specs.penetration;
         this.vel = this.specs.projectileSpeed;

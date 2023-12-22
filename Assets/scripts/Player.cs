@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
     public PlayerStats stats;
     public Gun gun;
     public UiDisplay display;
-    public WeaponSpecs activeWeapon;
-    private List<WeaponSpecs> weapons;
+    public ClassSpecs activeClass;
+    private List<ClassSpecs> classes;
     public bool switchingGun = false;
     private const int SWITCHDELAY = 120;
     private const int DAMAGETICK = 45;
@@ -55,14 +55,18 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.activeClass = SelectClass.activeClass;
         stats = new PlayerStats();
+        stats.maxHealth = activeClass.rocketHealth;
+        stats.currHealth = activeClass.rocketHealth;
+        stats.speed = activeClass.rocketSpeed;
         movementSpeed = 0.1f * stats.speed;
-        WeaponSpecs rocket1 = new WeaponSpecs("XBS-238", 1f, 10, 30, 60, 1, 15f);
+        //WeaponSpecs rocket1 = new WeaponSpecs("XBS-238", 1f, 10, 30, 60, 1, 15f);
 
-        this.weapons = new List<WeaponSpecs>{rocket1};
-        this.activeWeapon = rocket1;
+        //this.weapons = new List<WeaponSpecs>{rocket1};
+        
         this.display = GameObject.Find("Canvas").GetComponent<UiDisplay>();
-        display.setWeaponName(this.activeWeapon.weaponName);
+        display.setWeaponName(this.activeClass.className);
         Debug.Log("Logging started");
     }
 
