@@ -92,3 +92,23 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Decided on "class/itemization"</li>
   <li>Got rid of some access code and cleaned up classes</li>
 </details>
+<details>
+  <Summary>
+        Part 6 - New Mob type
+    </Summary>
+<h3>Days 6 and 7</h3>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/d2af0b74-8310-42ae-abb8-0a3f54d3bd71"/>  
+
+  Created new class selection screen, no longer weapon switching, you choose before game and play with the choice.
+  
+  Feeling encouranged with the new art direction and progress I made I decided to push on. Making different type of enemies was the goal from beginnign and I decided to tackle the new ranged attacking mob now.
+  
+  Ended up being easier than I though since I could just make a new collision detector for the mobs to decide if they are close enough to start shooting towards player
+  
+  <li>Mob and player explosions on death</li>
+  <li>Class selection screen</li>
+  <li>New stats in class affecting gameplay (speed, hp etc.)</li>
+  <li>New enemy, ranged</li>
+  <li>Mob spawning changes to spawn around player and never outside playable boundaries</li>
+</details>
