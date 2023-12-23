@@ -18,6 +18,7 @@ public class SelectClass : MonoBehaviour
         ClassSpecs rocket3 = new ClassSpecs("PXM-879", 0.6f, 10, 12f, 80, 1, 20f, 1.5f, 75);
 
         this.classes = new List<ClassSpecs> { rocket1, rocket2, rocket3 };
+        activeClass = rocket1;
     }
 
     public void setClass1()

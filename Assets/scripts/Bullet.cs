@@ -72,7 +72,8 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
-        if (!objectName.gameObject.name.Equals("Player")){
+        if (!objectName.gameObject.name.Contains("Player") && !objectName.gameObject.name.Contains("RangeFinder"))
+        {
             this.bulletPen--; //if bullet has penetration power
         }
     }

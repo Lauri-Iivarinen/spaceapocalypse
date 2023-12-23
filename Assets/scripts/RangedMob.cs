@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Mob : MonoBehaviour
+public class RangedMob : MonoBehaviour
 {
-
+    [SerializeField]
+    private GameObject bulletPrefab;
     private float health = 10.0f; //While hitreg issue continues, mob health is doubled from 5 to 10
     public Player player;
     Rigidbody2D m_Rigidbody;
-    public float mobSpeed = 4.0f;
+    private float mobSpeed = 4.0f;
     Animator anim;
     bool alive = true;
     public int damage;
+    public bool inRange = false;
+    public float fireRate = 90f;
+    private float currentRate = 0f;
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
@@ -50,17 +54,38 @@ public class Mob : MonoBehaviour
     public void ChasePlayer(){
         float playerX = player.GetX();
         float playerY = player.GetY();
+        float mobX = transform.position.x;
+        float mobY = transform.position.y;
+        //Debug.Log("Player: " + playerX + "," + playerY + " | Mob: " + mobX + "," + mobY);
 		float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
 		transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle));
         Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
-        this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * -1;
+        if (!inRange)
+        {
+            this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * -1;
+        }
+        else
+        {
+            this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * 0;
+        }
         transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle+90));
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+        
         this.ChasePlayer();
+        if (inRange && this.currentRate <= 0)
+        {
+            //Fire
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            this.currentRate = fireRate;
+        } else
+        {
+            this.currentRate--;
+        }
         if (health <= 0 && alive){
             this.Die();
         }

@@ -33,18 +33,16 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obj)
     {
-        //Debug.Log(obj.gameObject.name);
-        if(!obj.gameObject.name.Contains("Bullet")){
+        if(obj.gameObject.name.Contains("Mob")){
             if (this.damageInterval <= 0){
                 this.stats.currHealth -= 15;
                 this.damageInterval = DAMAGETICK;
             }
         }
-
     }
 
     void OnTriggerStay2D(Collider2D obj){
-        if(!obj.gameObject.name.Contains("Bullet")){
+        if(obj.gameObject.name.Contains("Mob")){
             if (this.damageInterval <= 0){
                 this.stats.currHealth -= 15;
                 this.damageInterval = DAMAGETICK;
@@ -55,6 +53,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.activeClass = new ClassSpecs("XBS-238", 1f, 10, 30f, 60, 1, 15f, 1f, 100);
         this.activeClass = SelectClass.activeClass;
         stats = new PlayerStats();
         stats.maxHealth = activeClass.rocketHealth;
