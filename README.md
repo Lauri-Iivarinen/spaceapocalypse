@@ -112,3 +112,32 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>New enemy, ranged</li>
   <li>Mob spawning changes to spawn around player and never outside playable boundaries</li>
 </details>
+<details>
+  <Summary>
+        Part 7 - Post Holiday and Covid:(
+    </Summary>
+<h3>Days 8</h3>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/c00ed48d-fb60-45fc-bf1b-4ba526be9853"/>
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/1a9c2523-05f3-4b6e-93e7-5cf572ab6e6c"/>
+
+  Took a big break to enjoy Holidays with family and wasnt able to get back to business untill couple weeks after new years because I ended up getting Covid from somewhere. 
+  
+  Anyways back to business as usual. Fixed all stats not being applied so that player can increase them when leveling up, currently 6 different stats to upgrade, when leveling up random selection of 3 appears where player chooses 1 to buff.
+  
+  <li>Level Up Screen</li>
+  <li>Upgrade stats when leveling Up</li>
+  <li>All player stats effect gameplay</li>
+  <li>Baseline stats display on top right of screen</li>
+  <li>Player attacks have a chance to critically strike mob increasing damage the attack deals</li>
+  <li>Upgraded death animation to ranged mob</li>
+  
+
+  ### TODO:
+
+  Mobs drop health pickups on death
+  
+  More Upgradable stats (Bullet penetration etc.)
+  
+  Automatic Health Regen (and stats for it)
+</details>
