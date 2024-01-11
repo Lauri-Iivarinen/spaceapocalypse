@@ -116,7 +116,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 7 - Post Holiday and Covid:(
     </Summary>
-<h3>Days 8</h3>
+<h3>Day 8</h3>
 
 <img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/c00ed48d-fb60-45fc-bf1b-4ba526be9853"/>
 <img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/1a9c2523-05f3-4b6e-93e7-5cf572ab6e6c"/>
