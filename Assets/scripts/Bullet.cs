@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -8,7 +9,7 @@ public class Bullet : MonoBehaviour
     private int lifetime = 60;
     private float vel = 10.02f;
     private int bulletPen = 2;
-    private float damage;
+    public float damage;
     Rigidbody2D m_Rigidbody;
     public ClassSpecs specs;
     Animator anim;
@@ -32,7 +33,13 @@ public class Bullet : MonoBehaviour
         this.lifetime = this.specs.projectileLifetime;
         this.bulletPen = this.specs.penetration;
         this.vel = this.specs.projectileSpeed;
-        this.damage = this.specs.weaponDamage;
+        //Calc if bullet crits and if so whats the damage
+        if ( UnityEngine.Random.Range(0, 1f) < pl.stats.critChance){ //Crit chance 10% = 0.1f
+            damage = this.specs.weaponDamage * pl.stats.damageMultiplier * pl.stats.critDamageMultiplier;
+        }else{
+            damage = this.specs.weaponDamage * pl.stats.damageMultiplier;
+        }
+        
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {

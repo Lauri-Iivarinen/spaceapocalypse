@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         return transform.position.y;
     }
 
-    public int getHealth(){
+    public float getHealth(){
         return stats.currHealth;
     }
 

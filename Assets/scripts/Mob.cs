@@ -22,7 +22,7 @@ public class Mob : MonoBehaviour
             Bullet bullet = objectName.gameObject.GetComponent<Bullet>();
             if (bullet != null && bullet.specs != null && !bullet.destroyed)
             {
-                this.health -= bullet.specs.weaponDamage;
+                this.health -= bullet.damage;
             }
         }
     }
