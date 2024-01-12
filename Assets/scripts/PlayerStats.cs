@@ -2,8 +2,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStats{
+    LevelUpHandler lvlUp;
     public int level = 1;
-    public int xpRequired = 10;//150;
+    public int xpRequired = 50;//150;
     public int currXp = 0;
     public float currHealth = 100f;
     public int mobsKilled = 0;
@@ -13,18 +14,19 @@ public class PlayerStats{
     public float speed = 1f; //Active factor but baseline comes from ship stats
     public float attackSpeed = 1f;
     public float maxHealth = 100f;
-    public float critChance = 0.1f; //Not implemented
-    public float critDamageMultiplier = 1.5f; //Not implemented
-    LevelUpHandler lvlUp;
-    public (string, float, float)[] upgradesAll;
+    public float critChance = 0.1f;
+    public float critDamageMultiplier = 1.5f;
+    public float healthRegen = 0.4f;
+    public float bulletPenetration = 0f;
+    public float currentPenetration = 0f;
     public void levelUp(){
         level++;
         currXp = currXp-xpRequired;
         xpRequired = (int)((xpRequired + 10) * 1.1f);
         lvlUp = GameObject.Find("Canvas").GetComponent<LevelUpHandler>();
         //Prob convert to tuples to display proper names in UI
-        (string, float, float)[] upgradesAll = {("Damage Increase +5%", damageMultiplier, damageMultiplier*1.05f), ("Rocket Speed +5%", speed, speed*1.05f), ("Attack Speed +5%", attackSpeed, attackSpeed*1.05f), ("Maximum Health +15", maxHealth, maxHealth+25), ("Critical Chance +7%",critChance, critChance*1.07f), ("Critical Damage +10%", critDamageMultiplier, critDamageMultiplier*1.1f)};
-        string[] upgrades = {upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)].Item1, upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)].Item1, upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)].Item1};
+        string[] upgradesAll = {"Damage Increase +5%", "Rocket Speed +5%", "Attack Speed +5%", "Maximum Health +15", "Critical Chance +7%", "Critical Damage +10%", "HPS +0.1", "Bullet penetration +10%"};
+        string[] upgrades = {upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)]};
         //Select 1 of 3, increase stat
         lvlUp.InitiateLevelUp(upgrades);
     }
@@ -42,7 +44,34 @@ public class PlayerStats{
             critChance += 0.07f;
         }else if (toolTip.Equals("Critical Damage +10%")){
             critDamageMultiplier += 0.1f;
+        }else if(toolTip.Equals("HPS +0.1")){
+            healthRegen += 0.4f;
+        }else if(toolTip.Equals("Bullet penetration +10%")){
+            bulletPenetration += 0.1f;
         }
+    }
+
+    public void HealthPickup(float amount){
+        currHealth += amount;
+        if (currHealth > maxHealth){
+            currHealth = maxHealth;
+        }
+    }
+
+    public void GainHealth(){
+        if (currHealth < maxHealth){
+            currHealth += healthRegen;
+            if (currHealth > maxHealth){
+                currHealth = maxHealth;
+            }
+        }
+        
+    }
+
+    public int GetPenetration(){
+        currentPenetration -= (int)currentPenetration;
+        currentPenetration += bulletPenetration;
+        return (int)currentPenetration;
     }
 
 

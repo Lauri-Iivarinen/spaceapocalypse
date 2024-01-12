@@ -17,6 +17,9 @@ public class RangedMob : MonoBehaviour
     public bool inRange = false;
     public float fireRate = 90f;
     private float currentRate = 0f;
+    [SerializeField]
+    private GameObject healthPickup;
+    private const int XPREWARD = 26;
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
@@ -41,6 +44,12 @@ public class RangedMob : MonoBehaviour
 
     IEnumerator DestroySprite(){
         yield return new WaitForSeconds(0.5f);
+        //Roll for health drop (10%)
+        if (UnityEngine.Random.Range(0, 1f) < 0.1f){
+            Quaternion rot = transform.rotation;
+            rot.z = 0;
+            Instantiate(healthPickup, transform.position, rot);
+        }
         Destroy(gameObject);
     }
 
@@ -48,7 +57,7 @@ public class RangedMob : MonoBehaviour
         alive = false;
         anim.SetBool("Alive", alive);
         StartCoroutine(DestroySprite());
-        this.player.stats.gainXp(26);
+        this.player.stats.gainXp(XPREWARD);
     }
 
     public void ChasePlayer(){

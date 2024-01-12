@@ -17,6 +17,8 @@ public class UiDisplay : MonoBehaviour
     private TextMeshProUGUI speed;
     private TextMeshProUGUI crit;
     private TextMeshProUGUI critDmg;
+    private TextMeshProUGUI hps;
+    private TextMeshProUGUI penetration;
 
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider xpBar;
@@ -44,6 +46,8 @@ public class UiDisplay : MonoBehaviour
         this.crit = GameObject.Find("Crit%").GetComponent<TextMeshProUGUI>();
         this.critDmg = GameObject.Find("CritDMG").GetComponent<TextMeshProUGUI>();
         this.atkSpeed = GameObject.Find("atkSpeed").GetComponent<TextMeshProUGUI>();
+        this.hps = GameObject.Find("HPS").GetComponent<TextMeshProUGUI>();
+        this.penetration = GameObject.Find("Penetration").GetComponent<TextMeshProUGUI>();
 
     }
 
@@ -62,5 +66,7 @@ public class UiDisplay : MonoBehaviour
         this.critDmg.text = "Crit Dmg: " + player.stats.critDamageMultiplier * 100 + "%";
         this.atkSpeed.text = "Atk Speed: " + player.stats.attackSpeed *100 + "%";
         this.rawDmg.text = "Damage: " + (player.activeClass.weaponDamage * player.stats.damageMultiplier*10).ToString("0.00");
+        this.hps.text = "HPS: " + player.stats.healthRegen/4;
+        this.penetration.text = "Penetration: " + (float)(player.stats.bulletPenetration + player.activeClass.penetration);
     }
 }

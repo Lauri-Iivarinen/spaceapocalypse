@@ -13,6 +13,9 @@ public class Mob : MonoBehaviour
     Animator anim;
     bool alive = true;
     public int damage;
+    [SerializeField]
+    private GameObject healthPickup;
+    private const int XPREWARD = 20;
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
@@ -37,6 +40,12 @@ public class Mob : MonoBehaviour
 
     IEnumerator DestroySprite(){
         yield return new WaitForSeconds(0.5f);
+        //Roll for health drop (10%)
+        if (UnityEngine.Random.Range(0, 1f) < 0.1f){
+            Quaternion rot = transform.rotation;
+            rot.z = 0;
+            Instantiate(healthPickup, transform.position, rot);
+        }
         Destroy(gameObject);
     }
 
@@ -44,7 +53,7 @@ public class Mob : MonoBehaviour
         alive = false;
         anim.SetBool("Alive", alive);
         StartCoroutine(DestroySprite());
-        this.player.stats.gainXp(26);
+        this.player.stats.gainXp(XPREWARD);
     }
 
     public void ChasePlayer(){

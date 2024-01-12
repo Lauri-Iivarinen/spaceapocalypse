@@ -18,7 +18,9 @@ public class Player : MonoBehaviour
     private const int SWITCHDELAY = 120;
     private const int DAMAGETICK = 45;
     private int damageInterval = 0; //Restricts taking damage in every tick
-    
+    private const int HPREGENDELAY = 200;
+    private int hpRegen = 0;
+
     public float GetX(){
         return transform.position.x;
     }
@@ -81,10 +83,28 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate(){
+
+        if (this.hpRegen <= 0){
+            stats.GainHealth();
+            this.hpRegen = HPREGENDELAY;
+        }else{
+            this.hpRegen--;
+        }
+        
         if (stats.currHealth > 0 && !switchingGun){//Dead dont walk (unles they are zombies :3)
             this.x = Input.GetAxis("Horizontal");
             this.y = Input.GetAxis("Vertical");
-            transform.Translate(this.x * movementSpeed, this.y * movementSpeed, 0);
+            float moveX = 0f;
+            float moveY = 0f;
+            if (Input.GetKey(KeyCode.W)) moveY += 1f;
+            if (Input.GetKey(KeyCode.S)) moveY -= 1f;
+            if (Input.GetKey(KeyCode.D)) moveX += 1f;
+            if (Input.GetKey(KeyCode.A)) moveX -= 1f;
+
+
+            Vector3 moveDir = new Vector3(moveX, moveY).normalized;
+            //transform.Translate(this.x * movementSpeed, this.y * movementSpeed, 0);
+            transform.position += moveDir * movementSpeed;
         }else if(stats.currHealth <= 0){
             playerDies();
         }

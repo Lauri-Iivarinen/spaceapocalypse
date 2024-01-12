@@ -27,11 +27,15 @@ public class Bullet : MonoBehaviour
         transform.TransformDirection(Vector3.forward * 10);
     }
 
+    private int GetPenetration(Player pl, int pen){
+        return pen + pl.stats.GetPenetration();
+    }
+
     private void getWeaponSpecs(){
         Player pl = GameObject.Find("Player").GetComponent<Player>();
         this.specs = pl.activeClass;
         this.lifetime = this.specs.projectileLifetime;
-        this.bulletPen = this.specs.penetration;
+        this.bulletPen = GetPenetration(pl, this.specs.penetration);
         this.vel = this.specs.projectileSpeed;
         //Calc if bullet crits and if so whats the damage
         if ( UnityEngine.Random.Range(0, 1f) < pl.stats.critChance){ //Crit chance 10% = 0.1f
@@ -53,7 +57,6 @@ public class Bullet : MonoBehaviour
 
     IEnumerator ExplodeGameObject(){
         anim.SetBool("Contact", true);
-        
         yield return new WaitForSeconds(0.2f);
         DestroyGameObject();
     }
@@ -79,7 +82,10 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
-        if (!objectName.gameObject.name.Contains("Player") && !objectName.gameObject.name.Contains("RangeFinder"))
+        if (!objectName.gameObject.name.Contains("Player") 
+        && !objectName.gameObject.name.Contains("RangeFinder") 
+        && !objectName.gameObject.name.Contains("MobBullet")
+        && !objectName.gameObject.name.Contains("HealthCapsule"))
         {
             this.bulletPen--; //if bullet has penetration power
         }
