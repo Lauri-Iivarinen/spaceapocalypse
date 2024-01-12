@@ -141,3 +141,25 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   
   Automatic Health Regen (and stats for it)
 </details>
+<details>
+  <Summary>
+        Part 8 - Polishing basic mechanics
+    </Summary>
+<h3>Day 9</h3>
+  
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/38e97b2a-ecd2-4132-a90a-62b66e5b6354"/>
+
+  Did a small change around how collision works so bullet penetration can work properly. Speaking of which player can now have bullet penetration stat (10% penetration = every 10th bullet penetrates once extra).
+
+  Also worked on some fine tuning and made it easier to tweak certain stats (Mob xp rewards, player hp gains, leveling up...).
+
+  Player can now also regenerate health by mob drops, 10% chance to drop hp capsule that can be picked up to heal a lot and player also has passive but very slow health regen which ticks every 4 seconds. Taking damage should not be ideal so   
+  passive regen is very slow.
+  
+  <li>Passive HP Regeneration</li>
+  <li>Mobs can drop HP capsules</li>
+  <li>Bullets can penetrate (properly)</li>
+  <li>New level up rewards: HP Regen and Bullet penetration</li>
+  <li>Fixed diagonal movement being ~40% faster than intended</li>
+  
+</details>
