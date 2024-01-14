@@ -9,7 +9,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 1 - Getting started
     </Summary>
-<h3>Day 1</h3>
+
   <img height="300px" src="https://github.com/Lauri-Iivarinen/zombacopalypse/assets/94760484/c46e0c6e-c1bc-4ed4-a51a-67949a1eb4f6"/>
 
   No idea how to develop games in Unity and only small experience with C# in the form of a couple leetcode problems, however my experience with Java will help.
@@ -26,7 +26,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 2 - Basics under control
     </Summary>
-<h3>Day 2</h3>
+
   <img height="300px" src="https://github.com/Lauri-Iivarinen/zombacopalypse/assets/94760484/aa0896a8-06c2-454d-99aa-6b13bab9f29e"/>
 
   Continued where I left off, sketched new model prototypes, need to create sprites soon. A lot of tutorials on YouTube which help a lot. Planning to extend player stats building. Need to look into different views (Menu/death screen etc.)
@@ -42,7 +42,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 3 - Models and mistakes
     </Summary>
-<h3>Day 3</h3>
+
   <img height="200px" src="https://github.com/Lauri-Iivarinen/zombapocalypse/assets/94760484/b7ce6ca5-7367-4a9d-a3b6-a0cfb4591f5f" />
   <img height="200px" src="https://github.com/Lauri-Iivarinen/zombapocalypse/assets/94760484/6b8f9940-da88-42f3-bc9c-ad143fd248a7" />
 
@@ -62,7 +62,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 4 - Rusting off blender
     </Summary>
-<h3>Day 4</h3>
+
   Did some fine tuning with collision detection, now player can be confined within a play area, affects mobs also. Started doing some rough mocks for some models what I could include in the world, also created some guns for the player.
   <li>Collision detection</li>
   <li>Weapon models and basic weapon animation</li>
@@ -72,7 +72,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 5 - Massive art overhaul and new direction 
     </Summary>
-<h3>Day 5</h3>
+
 
 <img height="200px" src="https://github.com/Lauri-Iivarinen/zombapocalypse/assets/94760484/9e14ccb6-1924-4fcc-910e-d222d77d8152"/>  
 
@@ -96,7 +96,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 6 - New Mob type
     </Summary>
-<h3>Days 6 and 7</h3>
+
 
 <img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/d2af0b74-8310-42ae-abb8-0a3f54d3bd71"/>  
 
@@ -116,7 +116,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 7 - Post Holiday and Covid:(
     </Summary>
-<h3>Day 8</h3>
+
 
 <img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/c00ed48d-fb60-45fc-bf1b-4ba526be9853"/>
 <img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/1a9c2523-05f3-4b6e-93e7-5cf572ab6e6c"/>
@@ -145,7 +145,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <Summary>
         Part 8 - Polishing basic mechanics
     </Summary>
-<h3>Day 9</h3>
+
   
 <img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/38e97b2a-ecd2-4132-a90a-62b66e5b6354"/>
 
@@ -161,5 +161,24 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Bullets can penetrate (properly)</li>
   <li>New level up rewards: HP Regen and Bullet penetration</li>
   <li>Fixed diagonal movement being ~40% faster than intended</li>
+  
+</details>
+<details>
+  <Summary>
+        Part 9 - Interfaces and damage numbers
+  </Summary>
+
+  
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/23fe0a4a-ade0-4253-91b5-522df8118a27"/>
+
+  There is nothing more satisfying than seeing the BIG damage you do to the enemies and displaying that with numbers is an easy and classic way to make players feel more powerful the more powerups they gain.
+
+  Also noticed a bug after implementing damage numbers where ranged mobs were taking damage even when bullet enters their range finder trigger, this was not intended...
+
+  Fixing this bug meant I needed to find a new way to recognice hit and make mobs take damage. By making a simple interface to mobs I was able to achieve this surprisingly easy.
+  
+  <li>Floating damage numbers</li>
+  <li>Floating healing numbers</li>
+  <li>Numbers tuning so that health etc is not calculated in decimals</li>
   
 </details>
