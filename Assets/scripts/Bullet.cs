@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     public ClassSpecs specs;
     Animator anim;
     public bool destroyed = false;
+    private bool crit = false;
 
     void Start() //On bullet spawn get dir and pos
     {
@@ -40,6 +41,7 @@ public class Bullet : MonoBehaviour
         //Calc if bullet crits and if so whats the damage
         if ( UnityEngine.Random.Range(0, 1f) < pl.stats.critChance){ //Crit chance 10% = 0.1f
             damage = this.specs.weaponDamage * pl.stats.damageMultiplier * pl.stats.critDamageMultiplier;
+            this.crit = true;
         }else{
             damage = this.specs.weaponDamage * pl.stats.damageMultiplier;
         }
@@ -87,7 +89,14 @@ public class Bullet : MonoBehaviour
         && !objectName.gameObject.name.Contains("MobBullet")
         && !objectName.gameObject.name.Contains("HealthCapsule"))
         {
-            this.bulletPen--; //if bullet has penetration power
+            if (objectName.gameObject.name.Contains("rock")){
+                this.bulletPen--;
+            }else{
+                MobActions mob = objectName.gameObject.GetComponent<MobActions>();
+                mob.TakeDamage(this.damage, this.crit);
+                this.bulletPen--; //if bullet has penetration power
+            }
+            
         }
     }
 }

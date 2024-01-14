@@ -13,9 +13,9 @@ public class SelectClass : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ClassSpecs rocket1 = new ClassSpecs("XBS-238", 1f, 10, 30f, 60, 1, 15f, 1.1f, 100);
-        ClassSpecs rocket2 = new ClassSpecs("FGZ-048", 3f, 10, 60f, 120, 2, 30f, 1.05f, 150);
-        ClassSpecs rocket3 = new ClassSpecs("PXM-879", 0.6f, 10, 12f, 80, 1, 20f, 1.5f, 75);
+        ClassSpecs rocket1 = new ClassSpecs("XBS-238", 100f, 10, 30f, 60, 1, 15f, 1.1f, 1000);
+        ClassSpecs rocket2 = new ClassSpecs("FGZ-048", 300f, 10, 60f, 120, 2, 30f, 1.05f, 1500);
+        ClassSpecs rocket3 = new ClassSpecs("PXM-879", 60f, 10, 12f, 80, 1, 20f, 1.5f, 750);
 
         this.classes = new List<ClassSpecs> { rocket1, rocket2, rocket3 };
         activeClass = rocket1;

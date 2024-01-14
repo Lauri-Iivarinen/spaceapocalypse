@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthCapsule : MonoBehaviour
 {
-    private const float HEALING = 15f;
+    private const float HEALING = 150f;
 
     void OnTriggerEnter2D(Collider2D obj)
     {

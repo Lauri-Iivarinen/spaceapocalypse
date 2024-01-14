@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject dmgTxt;
     public float movementSpeed;
     public float x;
     public float y;
@@ -33,12 +35,21 @@ public class Player : MonoBehaviour
         return stats.currHealth;
     }
 
+    public void DisplayDamage(float dmg, Color color){
+        Quaternion rot = transform.rotation;
+        rot.z = 0;
+        var txt = Instantiate(dmgTxt, transform.position, rot);
+        txt.GetComponent<TextMesh>().text = "" + dmg;
+        txt.GetComponent<TextMesh>().color = color;
+    }
+
     void OnTriggerEnter2D(Collider2D obj)
     {
         if(obj.gameObject.name.Contains("Mob")){
             if (this.damageInterval <= 0){
-                this.stats.currHealth -= 15;
+                this.stats.currHealth -= 150;
                 this.damageInterval = DAMAGETICK;
+                DisplayDamage(150f, new Color(100,0,0, 1f));
             }
         }
     }
@@ -46,8 +57,9 @@ public class Player : MonoBehaviour
     void OnTriggerStay2D(Collider2D obj){
         if(obj.gameObject.name.Contains("Mob")){
             if (this.damageInterval <= 0){
-                this.stats.currHealth -= 15;
+                this.stats.currHealth -= 150;
                 this.damageInterval = DAMAGETICK;
+                DisplayDamage(150f, new Color(100,0,0, 1f));
             }
         }
     }

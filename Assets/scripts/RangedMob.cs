@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class RangedMob : MonoBehaviour
+public class RangedMob : MonoBehaviour, MobActions
 {
     [SerializeField]
     private GameObject bulletPrefab;
-    private float health = 10.0f; //While hitreg issue continues, mob health is doubled from 5 to 10
+    private float health = 1000f; //While hitreg issue continues, mob health is doubled from 5 to 10
     public Player player;
     Rigidbody2D m_Rigidbody;
     private float mobSpeed = 4.0f;
@@ -20,18 +20,25 @@ public class RangedMob : MonoBehaviour
     [SerializeField]
     private GameObject healthPickup;
     private const int XPREWARD = 26;
+    [SerializeField]
+    private GameObject dmgTxt;
 
-    void OnTriggerEnter2D(Collider2D objectName)
-    {
-        //Debug.Log(objectName.gameObject.name);
-        if (objectName != null && objectName.gameObject.name.Contains("Bullet"))
-        {
-            Bullet bullet = objectName.gameObject.GetComponent<Bullet>();
-            if (bullet != null && bullet.specs != null && !bullet.destroyed)
-            {
-                this.health -= bullet.damage;
-            }
+    public void TakeDamage(float dmg, bool crit){
+        this.health -= dmg;
+        DisplayDamage(dmg, crit);
+    }
+
+    void DisplayDamage(float dmg, bool crit){
+        Quaternion rot = transform.rotation;
+        rot.z = 0;
+        var txt = Instantiate(dmgTxt, transform.position, rot, transform);
+        if (crit){
+            txt.GetComponent<TextMesh>().text = "" + dmg + "!";
+            txt.GetComponent<TextMesh>().color = new Color(0, 100, 100, 1f);
+        }else{
+            txt.GetComponent<TextMesh>().text = "" + dmg;
         }
+        
     }
 
     // Start is called before the first frame update
@@ -83,8 +90,6 @@ public class RangedMob : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        
         this.ChasePlayer();
         if (inRange && this.currentRate <= 0)
         {

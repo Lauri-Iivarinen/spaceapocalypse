@@ -2425,6 +2425,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2131210423453237636, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131210423453237636, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6482274223159451829, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2503,6 +2511,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6482274223159451829, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884651043035087545, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884651043035087545, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9034394956439951018, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
@@ -18178,7 +18194,7 @@ PrefabInstance:
       objectReference: {fileID: 7213498716078634413, guid: 79da4e5e35e284c3095f01ea8d254a77, type: 3}
     - target: {fileID: 6471811337004223028, guid: 468199aa1e1d5c242b8fe665dbb4bf84, type: 3}
       propertyPath: spawnInterval
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7536244784912468065, guid: 468199aa1e1d5c242b8fe665dbb4bf84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37829,7 +37845,7 @@ PrefabInstance:
       objectReference: {fileID: 3299736567549821737, guid: be9a16e1abc25284ebeb33413e1c99d4, type: 3}
     - target: {fileID: 6471811337004223028, guid: 468199aa1e1d5c242b8fe665dbb4bf84, type: 3}
       propertyPath: spawnInterval
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7536244784912468065, guid: 468199aa1e1d5c242b8fe665dbb4bf84, type: 3}
       propertyPath: m_LocalPosition.x

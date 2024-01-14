@@ -271,3 +271,4 @@ MonoBehaviour:
   inRange: 0
   fireRate: 150
   healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
+  dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
