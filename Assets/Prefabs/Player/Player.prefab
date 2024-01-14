@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
+  lvlUpPrefab: {fileID: 4381456748016969986, guid: d0e20be7e8b44144091d2e48fe417e41, type: 3}
   movementSpeed: 0
   x: 0
   y: 0

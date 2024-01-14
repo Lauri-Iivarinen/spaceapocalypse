@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private GameObject dmgTxt;
+    [SerializeField]
+    private GameObject lvlUpPrefab;
     public float movementSpeed;
     public float x;
     public float y;
@@ -23,6 +25,11 @@ public class Player : MonoBehaviour
     private const int HPREGENDELAY = 200;
     private int hpRegen = 0;
 
+    public void LevelUpAnim(){
+        StartCoroutine(ToggleSkillSelection());
+        Instantiate(lvlUpPrefab, transform.position, Quaternion.identity, transform);
+    }
+
     public float GetX(){
         return transform.position.x;
     }
@@ -33,6 +40,16 @@ public class Player : MonoBehaviour
 
     public float getHealth(){
         return stats.currHealth;
+    }
+
+    public IEnumerator ToggleSkillSelection(){
+        yield return new WaitForSeconds(0.5f);
+        LevelUpHandler lvlUp = GameObject.Find("Canvas").GetComponent<LevelUpHandler>();
+        //Prob convert to tuples to display proper names in UI
+        string[] upgradesAll = {"Damage Increase +5%", "Rocket Speed +5%", "Attack Speed +5%", "Maximum Health +150", "Critical Chance +7%", "Critical Damage +10%", "HPS +1", "Bullet penetration +10%"};
+        string[] upgrades = {upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)]};
+        //Select 1 of 3, increase stat
+        lvlUp.InitiateLevelUp(upgrades);
     }
 
     public void DisplayDamage(float dmg, Color color){

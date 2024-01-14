@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,17 +20,17 @@ public class PlayerStats{
     public float healthRegen = 4f;
     public float bulletPenetration = 0f;
     public float currentPenetration = 0f;
+
+    
     public void levelUp(){
         level++;
         currXp = currXp-xpRequired;
         xpRequired = (int)((xpRequired + 10) * 1.1f);
-        lvlUp = GameObject.Find("Canvas").GetComponent<LevelUpHandler>();
-        //Prob convert to tuples to display proper names in UI
-        string[] upgradesAll = {"Damage Increase +5%", "Rocket Speed +5%", "Attack Speed +5%", "Maximum Health +150", "Critical Chance +7%", "Critical Damage +10%", "HPS +1", "Bullet penetration +10%"};
-        string[] upgrades = {upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)]};
-        //Select 1 of 3, increase stat
-        lvlUp.InitiateLevelUp(upgrades);
+        Player pl = GameObject.Find("Player").GetComponent<Player>();
+        pl.LevelUpAnim();
     }
+
+    
     public void IncreaseStat(string toolTip){
         if (toolTip.Equals("Damage Increase +5%")){
             damageMultiplier += 0.05f;

@@ -84,19 +84,13 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
-        if (!objectName.gameObject.name.Contains("Player") 
-        && !objectName.gameObject.name.Contains("RangeFinder") 
-        && !objectName.gameObject.name.Contains("MobBullet")
-        && !objectName.gameObject.name.Contains("HealthCapsule"))
+        if (objectName.gameObject.name.Contains("Mob") && !objectName.gameObject.name.Contains("MobBullet"))
         {
-            if (objectName.gameObject.name.Contains("rock")){
-                this.bulletPen--;
-            }else{
-                MobActions mob = objectName.gameObject.GetComponent<MobActions>();
-                mob.TakeDamage(this.damage, this.crit);
-                this.bulletPen--; //if bullet has penetration power
-            }
-            
+            MobActions mob = objectName.gameObject.GetComponent<MobActions>();
+            mob.TakeDamage(this.damage, this.crit);
+            this.bulletPen--; //if bullet has penetration power
+        }else if (objectName.gameObject.name.Contains("rock")){
+            this.bulletPen--;
         }
     }
 }
