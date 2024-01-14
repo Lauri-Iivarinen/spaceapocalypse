@@ -180,5 +180,6 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Floating damage numbers</li>
   <li>Floating healing numbers</li>
   <li>Numbers tuning so that health etc is not calculated in decimals</li>
+  <li>Leveling up plays an animation (done after recording gif)</li>
   
 </details>
