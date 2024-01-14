@@ -31,13 +31,46 @@ Classes or everything aivailable?
 Weapons could be divided into classes which would reduce coding requirements for switching between etc
 also would allow for more challenges instead of using the best one possible
 
-Perks:
+Buffs:
 Speed
 damage
 health
 health regen?
-projectile size? type?
+penetration
+attack speed
+crit chance
+crit dmg
 
 Mobs:
 Melee "zombie"
 Ranged caster, reach X range from player, shoot projectiles -> indicators?
+TODO Mobs:
+Melee, aoe pulse
+Melee, fast, low hp
+Ranged, "channel", low damage, cant be dodged unless oor (or behind asteroid mby)
+Ranged, chargeup, line aoe
+
+Bosses:
+At the end of the fight
+Ignore asteroids
+Big healthbar on screen
+Drops an item?
+Boss1:
+- Cast shield, immortal
+- Spin around, multiple projectiles in spirals
+- Charge frontal
+- Drop mines, can take self damage, breaks shield
+Boss2:
+- Aoe nuke, can be dodged behind asteroid (destroyed after?)
+- Triple frontal, 5 areas 3/5 random
+- Shoot normal bullets
+- Overlaps?
+
+Game Mechanics:
+Rocket boost, fast speedup if needed to run away/dodge mechanics etc, uses fuel, fuel charges overtime.
+Game specific powerups (balls/needles in HoT)
+ - Flamethrower on thrusters
+ - Forward shot, automated, many bullets? shotgun?
+ - Mines, automated, drops still mine that explodes aoe
+ - EMP, aoe pulse
+Post match powerups/items
