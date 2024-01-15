@@ -183,3 +183,23 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Leveling up plays an animation (done after recording gif)</li>
   
 </details>
+<details>
+  <Summary>
+        Part 9 - More foes!
+  </Summary>
+
+  
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/bcde80e1-66a2-40d8-8dcc-f27e4887ccb0"/>
+
+  To increase variety in mob types implemented 2 more mobs from the readme plans, quick melee mob with low hp "Glass cannon" of sorts and a frontal caster.
+
+  Fast melee mob was as easy as just making a new sprite and animations and then copying 1st melee mob prefab and just tuning the numbers on it (luckily made it semi easy the first time, now even more easier in the future)
+
+  Frontal caster reaches x distance and initiates cast, cast is 1.5sec duration after which if player is in contact with the frontal trigger player takes massive damage. Indicator was quite repetitive to paint in Gimp 😿
+  
+  <li>Floating damage numbers now integers</li>
+  <li>New mob, fast melee mob with high damage, low hp</li>
+  <li>Frontal caster mob, easy to dodge, big damage</li>
+  <li>Overall numbers tuning</li>
+  <li>Refactoring few instances to make future development easier</li>
+</details>
