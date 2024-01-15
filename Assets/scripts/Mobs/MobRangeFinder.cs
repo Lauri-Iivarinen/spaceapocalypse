@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class MobRangeFinder : MonoBehaviour
 {
-    public RangedMob mob;
+    //public MobActions mob;
     // Start is called before the first frame update
     void Start()
     {
-        mob = transform.parent.gameObject.GetComponent<RangedMob>();
+        MobActions mob = transform.parent.gameObject.GetComponent<MobActions>();
     }
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
         if (objectName != null && objectName.gameObject.name.Contains("Player"))
         {
+            MobActions mob = transform.parent.gameObject.GetComponent<MobActions>();
             //Start shooting
-            mob.inRange = true;
+            mob.SetInRange(true);
         }
     }
 
@@ -24,8 +25,9 @@ public class MobRangeFinder : MonoBehaviour
     {
         if (objectName != null && objectName.gameObject.name.Contains("Player"))
         {
+            MobActions mob = transform.parent.gameObject.GetComponent<MobActions>();
             //Stop shooting and start closing in on the player
-            mob.inRange = false;
+            mob.SetInRange(false);
         }
     }
 }

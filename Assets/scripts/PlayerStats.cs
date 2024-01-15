@@ -18,7 +18,7 @@ public class PlayerStats{
     public float critChance = 0.1f;
     public float critDamageMultiplier = 1.5f;
     public float healthRegen = 4f;
-    public float bulletPenetration = 0f;
+    public float bulletPenetration = 0.1f;
     public float currentPenetration = 0f;
 
     
@@ -47,8 +47,8 @@ public class PlayerStats{
             critDamageMultiplier += 0.1f;
         }else if(toolTip.Equals("HPS +1")){
             healthRegen += 4f;
-        }else if(toolTip.Equals("Bullet penetration +10%")){
-            bulletPenetration += 0.1f;
+        }else if(toolTip.Equals("Bullet penetration +20%")){
+            bulletPenetration += 0.2f;
         }
     }
 

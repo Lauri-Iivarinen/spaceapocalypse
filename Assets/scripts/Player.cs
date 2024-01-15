@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         LevelUpHandler lvlUp = GameObject.Find("Canvas").GetComponent<LevelUpHandler>();
         //Prob convert to tuples to display proper names in UI
-        string[] upgradesAll = {"Damage Increase +5%", "Rocket Speed +5%", "Attack Speed +5%", "Maximum Health +150", "Critical Chance +7%", "Critical Damage +10%", "HPS +1", "Bullet penetration +10%"};
+        string[] upgradesAll = {"Damage Increase +5%", "Rocket Speed +5%", "Attack Speed +5%", "Maximum Health +150", "Critical Chance +7%", "Critical Damage +10%", "HPS +1", "Bullet penetration +20%"};
         string[] upgrades = {upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)]};
         //Select 1 of 3, increase stat
         lvlUp.InitiateLevelUp(upgrades);
@@ -56,17 +56,24 @@ public class Player : MonoBehaviour
         Quaternion rot = transform.rotation;
         rot.z = 0;
         var txt = Instantiate(dmgTxt, transform.position, rot);
-        txt.GetComponent<TextMesh>().text = "" + dmg;
+        txt.GetComponent<TextMesh>().text = "" + (int)dmg;
         txt.GetComponent<TextMesh>().color = color;
+    }
+
+    public void TakeDamage(float amount){
+        if (this.damageInterval <= 0){
+            this.stats.currHealth -= amount;
+            this.damageInterval = DAMAGETICK;
+            DisplayDamage(amount, new Color(100,0,0, 1f));
+        }
     }
 
     void OnTriggerEnter2D(Collider2D obj)
     {
         if(obj.gameObject.name.Contains("Mob")){
             if (this.damageInterval <= 0){
-                this.stats.currHealth -= 150;
-                this.damageInterval = DAMAGETICK;
-                DisplayDamage(150f, new Color(100,0,0, 1f));
+                MobActions mob = obj.gameObject.GetComponent<MobActions>();
+                TakeDamage(mob.GetDamage());
             }
         }
     }
@@ -74,9 +81,8 @@ public class Player : MonoBehaviour
     void OnTriggerStay2D(Collider2D obj){
         if(obj.gameObject.name.Contains("Mob")){
             if (this.damageInterval <= 0){
-                this.stats.currHealth -= 150;
-                this.damageInterval = DAMAGETICK;
-                DisplayDamage(150f, new Color(100,0,0, 1f));
+                MobActions mob = obj.gameObject.GetComponent<MobActions>();
+                TakeDamage(mob.GetDamage());
             }
         }
     }

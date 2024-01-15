@@ -267,7 +267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4301387366639721427, guid: 51c85bc80c52d4432ba3ad6106ece21a, type: 3}
   player: {fileID: 0}
-  damage: 1
+  mobSpeed: 4
+  damage: 2
   inRange: 0
   fireRate: 150
   healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}

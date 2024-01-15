@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
-public class MobBullet : MonoBehaviour
+public class MobBullet : MonoBehaviour, MobActions
 {
     private int lifetime = 150;
     private float vel = 5f;
     private int bulletPen = 1;
-    private float damage;
+    public float damage;
     Rigidbody2D m_Rigidbody;
     public ClassSpecs specs;
     public bool destroyed = false;
     public Player player;
+
+    public void TakeDamage(float dmg, bool crit){}
+
+    public float GetDamage(){
+        return damage;
+    }
+
+    public void SetInRange(bool range){}
 
     void Start() //On bullet spawn get dir and pos
     {

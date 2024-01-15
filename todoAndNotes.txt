@@ -44,9 +44,9 @@ crit dmg
 Mobs:
 Melee "zombie"
 Ranged caster, reach X range from player, shoot projectiles -> indicators?
+Melee, fast, low hp
 TODO Mobs:
 Melee, aoe pulse
-Melee, fast, low hp
 Ranged, "channel", low damage, cant be dodged unless oor (or behind asteroid mby)
 Ranged, chargeup, line aoe
 
@@ -73,4 +73,5 @@ Game specific powerups (balls/needles in HoT)
  - Forward shot, automated, many bullets? shotgun?
  - Mines, automated, drops still mine that explodes aoe
  - EMP, aoe pulse
+ - 360 spinning beam on intervals
 Post match powerups/items

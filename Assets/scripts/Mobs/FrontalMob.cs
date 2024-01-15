@@ -3,30 +3,39 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-interface MobActions
+public class FrontalMob : MonoBehaviour, MobActions
 {
-    void TakeDamage(float dmg, bool crit);
-}
-
-public class Mob : MonoBehaviour, MobActions
-{
-
-    private float health = 1000f; //While hitreg issue continues, mob health is doubled from 5 to 10
+    [SerializeField]
+    private GameObject frontalPrefab;
+    public float health = 1000f; //While hitreg issue continues, mob health is doubled from 5 to 10
     public Player player;
     Rigidbody2D m_Rigidbody;
     public float mobSpeed = 4.0f;
     Animator anim;
     bool alive = true;
-    public int damage;
+    public float damage;
+    public bool inRange = false;
+    public float fireRate = 250f;
+    private float currentRate = 0f;
     [SerializeField]
     private GameObject healthPickup;
+    public int XPREWARD = 20;
     [SerializeField]
     private GameObject dmgTxt;
-    private const int XPREWARD = 20;
+    private bool casting = false;
+    public float castTime;
 
     public void TakeDamage(float dmg, bool crit){
         this.health -= dmg;
         DisplayDamage(dmg, crit);
+    }
+
+    public float GetDamage(){
+        return 0f;
+    }
+
+    public void SetInRange(bool range){
+        inRange = range;
     }
 
     void DisplayDamage(float dmg, bool crit){
@@ -71,17 +80,53 @@ public class Mob : MonoBehaviour, MobActions
     public void ChasePlayer(){
         float playerX = player.GetX();
         float playerY = player.GetY();
+        float mobX = transform.position.x;
+        float mobY = transform.position.y;
+        //Debug.Log("Player: " + playerX + "," + playerY + " | Mob: " + mobX + "," + mobY);
 		float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
 		transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle));
         Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
-        this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * -1;
+        if (!inRange)
+        {
+            this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * -1;
+        }
+        else
+        {
+            this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * 0;
+        }
         transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle+90));
+    }
+
+    public IEnumerator CastComplete(){
+        yield return new WaitForSeconds(castTime+0.1f);
+        this.casting = false;
+    }
+
+    void StartCast(){
+        this.casting = true;
+        Instantiate(frontalPrefab, transform.position, transform.rotation);
+        StartCoroutine(CastComplete());
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        this.ChasePlayer();
+        if (!this.casting){
+            this.ChasePlayer();
+        }
+
+        if (inRange && this.currentRate <= 0)
+        {
+            StartCast();  
+            this.currentRate = fireRate;
+        } else
+        {
+            if (!casting){
+                this.currentRate--;
+            }
+            
+        }
+
         if (health <= 0 && alive){
             this.Die();
         }
