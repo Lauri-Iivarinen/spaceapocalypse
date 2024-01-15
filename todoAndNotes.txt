@@ -45,10 +45,12 @@ Mobs:
 Melee "zombie"
 Ranged caster, reach X range from player, shoot projectiles -> indicators?
 Melee, fast, low hp
+Ranged, chargeup, line aoe
+
 TODO Mobs:
 Melee, aoe pulse
-Ranged, "channel", low damage, cant be dodged unless oor (or behind asteroid mby)
-Ranged, chargeup, line aoe
+Ranged, "channel", low damage, cant be dodged unless OOR (or behind asteroid mby)
+
 
 Bosses:
 At the end of the fight
@@ -74,4 +76,4 @@ Game specific powerups (balls/needles in HoT)
  - Mines, automated, drops still mine that explodes aoe
  - EMP, aoe pulse
  - 360 spinning beam on intervals
-Post match powerups/items
+Post match powerups/items for long term progression?
