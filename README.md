@@ -185,7 +185,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
 </details>
 <details>
   <Summary>
-        Part 9 - More foes!
+        Part 10 - More foes!
   </Summary>
 
   
