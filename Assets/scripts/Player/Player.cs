@@ -90,8 +90,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.activeClass = new ClassSpecs("XBS-238", 1f, 10, 30f, 60, 1, 15f, 1f, 100);
-        this.activeClass = SelectClass.activeClass;
+        this.activeClass = new ClassSpecs("XBS-238", 100f, 10, 30f, 60, 1, 15f, 1.1f, 1000);
+        //UNCOMMENT ON FINISHED PRODUCT
+        //this.activeClass = SelectClass.activeClass;
         stats = new PlayerStats();
         stats.maxHealth = activeClass.rocketHealth;
         stats.currHealth = activeClass.rocketHealth;
@@ -136,10 +137,11 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.D)) moveX += 1f;
             if (Input.GetKey(KeyCode.A)) moveX -= 1f;
 
+            stats.checkBoost();
 
             Vector3 moveDir = new Vector3(moveX, moveY).normalized;
             //transform.Translate(this.x * movementSpeed, this.y * movementSpeed, 0);
-            transform.position += moveDir * movementSpeed;
+            transform.position += moveDir * 0.1f * stats.speed;
         }else if(stats.currHealth <= 0){
             playerDies();
         }

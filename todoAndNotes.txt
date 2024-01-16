@@ -45,7 +45,7 @@ Mobs:
 Melee "zombie"
 Ranged caster, reach X range from player, shoot projectiles -> indicators?
 Melee, fast, low hp
-Ranged, chargeup, line aoe
+Ranged, chargeup, line aoe, line needs rescaling in gimp, 64x64
 
 TODO Mobs:
 Melee, aoe pulse

@@ -20,7 +20,11 @@ public class PlayerStats{
     public float healthRegen = 4f;
     public float bulletPenetration = 0.1f;
     public float currentPenetration = 0f;
-
+    public float BOOSTCAP = 50f;
+    public float currBoost = 50f;
+    public bool usingBoost = false;
+    private float boostDelay = 50;
+    private float currentBoostDelay = 0;
     
     public void levelUp(){
         level++;
@@ -30,6 +34,22 @@ public class PlayerStats{
         pl.LevelUpAnim();
     }
 
+    public void checkBoost(){
+        if (Input.GetKey(KeyCode.Space) && currBoost > 0 && currentBoostDelay == 0){
+            if (!usingBoost){
+                usingBoost = true;
+                speed = speed*2;
+            }
+            currBoost--;
+        }else if (usingBoost){
+            speed = speed/2;
+            usingBoost = false;
+            currentBoostDelay = boostDelay;
+        }else if (currBoost < BOOSTCAP){
+            currBoost+= 0.1f;
+        }
+        if (currentBoostDelay > 0) currentBoostDelay--;
+    }
     
     public void IncreaseStat(string toolTip){
         if (toolTip.Equals("Damage Increase +5%")){

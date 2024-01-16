@@ -21,7 +21,10 @@ public class UiDisplay : MonoBehaviour
     private TextMeshProUGUI penetration;
 
     [SerializeField] private Slider healthBar;
+    [SerializeField] private Slider boostBar;
     [SerializeField] private Slider xpBar;
+
+    public static GameObject beamPowerup;
 
     private Player player;
     private string gunName = "empty";
@@ -35,6 +38,7 @@ public class UiDisplay : MonoBehaviour
     {
         this.xpBar = GameObject.Find("xp_bar").GetComponent<Slider>();
         this.healthBar = GameObject.Find("health_bar").GetComponent<Slider>();
+        this.boostBar = GameObject.Find("boost_bar").GetComponent<Slider>();
         this.player = GameObject.Find("Player").GetComponent<Player>();
         this.gunDisplay = GameObject.Find("gun_display").GetComponent<TextMeshProUGUI>();
         this.levelDisplay = GameObject.Find("level_display").GetComponent<TextMeshProUGUI>();
@@ -49,6 +53,12 @@ public class UiDisplay : MonoBehaviour
         this.hps = GameObject.Find("HPS").GetComponent<TextMeshProUGUI>();
         this.penetration = GameObject.Find("Penetration").GetComponent<TextMeshProUGUI>();
 
+        beamPowerup = GameObject.Find("BeamPowerup");
+        beamPowerup.SetActive(false);
+    }
+
+    public static void PickedUpBeam(){
+        beamPowerup.SetActive(true);
     }
 
     // Update is called once per frame
@@ -56,6 +66,7 @@ public class UiDisplay : MonoBehaviour
     {
         this.xpBar.value = (float)player.stats.currXp / player.stats.xpRequired;
         this.healthBar.value = (float)player.stats.currHealth / player.stats.maxHealth;
+        this.boostBar.value = player.stats.currBoost / player.stats.BOOSTCAP;
         this.gunDisplay.text= this.gunName;
         this.levelDisplay.text = "" + player.stats.level;
 
@@ -68,5 +79,6 @@ public class UiDisplay : MonoBehaviour
         this.rawDmg.text = "Damage: " + (player.activeClass.weaponDamage * player.stats.damageMultiplier*10).ToString("0.00");
         this.hps.text = "HPS: " + player.stats.healthRegen/4;
         this.penetration.text = "Penetration: " + (float)(player.stats.bulletPenetration + player.activeClass.penetration);
+        
     }
 }

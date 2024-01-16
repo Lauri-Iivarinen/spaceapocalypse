@@ -9,8 +9,8 @@ public class FrontalCast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         StartCoroutine(CastComplete());
+        transform.localScale = new Vector3(transform.localScale.x+1, transform.localScale.y +100, transform.localScale.z);
     }
 
     public IEnumerator CastComplete(){
@@ -21,6 +21,6 @@ public class FrontalCast : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y +castSpeed, transform.localScale.z);
+        
     }
 }
