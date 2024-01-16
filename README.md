@@ -203,3 +203,33 @@ This readme will be in a form of a diary of sorts where I track the progress I h
   <li>Overall numbers tuning</li>
   <li>Refactoring few instances to make future development easier</li>
 </details>
+<details>
+  <Summary>
+        Part 11 - Boosters and Powerups
+  </Summary>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/af02d0e9-9ef8-4739-ba83-0ec06fbbd863"/>
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/727f0295-beed-449c-a76d-93a58c76c323"/>
+
+Decided to implement a temporary rocket boost. Idea of the boost is the make the gameplay more deep allowing for more decision making in the heat of the action. Slow recharge and small delay between boosts. Booster bar can be seen in the bottom center of the screen, animations for boosters not yet implemented.
+
+Finally embarked on the powerup journey, roguelikes need to have an rng based systems making different rounds feel different from each other (random levelup rewards part of this). Currently started on implementing how powerups can be picked up and how they affect gameplay, wrote some ideas on them in the <a href="https://github.com/Lauri-Iivarinen/spaceapocalypse/blob/main/todoAndNotes.txt">todoAndNotes.txt</a>. Right now implemented first powerup, spinning lightning beam that spawns every X seconds, spins 360 damaging everything the beam crosses. Need to implement better UI design for powerups in the future, right now hard coded position (Wont be good if player has multiple powerups on random basis).
+
+Also noted how much simpler some mechanics are to create if I were to use static variables and methods, need to look into these in the future.
+  
+  <li>Rocket boosters, quick speedup to avoid mobs/mechanics</li>
+  <li>Boosters recharge slowly</li>
+  <li>Refactored folders for scripts etc.</li>
+  <li>Basic Powerup system</li>
+  <li>First powerup, spinning electric fence damaging mobs who cross paths with it</li>
+
+  ### TODO:
+
+  More powerups
+  
+  Powerups can be upgraded using level up system?
+  
+  Fix UI for powerups
+
+  Figure out how player can get powerups (Mob drop/static spawn etc..?)
+</details>
