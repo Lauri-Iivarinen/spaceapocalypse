@@ -258,7 +258,10 @@ Also noted how much simpler some mechanics are to create if I were to use static
   ### TODO:
 
   More powerups
+  
   Fix UI for powerups
+  
   Main menu long term stat upgrades, with currency?
+  
   Boss mobs and mechanics
 </details>
