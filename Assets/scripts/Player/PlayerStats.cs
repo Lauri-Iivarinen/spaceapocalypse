@@ -31,7 +31,11 @@ public class PlayerStats{
     private float currentBoostDelay = 0;
 
     //Trackers
-    public int killCount = 0;
+    public static int killCount = 0;
+
+    public PlayerStats(){
+        killCount = 0;
+    }
     
     public void levelUp(){
         level++;

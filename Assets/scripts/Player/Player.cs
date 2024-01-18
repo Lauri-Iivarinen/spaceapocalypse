@@ -115,9 +115,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.activeClass = new ClassSpecs("XBS-238", 100f, 10, 30f, 60, 1, 15f, 1.1f, 1000);
+        //this.activeClass = new ClassSpecs("XBS-238", 100f, 10, 30f, 60, 1, 15f, 1.1f, 1000);
         //UNCOMMENT ON FINISHED PRODUCT
-        //this.activeClass = SelectClass.activeClass;
+        this.activeClass = SelectClass.activeClass;
         stats = new PlayerStats();
         stats.maxHealth = activeClass.rocketHealth;
         stats.currHealth = activeClass.rocketHealth;

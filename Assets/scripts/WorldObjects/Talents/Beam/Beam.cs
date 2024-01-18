@@ -7,10 +7,6 @@ public class Beam : MonoBehaviour
     public static float damage = 15f;
     private bool crit = false;
 
-    void Start(){
-        
-    }
-
     void OnTriggerEnter2D(Collider2D objectName)
     {
         if (objectName.gameObject.name.Contains("Mob") && !objectName.gameObject.name.Contains("MobBullet"))

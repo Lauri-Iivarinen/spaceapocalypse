@@ -82,6 +82,6 @@ public class UiDisplay : MonoBehaviour
         this.rawDmg.text = "Damage: " + (player.activeClass.weaponDamage * player.stats.damageMultiplier).ToString("0.0");
         this.hps.text = "HPS: " + player.stats.healthRegen/4;
         this.penetration.text = "Penetration: " + (player.stats.bulletPenetration + player.activeClass.penetration).ToString("0.0");
-        this.killCount.text = "" + player.stats.killCount;
+        this.killCount.text = "" + PlayerStats.killCount;
     }
 }
