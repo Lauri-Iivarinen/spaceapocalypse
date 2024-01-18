@@ -233,3 +233,32 @@ Also noted how much simpler some mechanics are to create if I were to use static
 
   Figure out how player can get powerups (Mob drop/static spawn etc..?)
 </details>
+<details>
+  <Summary>
+        Part 12 - Polishing basic mechanics 2
+  </Summary>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/7865bfed-5857-42ed-8087-1899492ae134"/>
+
+  Noticed a major issue with static variables such as newly adapted kill count. Stats do not reset between runs which is an issue I had to fix, in the future I should switch over to static methods instead so I dont have to reset every static variable every time new game starts.
+
+  After testing different roguelike games to harness ideas and gain inspiration (Don't want to directly copy ideas though 😙) made some notes and followed trough with some of them.
+
+  Today I made a lot of changes that are not as concrete (visually) as I'd hoped but will have a major effect on future development. Also finally understood how 'Color' class works so was able to edit some colors (crit damage).
+  
+  <li>Mob health tuning and scaled in world size down</li>
+  <li>Kill counter (see image)</li>
+  <li>More upgradable stats (DR, XP gain)</li>
+  <li>When powerup is picked it can be upgraded trough lvl up rewards</li>
+  <li>Level up reward tuning</li>
+  <li>Damage numbers round correctly</li>
+  <li>Player can toggle automatic shooting by pressing 'F'</li>
+  <li>Level up rewards can't be duplicates anymore</li>
+
+  ### TODO:
+
+  More powerups
+  Fix UI for powerups
+  Main menu long term stat upgrades, with currency?
+  Boss mobs and mechanics
+</details>
