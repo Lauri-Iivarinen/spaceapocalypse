@@ -11,10 +11,15 @@ public class Gun : MonoBehaviour
 	private float gunCooldown = 0f;
 	public Rigidbody2D projectile;
 	private Player player;
+	private bool autoShoot = false;
 
 	void Start(){
 		Player pl = GameObject.Find("Player").GetComponent<Player>();
 		this.player = pl;
+	}
+
+	void Update(){
+		if(Input.GetKeyDown(KeyCode.T)) autoShoot = !autoShoot;
 	}
 
     //https://discussions.unity.com/t/make-a-player-model-rotate-towards-mouse-location/125354/5
@@ -28,13 +33,11 @@ public class Gun : MonoBehaviour
 		//Get the angle between the points
 		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
 
-		//Ta Daaa
 		//transform.rotation = Quaternion.Euler (new Vector3(angle -30f, -90f,90f));
 		transform.rotation = Quaternion.Euler (new Vector3(0f, 0f,angle+90f));
 		if (this.gunCooldown <= 0 && !this.player.switchingGun) {
 			bool shooting = Input.GetKey("mouse 1");
-			if (shooting)
-			{
+			if (shooting || autoShoot) {
 				this.fireRate = this.player.activeClass.fireRate / player.stats.attackSpeed;
 				this.gunCooldown = fireRate;
 				Vector3 pos = transform.position;

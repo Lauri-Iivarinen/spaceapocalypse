@@ -19,6 +19,7 @@ public class UiDisplay : MonoBehaviour
     private TextMeshProUGUI critDmg;
     private TextMeshProUGUI hps;
     private TextMeshProUGUI penetration;
+    private TextMeshProUGUI killCount;
 
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider boostBar;
@@ -53,6 +54,8 @@ public class UiDisplay : MonoBehaviour
         this.hps = GameObject.Find("HPS").GetComponent<TextMeshProUGUI>();
         this.penetration = GameObject.Find("Penetration").GetComponent<TextMeshProUGUI>();
 
+
+        this.killCount = GameObject.Find("Counter").GetComponent<TextMeshProUGUI>();
         beamPowerup = GameObject.Find("BeamPowerup");
         beamPowerup.SetActive(false);
     }
@@ -71,14 +74,14 @@ public class UiDisplay : MonoBehaviour
         this.levelDisplay.text = "" + player.stats.level;
 
         this.hp.text = "Max Health: " + player.stats.maxHealth;
-        this.dmg.text = "Damage Increase: " + player.stats.damageMultiplier*100 + "%";
-        this.speed.text = "Rocket Speed: " + player.stats.speed;
+        this.dmg.text = "Damage Multiplier: " + (player.stats.damageMultiplier*100).ToString("0.0") + "%";
+        this.speed.text = "Rocket Speed: " + player.stats.speed.ToString("0.0");
         this.crit.text = "Crit Chance: " + player.stats.critChance*100 + "%";
-        this.critDmg.text = "Crit Dmg: " + player.stats.critDamageMultiplier * 100 + "%";
-        this.atkSpeed.text = "Atk Speed: " + player.stats.attackSpeed *100 + "%";
-        this.rawDmg.text = "Damage: " + (player.activeClass.weaponDamage * player.stats.damageMultiplier*10).ToString("0.00");
+        this.critDmg.text = "Crit Dmg: " + (player.stats.critDamageMultiplier * 100).ToString("0.0") + "%";
+        this.atkSpeed.text = "Atk Speed: " + (player.stats.attackSpeed *100).ToString("0.0") + "%";
+        this.rawDmg.text = "Damage: " + (player.activeClass.weaponDamage * player.stats.damageMultiplier).ToString("0.0");
         this.hps.text = "HPS: " + player.stats.healthRegen/4;
-        this.penetration.text = "Penetration: " + (float)(player.stats.bulletPenetration + player.activeClass.penetration);
-        
+        this.penetration.text = "Penetration: " + (player.stats.bulletPenetration + player.activeClass.penetration).ToString("0.0");
+        this.killCount.text = "" + player.stats.killCount;
     }
 }

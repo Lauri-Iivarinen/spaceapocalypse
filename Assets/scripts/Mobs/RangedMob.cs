@@ -41,12 +41,11 @@ public class RangedMob : MonoBehaviour, MobActions
         rot.z = 0;
         var txt = Instantiate(dmgTxt, transform.position, rot, transform);
         if (crit){
-            txt.GetComponent<TextMesh>().text = "" + dmg + "!";
-            txt.GetComponent<TextMesh>().color = new Color(0, 100, 100, 1f);
+            txt.GetComponent<TextMesh>().text = "" + dmg.ToString("0") + "!";
+            txt.GetComponent<TextMesh>().color = new Color(0.95f, 1f, 0.1f, 1f);
         }else{
-            txt.GetComponent<TextMesh>().text = "" + dmg;
+            txt.GetComponent<TextMesh>().text = "" + dmg.ToString("0");
         }
-        
     }
 
     // Start is called before the first frame update

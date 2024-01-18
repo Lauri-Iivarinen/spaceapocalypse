@@ -25,6 +25,8 @@ public class FrontalMob : MonoBehaviour, MobActions
     private bool casting = false;
     public float castTime;
 
+    private GameObject currentCast;
+
     public void TakeDamage(float dmg, bool crit){
         this.health -= dmg;
         DisplayDamage(dmg, crit);
@@ -43,12 +45,11 @@ public class FrontalMob : MonoBehaviour, MobActions
         rot.z = 0;
         var txt = Instantiate(dmgTxt, transform.position, rot, transform);
         if (crit){
-            txt.GetComponent<TextMesh>().text = "" + dmg + "!";
-            txt.GetComponent<TextMesh>().color = new Color(0, 100, 100, 1f);
+            txt.GetComponent<TextMesh>().text = "" + dmg.ToString("0") + "!";
+            txt.GetComponent<TextMesh>().color = new Color(0.95f, 1f, 0.1f, 1f);
         }else{
-            txt.GetComponent<TextMesh>().text = "" + dmg;
+            txt.GetComponent<TextMesh>().text = "" + dmg.ToString("0");
         }
-        
     }
 
     // Start is called before the first frame update
@@ -67,6 +68,7 @@ public class FrontalMob : MonoBehaviour, MobActions
             rot.z = 0;
             Instantiate(healthPickup, transform.position, rot);
         }
+        if (casting) Destroy(currentCast);
         Destroy(gameObject);
     }
 
@@ -78,22 +80,21 @@ public class FrontalMob : MonoBehaviour, MobActions
     }
 
     public void ChasePlayer(){
+        m_Rigidbody.constraints = RigidbodyConstraints2D.None;
         float playerX = player.GetX();
         float playerY = player.GetY();
         float mobX = transform.position.x;
         float mobY = transform.position.y;
         //Debug.Log("Player: " + playerX + "," + playerY + " | Mob: " + mobX + "," + mobY);
 		float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
-		transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle));
+        transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle));
         Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
-        if (!inRange)
-        {
+        if (!inRange){
             this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * -1;
-        }
-        else
-        {
+        }else {
             this.m_Rigidbody.velocity = movementDirection * this.mobSpeed * 0;
         }
+
         transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle+90));
     }
 
@@ -104,14 +105,16 @@ public class FrontalMob : MonoBehaviour, MobActions
 
     void StartCast(){
         this.casting = true;
-        Instantiate(frontalPrefab, transform.position, transform.rotation);
+        currentCast = Instantiate(frontalPrefab, transform.position, transform.rotation);
         StartCoroutine(CastComplete());
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!this.casting){
+        if (casting){
+            m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        }else{
             this.ChasePlayer();
         }
 

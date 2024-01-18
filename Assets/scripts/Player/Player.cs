@@ -42,12 +42,36 @@ public class Player : MonoBehaviour
         return stats.currHealth;
     }
 
+    string[] GetUpgradeOptions(List<string> upgradesAll,List<string> currUpgrades, int count){
+        if (count == 3){
+            return currUpgrades.ToArray();
+        }
+        int index = UnityEngine.Random.Range(0, upgradesAll.Count);
+        string upgrade = upgradesAll[index];
+        upgradesAll.RemoveAt(index);
+        currUpgrades.Add(upgrade);
+        count++;
+        return GetUpgradeOptions(upgradesAll, currUpgrades, count);
+        
+    }
+
+    string[] getTalentOptions(){
+        string[] initialOptions = {"Damage Increase +5%", "Rocket Speed +5%", "Attack Speed +5%", "Maximum Health +150", "Critical Chance +5%", "Critical Damage +10%", "HPS +1", "Bullet penetration +20%", "Damage reduction 10%"};
+        List<string> options = new List<string>(initialOptions);
+        if (TalentController.beamPickedUp){
+            options.Add("Laser Beam Damage +10");
+            options.Add("Laser Beam Speed and length +10%");
+            options.Add("Laser Beam Firerate + 10%");
+        }
+        return options.ToArray();
+    }
+
     public IEnumerator ToggleSkillSelection(){
         yield return new WaitForSeconds(0.5f);
         LevelUpHandler lvlUp = GameObject.Find("Canvas").GetComponent<LevelUpHandler>();
         //Prob convert to tuples to display proper names in UI
-        string[] upgradesAll = {"Damage Increase +5%", "Rocket Speed +5%", "Attack Speed +5%", "Maximum Health +150", "Critical Chance +7%", "Critical Damage +10%", "HPS +1", "Bullet penetration +20%"};
-        string[] upgrades = {upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)], upgradesAll[UnityEngine.Random.Range(0, upgradesAll.Length)]};
+        List<string> upgradesAll = new List<string>(getTalentOptions());
+        string[] upgrades = GetUpgradeOptions(upgradesAll, new List<string>(), 0);
         //Select 1 of 3, increase stat
         lvlUp.InitiateLevelUp(upgrades);
     }
@@ -62,9 +86,10 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float amount){
         if (this.damageInterval <= 0){
-            this.stats.currHealth -= amount;
+            float dmg = amount/this.stats.damageReduction;
+            this.stats.currHealth -= dmg;
             this.damageInterval = DAMAGETICK;
-            DisplayDamage(amount, new Color(100,0,0, 1f));
+            DisplayDamage(dmg, new Color(100,0,0, 1f));
         }
     }
 

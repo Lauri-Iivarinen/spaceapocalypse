@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerStats{
     LevelUpHandler lvlUp;
     public int level = 1;
-    public int xpRequired = 50;//150;
-    public int currXp = 0;
+    public float xpRequired = 50f;//150;
+    public float currXp = 0f;
     public float currHealth = 100f;
     public int mobsKilled = 0;
     public ClassSpecs activeClass;
@@ -20,16 +20,23 @@ public class PlayerStats{
     public float healthRegen = 4f;
     public float bulletPenetration = 0.1f;
     public float currentPenetration = 0f;
+    public float damageReduction = 1f;
+    public float xpMultiplier = 1f;
+
+    //Boost
     public float BOOSTCAP = 50f;
     public float currBoost = 50f;
     public bool usingBoost = false;
     private float boostDelay = 50;
     private float currentBoostDelay = 0;
+
+    //Trackers
+    public int killCount = 0;
     
     public void levelUp(){
         level++;
         currXp = currXp-xpRequired;
-        xpRequired = (int)((xpRequired + 10) * 1.1f);
+        //xpRequired = (int)((xpRequired + 10) * 1.1f);
         Player pl = GameObject.Find("Player").GetComponent<Player>();
         pl.LevelUpAnim();
     }
@@ -53,22 +60,33 @@ public class PlayerStats{
     
     public void IncreaseStat(string toolTip){
         if (toolTip.Equals("Damage Increase +5%")){
-            damageMultiplier += 0.05f;
+            damageMultiplier *= 1.05f;
         }else if (toolTip.Equals("Rocket Speed +5%")){
-            speed += 0.05f;
+            speed *= 1.05f;
         }else if (toolTip.Equals("Attack Speed +5%")){
-            attackSpeed += 0.05f;
+            attackSpeed *= 1.05f;
         }else if (toolTip.Equals("Maximum Health +150")){
             maxHealth += 150;
             currHealth += 150;
-        }else if (toolTip.Equals("Critical Chance +7%")){
-            critChance += 0.07f;
+        }else if (toolTip.Equals("Critical Chance +5%")){
+            critChance += 0.05f;
         }else if (toolTip.Equals("Critical Damage +10%")){
-            critDamageMultiplier += 0.1f;
+            critDamageMultiplier *= 1.1f;
         }else if(toolTip.Equals("HPS +1")){
             healthRegen += 4f;
         }else if(toolTip.Equals("Bullet penetration +20%")){
             bulletPenetration += 0.2f;
+        }else if (toolTip.Equals("Damage reduction 10%")){
+            damageReduction += 0.1f;
+        }else if (toolTip.Equals("Laser Beam Damage +10")){
+            Beam.damage += 10f;
+        }else if (toolTip.Equals("Laser Beam Speed and length +10%")){
+            BeamController.speed *= 1.1f;
+            BeamController.beamSize *= 1.1f;
+        }else if (toolTip.Equals("Laser Beam Firerate + 10%")){
+            TalentController.beamSpawnRate *= 1.1f;
+        }else if (toolTip.Equals("XP gain +10%")){
+            xpMultiplier *= 1.1f;
         }
     }
 
@@ -100,7 +118,8 @@ public class PlayerStats{
 
 
     public void gainXp(int amount){
-        currXp += amount;
+        killCount++;
+        currXp += amount* xpMultiplier;
         if (currXp >= xpRequired){
             levelUp();
         }

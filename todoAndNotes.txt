@@ -1,3 +1,37 @@
+fast notes 17.1
+dr stat
+exp gain stat
+double strike stat?
+
+mob knockback or slow
+temp exp buff?
+auto shoot toggle
+mob size scaling
+kill count tracker
+
+item slots? special buffs: 
+2nd life, mobs higher chance to drop hp, killing mobs increases dmg done up to x, 
+spawn random buff on start, chance to reflect damage, chance to instakill, primary target damage increase?
+
+1/3/5 slots?
+items gained on boss kills?
+
+different from items long term menu upgrade option:
+dmg
+hp
+hp regen
+dr
+speed
+exp gain
+atk speed
+crit chance
+crit dmg
+booster recharge rate
+currency gain? if buffs bought w currency? currency -> mob kills?
+
+--------------------------------------------
+
+
 Todo:
 Levels and level selection
 Saving progress
@@ -34,6 +68,7 @@ also would allow for more challenges instead of using the best one possible
 Buffs:
 Speed
 damage
+
 health
 health regen?
 penetration

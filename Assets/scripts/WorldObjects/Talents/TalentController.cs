@@ -7,6 +7,7 @@ public class TalentController : MonoBehaviour
     public GameObject beam;
     Player pl;
     public static bool beamPickedUp = false;
+    public static float beamSpawnRate = 1f;
 
     void Start(){
         pl = GameObject.Find("Player").GetComponent<Player>();
@@ -19,7 +20,7 @@ public class TalentController : MonoBehaviour
     }
 
     IEnumerator SpawnBeam(){
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5f/beamSpawnRate);
         Instantiate(beam, transform.position, transform.rotation);
         StartCoroutine(SpawnBeam());
     }

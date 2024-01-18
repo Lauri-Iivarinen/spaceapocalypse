@@ -89,8 +89,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763583386133482095}
-  - component: {fileID: 8769135162385042558}
   - component: {fileID: 6541197468657185088}
+  - component: {fileID: 8769135162385042558}
   - component: {fileID: 7590073136186574650}
   - component: {fileID: 5023579082212804795}
   - component: {fileID: 3454409492211033908}
@@ -111,12 +111,35 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18.88, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6895151930334462325}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6541197468657185088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7213498716078634413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b18fa59343b5b4fa105d7b199181cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontalPrefab: {fileID: 7096096766537875882, guid: 609df7859e5b6c54da15e1eaeb306e60, type: 3}
+  health: 400
+  player: {fileID: 0}
+  mobSpeed: 4
+  damage: 0
+  inRange: 0
+  fireRate: 90
+  healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
+  XPREWARD: 30
+  dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
+  castTime: 1.5
 --- !u!212 &8769135162385042558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -169,29 +192,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6541197468657185088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7213498716078634413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b18fa59343b5b4fa105d7b199181cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frontalPrefab: {fileID: 7096096766537875882, guid: 609df7859e5b6c54da15e1eaeb306e60, type: 3}
-  health: 1450
-  player: {fileID: 0}
-  mobSpeed: 4
-  damage: 0
-  inRange: 0
-  fireRate: 90
-  healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
-  XPREWARD: 30
-  dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
-  castTime: 1.5
 --- !u!95 &7590073136186574650
 Animator:
   serializedVersion: 5

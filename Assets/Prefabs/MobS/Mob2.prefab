@@ -80,7 +80,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0365b3415b1463889217dbc348668b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mob: {fileID: 0}
 --- !u!1 &7213498716078634413
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,11 +89,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763583386133482095}
+  - component: {fileID: 707536811524394344}
   - component: {fileID: 8769135162385042558}
   - component: {fileID: 7590073136186574650}
   - component: {fileID: 5023579082212804795}
   - component: {fileID: 3454409492211033908}
-  - component: {fileID: 707536811524394344}
   m_Layer: 0
   m_Name: Mob2
   m_TagString: Untagged
@@ -118,6 +117,28 @@ Transform:
   - {fileID: 6895151930334462325}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &707536811524394344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7213498716078634413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f62d69be9c934851960259f3919023b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4301387366639721427, guid: 51c85bc80c52d4432ba3ad6106ece21a, type: 3}
+  health: 250
+  player: {fileID: 0}
+  mobSpeed: 4
+  damage: 2
+  inRange: 0
+  fireRate: 150
+  healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
+  XPREWARD: 20
+  dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
 --- !u!212 &8769135162385042558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -253,23 +274,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
---- !u!114 &707536811524394344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7213498716078634413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62d69be9c934851960259f3919023b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4301387366639721427, guid: 51c85bc80c52d4432ba3ad6106ece21a, type: 3}
-  player: {fileID: 0}
-  mobSpeed: 4
-  damage: 2
-  inRange: 0
-  fireRate: 150
-  healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
-  dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}

@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3990075457056305658}
+  - component: {fileID: 3661142573461062184}
   - component: {fileID: 1279556560665254195}
   - component: {fileID: 6282221006155026950}
   - component: {fileID: 448018565326306937}
   - component: {fileID: -8300769624163694374}
-  - component: {fileID: 3661142573461062184}
   m_Layer: 0
   m_Name: Mob3
   m_TagString: Untagged
@@ -36,6 +36,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3661142573461062184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299736567549821737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf66f5ca0d86a9499814f0d935b84e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  player: {fileID: 0}
+  mobSpeed: 5
+  damage: 180
+  healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
+  dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
+  XPREWARD: 15
 --- !u!212 &1279556560665254195
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -181,22 +200,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28, y: 0.28}
   m_EdgeRadius: 0
---- !u!114 &3661142573461062184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3299736567549821737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf66f5ca0d86a9499814f0d935b84e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 500
-  player: {fileID: 0}
-  mobSpeed: 5
-  damage: 180
-  healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
-  dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
-  XPREWARD: 15
