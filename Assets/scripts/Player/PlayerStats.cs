@@ -18,7 +18,7 @@ public class PlayerStats{
     public float critChance = 0.1f;
     public float critDamageMultiplier = 1.5f;
     public float healthRegen = 4f;
-    public float bulletPenetration = 0.1f;
+    public float bulletPenetration = 0f;
     public float currentPenetration = 0f;
     public float damageReduction = 1f;
     public float xpMultiplier = 1f;
@@ -29,18 +29,30 @@ public class PlayerStats{
     public bool usingBoost = false;
     private float boostDelay = 50;
     private float currentBoostDelay = 0;
+    private float boosterRecharge = 0.1f;
 
     //Trackers
     public static int killCount = 0;
 
     public PlayerStats(){
         killCount = 0;
+        damageMultiplier += PermanentStats.damage.currAmount;
+        speed += PermanentStats.speed.currAmount;
+        attackSpeed += PermanentStats.atkSpeed.currAmount;
+        maxHealth *= PermanentStats.hp.currAmount;
+        critChance += PermanentStats.critChance.currAmount;
+        critDamageMultiplier *= PermanentStats.critDamage.currAmount;
+        boosterRecharge += PermanentStats.boosterRate.currAmount;
+        healthRegen += PermanentStats.hpRegen.currAmount;
+        bulletPenetration += PermanentStats.bulletPenetration.currAmount;
+        damageReduction += PermanentStats.damageReduction.currAmount;
+        xpMultiplier += PermanentStats.xpGain.currAmount;
     }
     
     public void levelUp(){
         level++;
         currXp = currXp-xpRequired;
-        //xpRequired = (int)((xpRequired + 10) * 1.1f);
+        xpRequired = (int)(xpRequired+10) * 1.1f;
         Player pl = GameObject.Find("Player").GetComponent<Player>();
         pl.LevelUpAnim();
     }
@@ -57,7 +69,7 @@ public class PlayerStats{
             usingBoost = false;
             currentBoostDelay = boostDelay;
         }else if (currBoost < BOOSTCAP){
-            currBoost+= 0.1f;
+            currBoost += boosterRecharge;
         }
         if (currentBoostDelay > 0) currentBoostDelay--;
     }

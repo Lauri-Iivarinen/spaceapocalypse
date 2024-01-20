@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private List<ClassSpecs> classes;
     public bool switchingGun = false;
     private const int SWITCHDELAY = 120;
-    private const int DAMAGETICK = 45;
+    private const int DAMAGETICK = 25;
     private int damageInterval = 0; //Restricts taking damage in every tick
     private const int HPREGENDELAY = 200;
     private int hpRegen = 0;
@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
 
     IEnumerator DestroySprite(){
         yield return new WaitForSeconds(1f);
+        PermanentStats.killCount += PlayerStats.killCount;
         SceneManager.LoadScene("DeathScreen");
     }
 

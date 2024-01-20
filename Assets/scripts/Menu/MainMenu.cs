@@ -18,4 +18,9 @@ public class MainMenu : MonoBehaviour
     public void ReturnToMenu(){
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void NavigateToShop()
+    {
+        SceneManager.LoadScene("UpgradeTab");
+    }
 }
