@@ -63,6 +63,11 @@ public class Player : MonoBehaviour
             options.Add("Laser Beam Speed and length +10%");
             options.Add("Laser Beam Firerate + 10%");
         }
+        if (TalentController.minePickedUp){
+            options.Add("Mine Damage +10%");
+            options.Add("Mine Spawn Rate +10%");
+            options.Add("Mine Explosion Radius +10%");
+        }
         return options.ToArray();
     }
 

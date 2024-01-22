@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeathScreen.unity
     guid: 107e3d4cc890b104681027a3dfa70630
+  - enabled: 1
+    path: Assets/Scenes/UpgradeTab.unity
+    guid: 712e649004efa47cf91bc2f5bc2590b7
   m_configObjects: {}

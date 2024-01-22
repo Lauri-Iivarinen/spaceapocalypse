@@ -108,9 +108,9 @@ GameObject:
   - component: {fileID: 714629187908774086}
   - component: {fileID: 4049943350847995196}
   - component: {fileID: 9003152269637329801}
+  - component: {fileID: 3820786494570168008}
   - component: {fileID: 4612317830070168960}
   - component: {fileID: 3227040408625228205}
-  - component: {fileID: 3820786494570168008}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -183,6 +183,20 @@ MonoBehaviour:
   gun: {fileID: 0}
   display: {fileID: 0}
   switchingGun: 0
+--- !u!114 &3820786494570168008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818375171834693775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ecbcd6093bb4284b9869d28b3ae918a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beam: {fileID: 7777469946837484047, guid: e5f6e5e0c4832dc42b0666d6afaffd11, type: 3}
+  mine: {fileID: 5265459979389240779, guid: afd63b2ae544f8648b5c70cc27476a6c, type: 3}
 --- !u!58 &4612317830070168960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -253,19 +267,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.052113533}
   serializedVersion: 2
   m_Radius: 1.1
---- !u!114 &3820786494570168008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8818375171834693775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ecbcd6093bb4284b9869d28b3ae918a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beam: {fileID: 7777469946837484047, guid: e5f6e5e0c4832dc42b0666d6afaffd11, type: 3}
 --- !u!1001 &551304558374100594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,6 +282,14 @@ PrefabInstance:
     - target: {fileID: 8550519029053013247, guid: a75992a98b06ac0449d9f20ab884706e, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008701710713427475, guid: a75992a98b06ac0449d9f20ab884706e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008701710713427475, guid: a75992a98b06ac0449d9f20ab884706e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9008701710713427475, guid: a75992a98b06ac0449d9f20ab884706e, type: 3}
       propertyPath: m_LocalPosition.x

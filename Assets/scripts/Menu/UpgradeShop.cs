@@ -36,7 +36,7 @@ public class UpgradeShop : MonoBehaviour
 
         this.currency = GameObject.Find("Currency").GetComponent<TextMeshProUGUI>();
         this.killTracker = GameObject.Find("KillTracker").GetComponent<TextMeshProUGUI>();
-        killTracker.text = "" + PermanentStats.killCount;
+        killTracker.text = "Lifetime kills: " + PermanentStats.killCount;
     }
 
     public void RefundAll()

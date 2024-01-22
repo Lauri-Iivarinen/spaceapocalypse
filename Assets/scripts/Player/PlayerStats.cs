@@ -103,6 +103,14 @@ public class PlayerStats{
             TalentController.beamSpawnRate *= 1.1f;
         }else if (toolTip.Equals("XP gain +10%")){
             xpMultiplier *= 1.1f;
+        }else if (toolTip.Equals("Mine Damage +10%")){
+            Mine.damage *= 1.1f;
+        }
+        else if (toolTip.Equals("Mine Spawn Rate +10%")){
+            TalentController.mineSpawnRate *= 1.1f;
+        }
+        else if (toolTip.Equals("Mine Explosion Radius +10%")){
+            MineRadiusController.explosionRadius *= 1.1f;
         }
     }
 

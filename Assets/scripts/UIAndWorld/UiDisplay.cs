@@ -26,6 +26,7 @@ public class UiDisplay : MonoBehaviour
     [SerializeField] private Slider xpBar;
 
     public static GameObject beamPowerup;
+    public static GameObject minePowerup;
 
     private Player player;
     private string gunName = "empty";
@@ -58,10 +59,17 @@ public class UiDisplay : MonoBehaviour
         this.killCount = GameObject.Find("Counter").GetComponent<TextMeshProUGUI>();
         beamPowerup = GameObject.Find("BeamPowerup");
         beamPowerup.SetActive(false);
+
+        minePowerup = GameObject.Find("MinePowerup");
+        minePowerup.SetActive(false);
     }
 
     public static void PickedUpBeam(){
         beamPowerup.SetActive(true);
+    }
+
+    public static void PickedUpMine(){
+        minePowerup.SetActive(true);
     }
 
     // Update is called once per frame
