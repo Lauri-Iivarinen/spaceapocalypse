@@ -114,7 +114,7 @@ This readme will be in a form of a diary of sorts where I track the progress I h
 </details>
 <details>
   <Summary>
-        Part 7 - Post Holiday and Covid:(
+        Part 7 - Post Holiday and Covid:( (Level up rewards.)
     </Summary>
 
 
