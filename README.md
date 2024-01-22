@@ -3,7 +3,7 @@
 This readme will be in a form of a diary of sorts where I track the progress I have made in Unity and C#
 
 
-## Idea is to make a 2d roguelike where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
+## Idea is to make a 2d ~roguelike~ roguelite where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
 
 <details>
   <Summary>
@@ -264,4 +264,29 @@ Also noted how much simpler some mechanics are to create if I were to use static
   Main menu long term stat upgrades, with currency?
   
   Boss mobs and mechanics
+</details>
+<details>
+  <Summary>
+        Part 13 - Long term roguelite mechanics and new talent
+  </Summary>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/9af53e03-f55f-4290-a259-d82e140d47ca"/>
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/abda85b2-b8d6-49a7-b4b0-f659357c8497"/>
+
+  The difference between rogue*like* and rogue*lite* is in the long term gain area. In traditional roguelikes player always starts the game with 0 powers and cant affect the base level of the characther at all. In roguelites players usually have a long term gain which helps the player to progress further everytime they unlock new perks.
+
+  Created a long term buff section which can be accessed trough main menu between runs, there player can increase basic stats (damage, health, speed, exp gain etc...). Currently stats are always reset on game launch and need to be implemented using a database in the future (SQLite and EF Core). Upgrades can be purchased with a currency (Currently capped to 9999 for testing) and for now cannot be earned. Every level of upgrade increases to cost of the next upgrade. TODO regarding currency: Decide how it is gained. Also added a purchase option for extra life which has not yet been implemented.
+
+  Integrating permanent buffs were in the end quite simple trough static variables however creating them was quite tedious. Also got a great chance to learn how to dynamically render items to player UI in the form of the upgrade stats/buttons.
+
+  Also added a new powerup "Mine". Spawns a mine after a small delay, mine is "thrown" and travels for couple seconds before stopping and activating. Mobs crossing over mine will explode taking heavy damage. Mine radius has AOE. Also added mine to the levelup buffs.
+  
+  <li>Mob size scaled even more</li>
+  <li>Permanent kill tracker in upgrade shop</li>
+  <li>Permanent stat gain (Damage, health, speed ets...) <a href="https://github.com/Lauri-Iivarinen/spaceapocalypse/blob/main/Assets/scripts/Menu/PermanentStats.cs">Comprehensive list.  Rows 68-80</a></li>
+  <li>Currency which can be used to purchase permanent upgrades, cannot be earned yet</li>
+  <li>Refund purchased upgrades</li>
+  <li>New talent Mine</li>
+  <li>Mine can be upgraded trough level ups (Explosion radius, damage, spawn speed)</li>
+
 </details>
