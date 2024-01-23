@@ -6,6 +6,10 @@ Note that most of the UI elements / menu screens / even some mobs and animations
 
 
 ## Idea is to make a 2d ~roguelike~ roguelite where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
+<details>
+  <Summary>
+        Parts 1-15
+  </Summary>
 
 <details>
   <Summary>
@@ -310,4 +314,6 @@ Also noted how much simpler some mechanics are to create if I were to use static
   <li>New talent "Multishot"</li>
   <li>Developer Quality of Life changes</li>
   <li>Player can only regain health when damaged</li>
+</details>
+
 </details>
