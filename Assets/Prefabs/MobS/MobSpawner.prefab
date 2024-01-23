@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobPrefab: {fileID: 3299736567549821737, guid: be9a16e1abc25284ebeb33413e1c99d4, type: 3}
   spawnInterval: 3.5
+  player: {fileID: 0}
+  maxX: 0
+  maxY: 0

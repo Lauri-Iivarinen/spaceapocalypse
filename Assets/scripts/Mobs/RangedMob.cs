@@ -3,76 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class RangedMob : MonoBehaviour, MobActions
+public class RangedMob : MobBaseline
 {
     [SerializeField]
     private GameObject bulletPrefab;
-    public float health = 1000f; //While hitreg issue continues, mob health is doubled from 5 to 10
-    public Player player;
-    Rigidbody2D m_Rigidbody;
-    public float mobSpeed = 4.0f;
-    Animator anim;
-    bool alive = true;
-    public float damage;
-    public bool inRange = false;
     public float fireRate = 90f;
     private float currentRate = 0f;
-    [SerializeField]
-    private GameObject healthPickup;
-    public int XPREWARD = 20;
-    [SerializeField]
-    private GameObject dmgTxt;
 
-    public void TakeDamage(float dmg, bool crit){
-        this.health -= dmg;
-        DisplayDamage(dmg, crit);
-    }
-
-    public void SetInRange(bool range){
-        inRange = range;
-    }
-
-    public float GetDamage(){
-        return 0f;
-    }
-
-    void DisplayDamage(float dmg, bool crit){
-        Quaternion rot = transform.rotation;
-        rot.z = 0;
-        var txt = Instantiate(dmgTxt, transform.position, rot, transform);
-        if (crit){
-            txt.GetComponent<TextMesh>().text = "" + dmg.ToString("0") + "!";
-            txt.GetComponent<TextMesh>().color = new Color(0.95f, 1f, 0.1f, 1f);
-        }else{
-            txt.GetComponent<TextMesh>().text = "" + dmg.ToString("0");
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-        this.m_Rigidbody = GetComponent<Rigidbody2D>();
-        this.player = GameObject.Find("Player").GetComponent<Player>();
-    }
-
-    IEnumerator DestroySprite(){
-        yield return new WaitForSeconds(0.5f);
-        //Roll for health drop (10%)
-        if (UnityEngine.Random.Range(0, 1f) < 0.1f){
-            Quaternion rot = transform.rotation;
-            rot.z = 0;
-            Instantiate(healthPickup, transform.position, rot);
-        }
-        Destroy(gameObject);
-    }
-
-    public void Die(){
-        alive = false;
-        anim.SetBool("Alive", alive);
-        StartCoroutine(DestroySprite());
-        this.player.stats.gainXp(XPREWARD);
-    }
 
     public void ChasePlayer(){
         float playerX = player.GetX();
@@ -114,7 +51,4 @@ public class RangedMob : MonoBehaviour, MobActions
         }
     }
 
-    float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
-		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
-	}
 }

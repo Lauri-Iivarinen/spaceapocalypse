@@ -197,6 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beam: {fileID: 7777469946837484047, guid: e5f6e5e0c4832dc42b0666d6afaffd11, type: 3}
   mine: {fileID: 5265459979389240779, guid: afd63b2ae544f8648b5c70cc27476a6c, type: 3}
+  bullet: {fileID: 369978026847262030, guid: c1bb1957f772b8b4e96175cf9e32a00c, type: 3}
+  count: 1
 --- !u!58 &4612317830070168960
 CircleCollider2D:
   m_ObjectHideFlags: 0

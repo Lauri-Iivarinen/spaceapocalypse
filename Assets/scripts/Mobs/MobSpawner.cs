@@ -31,49 +31,23 @@ public class MobSpawner : MonoBehaviour
         float x = player.GetX();
         float y = player.GetY();
 
-        //Near world border
-        if (player.GetX() <= maxX-15 && player.GetX() >= (maxX-15) * -1)
-        {
-            //Roll dice
-            if (UnityEngine.Random.Range(-1f, 1) > 0)
-            {
-                x += worldWidth / 2;
-            }
-            else {
-                x -= worldWidth / 2;
-            }
-        }else if (player.GetX() >= maxX-15)
-        {
-            //Spawn right
-            x -= worldWidth / 2;
-        }
-        else
-        {
-            //Spawn left
-            x += worldWidth / 2;
-        }
+        //roll which side, then roll on the side
+        int res = UnityEngine.Random.Range(0, 4);
 
-        if (player.GetY() <= maxY - 15 && player.GetY() >= (maxY - 15) * -1)
-        {
-            //Roll dice
-            if (UnityEngine.Random.Range(-1f, 1) > 0)
-            {
-                y += worldHeight / 2;
-            }
-            else
-            {
-                y -= worldHeight / 2;
-            }
+        if(res == 0){//Above
+            y += worldHeight/1.8f;
+            x = x+worldWidth/2*UnityEngine.Random.Range(-1f, 1);
+        }else if (res == 1){//Below
+            y -= worldHeight/1.8f;
+            x = x+worldWidth/2*UnityEngine.Random.Range(-1f, 1);
         }
-        else if (player.GetY() >= 85)
-        {
-            //Spawn below
-            y -= worldHeight / 2;
+        else if (res == 2){//Left
+            x -= worldWidth/1.8f;
+            y += worldHeight/2*UnityEngine.Random.Range(-1f, 1);
         }
-        else
-        {
-            //Spawn above
-            y += worldHeight / 2;
+        else if (res == 3){//right
+            x += worldWidth/1.8f;
+            y += worldHeight/2*UnityEngine.Random.Range(-1f, 1);
         }
 
         return new Vector2(x,y);

@@ -15,16 +15,13 @@ public class Bullet : MonoBehaviour
     Animator anim;
     public bool destroyed = false;
     private bool crit = false;
+    public bool talentBullet = false;
 
     void Start() //On bullet spawn get dir and pos
     {
         anim = GetComponent<Animator>();
         this.getWeaponSpecs();
         m_Rigidbody = GetComponent<Rigidbody2D>();
-		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-		Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-		transform.rotation = Quaternion.Euler (new Vector3(0f,0f,angle+180));
         transform.TransformDirection(Vector3.forward * 10);
     }
 
@@ -45,7 +42,7 @@ public class Bullet : MonoBehaviour
         }else{
             damage = this.specs.weaponDamage * pl.stats.damageMultiplier;
         }
-        
+
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
@@ -65,7 +62,7 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate(){
         if (destroyed){
-             Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
+            Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
             m_Rigidbody.velocity = movementDirection * 1f;
         }else{
             Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
@@ -79,13 +76,13 @@ public class Bullet : MonoBehaviour
                 DestroyGameObject();
             }
         }
-        
     }
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
         if (objectName.gameObject.name.Contains("Mob") && !objectName.gameObject.name.Contains("MobBullet"))
         {
+            if (talentBullet) damage = TalentController.bulletDamage;
             MobActions mob = objectName.gameObject.GetComponent<MobActions>();
             mob.TakeDamage(this.damage, this.crit);
             this.bulletPen--; //if bullet has penetration power

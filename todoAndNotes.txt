@@ -68,7 +68,7 @@ also would allow for more challenges instead of using the best one possible
 Buffs:
 Speed
 damage
-
+dr
 health
 health regen?
 penetration
@@ -108,7 +108,11 @@ Rocket boost, fast speedup if needed to run away/dodge mechanics etc, uses fuel,
 Game specific powerups (balls/needles in HoT)
  - Flamethrower on thrusters
  - Forward shot, automated, many bullets? shotgun?
- - Mines, automated, drops still mine that explodes aoe
  - EMP, aoe pulse
+ done
  - 360 spinning beam on intervals
+ - Mines, automated, drops still mine that explodes aoe
+
 Post match powerups/items for long term progression?
+Upgrade tracking
+Infinite world?

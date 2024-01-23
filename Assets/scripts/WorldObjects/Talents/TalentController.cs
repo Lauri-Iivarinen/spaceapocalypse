@@ -14,6 +14,12 @@ public class TalentController : MonoBehaviour
     public GameObject mine;
     public static bool minePickedUp = false;
     public static float mineSpawnRate = 1f;
+    //Multishot
+    public GameObject bullet;
+    public static bool multiShotPickedUp = false;
+    public static float multiShotFireRate = 1f;
+    public static float bulletDamage = 85f;
+    public static int multiShotCount = 3;
 
     void ResetPowerups(){
         beamPickedUp = false;
@@ -26,6 +32,11 @@ public class TalentController : MonoBehaviour
         mineSpawnRate = 1f;
         Mine.damage = 150f;
         MineRadiusController.explosionRadius = 1f;
+
+        multiShotPickedUp = false;
+        multiShotFireRate = 1f;
+        multiShotCount = 3;
+        bulletDamage = 85;
     }
 
     void Start(){
@@ -34,14 +45,37 @@ public class TalentController : MonoBehaviour
     }
 
     public void PickupMine(){
-        StartCoroutine(SpawnMine());
-        UiDisplay.PickedUpMine();
+        if(!minePickedUp){
+            StartCoroutine(SpawnMine());
+            UiDisplay.PickedUpMine();
+        }
         minePickedUp = true;
     }
     public void PickUpBeam(){
-        StartCoroutine(SpawnBeam());
+        if(!beamPickedUp){
+            StartCoroutine(SpawnBeam());
+            UiDisplay.PickedUpBeam();
+        }
         beamPickedUp = true;
-        UiDisplay.PickedUpBeam();
+    }
+    public void PickUpMultiShot(){
+        if (!multiShotPickedUp){
+            StartCoroutine(SpawnMultiShot());
+            UiDisplay.PickedUpMultiShot();
+        }
+        multiShotPickedUp = true;
+    }
+
+    IEnumerator SpawnMultiShot(){
+        yield return new WaitForSeconds(2.5f/multiShotFireRate);
+        float division = 360f/multiShotCount;
+        float angle = 360f*UnityEngine.Random.Range(0, 1f);
+        for (int i = 0; i < multiShotCount; i++){
+            GameObject obj = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0f,0f,angle)));
+            obj.GetComponent<Bullet>().talentBullet = true;
+            angle+=division;
+        }
+        StartCoroutine(SpawnMultiShot());
     }
 
     IEnumerator SpawnBeam(){
@@ -51,7 +85,7 @@ public class TalentController : MonoBehaviour
     }
 
     IEnumerator SpawnMine(){
-        yield return new WaitForSeconds(4f/mineSpawnRate);
+        yield return new WaitForSeconds(8f/mineSpawnRate);
         Instantiate(mine, transform.position, transform.rotation);
         StartCoroutine(SpawnMine());
     }

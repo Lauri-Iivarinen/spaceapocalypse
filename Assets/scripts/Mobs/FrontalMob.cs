@@ -3,81 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class FrontalMob : MonoBehaviour, MobActions
+public class FrontalMob : MobBaseline
 {
     [SerializeField]
     private GameObject frontalPrefab;
-    public float health = 1000f; //While hitreg issue continues, mob health is doubled from 5 to 10
-    public Player player;
-    Rigidbody2D m_Rigidbody;
-    public float mobSpeed = 4.0f;
-    Animator anim;
-    bool alive = true;
-    public float damage;
-    public bool inRange = false;
+
     public float fireRate = 250f;
     private float currentRate = 0f;
-    [SerializeField]
-    private GameObject healthPickup;
-    public int XPREWARD = 20;
-    [SerializeField]
-    private GameObject dmgTxt;
     private bool casting = false;
     public float castTime;
-
     private GameObject currentCast;
-
-    public void TakeDamage(float dmg, bool crit){
-        this.health -= dmg;
-        DisplayDamage(dmg, crit);
-    }
-
-    public float GetDamage(){
-        return 0f;
-    }
-
-    public void SetInRange(bool range){
-        inRange = range;
-    }
-
-    void DisplayDamage(float dmg, bool crit){
-        Quaternion rot = transform.rotation;
-        rot.z = 0;
-        var txt = Instantiate(dmgTxt, transform.position, rot, transform);
-        if (crit){
-            txt.GetComponent<TextMesh>().text = "" + dmg.ToString("0") + "!";
-            txt.GetComponent<TextMesh>().color = new Color(0.95f, 1f, 0.1f, 1f);
-        }else{
-            txt.GetComponent<TextMesh>().text = "" + dmg.ToString("0");
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-        this.m_Rigidbody = GetComponent<Rigidbody2D>();
-        this.player = GameObject.Find("Player").GetComponent<Player>();
-    }
-
-    IEnumerator DestroySprite(){
-        yield return new WaitForSeconds(0.5f);
-        //Roll for health drop (10%)
-        if (UnityEngine.Random.Range(0, 1f) < 0.1f){
-            Quaternion rot = transform.rotation;
-            rot.z = 0;
-            Instantiate(healthPickup, transform.position, rot);
-        }
-        if (casting) Destroy(currentCast);
-        Destroy(gameObject);
-    }
-
-    public void Die(){
-        alive = false;
-        anim.SetBool("Alive", alive);
-        StartCoroutine(DestroySprite());
-        this.player.stats.gainXp(XPREWARD);
-    }
 
     public void ChasePlayer(){
         m_Rigidbody.constraints = RigidbodyConstraints2D.None;
@@ -134,8 +69,4 @@ public class FrontalMob : MonoBehaviour, MobActions
             this.Die();
         }
     }
-
-    float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
-		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
-	}
 }

@@ -22,6 +22,13 @@ public class Gun : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.T)) autoShoot = !autoShoot;
 	}
 
+	Quaternion GetAngle(){
+		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
+		Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
+		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
+		return Quaternion.Euler (new Vector3(0f,0f,angle+180));
+	}
+
     //https://discussions.unity.com/t/make-a-player-model-rotate-towards-mouse-location/125354/5
 	void FixedUpdate(){
 		//Get the Screen positions of the object
@@ -43,7 +50,8 @@ public class Gun : MonoBehaviour
 				Vector3 pos = transform.position;
 				pos.z = -0.5f; //Makes bullets appear "under ship, but over mobs/rocks for explosion anim"
 				// Instantiate the projectile at the position and rotation of this transform
-				Instantiate(bulletPrefab, pos, transform.rotation);
+				
+				Instantiate(bulletPrefab, pos, GetAngle());
 			}
 		}else{
 			this.gunCooldown--;

@@ -49,12 +49,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 300
-  player: {fileID: 0}
-  mobSpeed: 4
   damage: 150
-  healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
-  dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
+  player: {fileID: 0}
+  m_Rigidbody: {fileID: 0}
   XPREWARD: 20
+  alive: 1
+  mobSpeed: 4
 --- !u!212 &1279556560665254195
 SpriteRenderer:
   m_ObjectHideFlags: 0

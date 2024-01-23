@@ -26,8 +26,9 @@ public class Player : MonoBehaviour
     private int hpRegen = 0;
 
     public void LevelUpAnim(){
-        StartCoroutine(ToggleSkillSelection());
-        Instantiate(lvlUpPrefab, transform.position, Quaternion.identity, transform);
+        GameObject obj = Instantiate(lvlUpPrefab, transform.position, Quaternion.identity, transform);
+        StartCoroutine(ToggleSkillSelection(obj));
+        
     }
 
     public float GetX(){
@@ -68,11 +69,17 @@ public class Player : MonoBehaviour
             options.Add("Mine Spawn Rate +10%");
             options.Add("Mine Explosion Radius +10%");
         }
+        if (TalentController.multiShotPickedUp){
+            options.Add("Multishot +1 bullet");
+            options.Add("Multishot damage +10%");
+            options.Add("Multishot firerate +10%");
+        }
         return options.ToArray();
     }
 
-    public IEnumerator ToggleSkillSelection(){
+    public IEnumerator ToggleSkillSelection(GameObject obj){
         yield return new WaitForSeconds(0.5f);
+        Destroy(obj);
         LevelUpHandler lvlUp = GameObject.Find("Canvas").GetComponent<LevelUpHandler>();
         //Prob convert to tuples to display proper names in UI
         List<string> upgradesAll = new List<string>(getTalentOptions());

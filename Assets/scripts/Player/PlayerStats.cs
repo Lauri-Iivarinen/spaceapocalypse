@@ -52,7 +52,7 @@ public class PlayerStats{
     public void levelUp(){
         level++;
         currXp = currXp-xpRequired;
-        xpRequired = (int)(xpRequired+10) * 1.1f;
+        xpRequired = (int)(xpRequired+15) * 1.1f;
         Player pl = GameObject.Find("Player").GetComponent<Player>();
         pl.LevelUpAnim();
     }
@@ -112,6 +112,15 @@ public class PlayerStats{
         else if (toolTip.Equals("Mine Explosion Radius +10%")){
             MineRadiusController.explosionRadius *= 1.1f;
         }
+        else if (toolTip.Equals("Multishot +1 bullet")){
+            TalentController.multiShotCount++;
+        }
+        else if (toolTip.Equals("Multishot damage +10%")){
+            TalentController.bulletDamage *= 1.1f;
+        }
+        else if (toolTip.Equals("Multishot firerate +10%")){
+            TalentController.multiShotFireRate *= 1.1f;
+        }
     }
 
     public void HealthPickup(float amount){
@@ -127,11 +136,11 @@ public class PlayerStats{
         Player pl = GameObject.Find("Player").GetComponent<Player>();
         if (currHealth < maxHealth){
             currHealth += healthRegen;
+            pl.DisplayDamage(healthRegen, new Color(0,100,0,1f));
             if (currHealth > maxHealth){
                 currHealth = maxHealth;
             }
         }
-        pl.DisplayDamage(healthRegen, new Color(0,100,0,1f));
     }
 
     public int GetPenetration(){

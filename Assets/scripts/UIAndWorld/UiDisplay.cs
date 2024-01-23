@@ -25,11 +25,18 @@ public class UiDisplay : MonoBehaviour
     [SerializeField] private Slider boostBar;
     [SerializeField] private Slider xpBar;
 
+    public GameObject _beamPowerup;
+    public GameObject _minePowerup;
+    public GameObject _multiShotPowerUp;
+
     public static GameObject beamPowerup;
     public static GameObject minePowerup;
+    public static GameObject multiShotPowerUp;
 
     private Player player;
     private string gunName = "empty";
+
+    private static float iconX = 0;
 
     public void setWeaponName(string name){
         this.gunName = name;
@@ -57,19 +64,38 @@ public class UiDisplay : MonoBehaviour
 
 
         this.killCount = GameObject.Find("Counter").GetComponent<TextMeshProUGUI>();
-        beamPowerup = GameObject.Find("BeamPowerup");
-        beamPowerup.SetActive(false);
-
-        minePowerup = GameObject.Find("MinePowerup");
-        minePowerup.SetActive(false);
+        
+        beamPowerup = _beamPowerup;
+        minePowerup = _minePowerup;
+        multiShotPowerUp = _multiShotPowerUp;
     }
 
     public static void PickedUpBeam(){
-        beamPowerup.SetActive(true);
+        //beamPowerup.SetActive(true);
+        if (!TalentController.beamPickedUp){
+            Vector3 pos = new Vector3(1490+iconX, -888f, 0f);
+            GameObject obj = Instantiate(beamPowerup, pos, Quaternion.identity);
+            obj.transform.SetParent(GameObject.Find("Play").transform, false);
+            iconX -= 110;
+        }
     }
 
     public static void PickedUpMine(){
-        minePowerup.SetActive(true);
+        if (!TalentController.minePickedUp){
+            Vector3 pos = new Vector3(1490+iconX, -888f, 0f);
+            GameObject obj = Instantiate(minePowerup, pos, Quaternion.identity);
+            obj.transform.SetParent(GameObject.Find("Play").transform, false);
+            iconX -= 110;
+        }
+    }
+
+    public static void PickedUpMultiShot(){
+        if(!TalentController.multiShotPickedUp){
+            Vector3 pos = new Vector3(1490+iconX, -888f, 0f);
+            GameObject obj = Instantiate(multiShotPowerUp, pos, Quaternion.identity);
+            obj.transform.SetParent(GameObject.Find("Play").transform, false);
+            iconX -= 110;
+        }
     }
 
     // Update is called once per frame
