@@ -292,3 +292,22 @@ Also noted how much simpler some mechanics are to create if I were to use static
   <li>Mine can be upgraded trough level ups (Explosion radius, damage, spawn speed)</li>
 
 </details>
+<details>
+  <Summary>
+        Part 14 - New Mob and talent + development QoL
+  </Summary>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/002300d8-8eb4-46b5-b0a1-6e4331411687"/>
+
+  To reduce duplicate code I created a base class for all mobs which handles damage intake, xp gains etc. Now when creating a new mob I only need to implement how it moves and attacks. Also made a bunch of small changes that will hopefully help out in the future.
+
+  Created a new mob "Ufo" to add more variety however it is only a basic melee mob. Nevertheless the game has now 5 different mobs that can attack the player. Im hoping to add few more this time with some unique mechanic/ability.
+
+  Also while I was at it I created a new talent "Multishot". It shoots 3 bullets in a random direction (bullets are in a pattern). Bullet count/damage/firerate can be increased trough leveling up.
+  
+  <li>UI changes, powerup logic</li>
+  <li>New melee mob "UFO"</li>
+  <li>New talent "Multishot"</li>
+  <li>Developer Quality of Life changes</li>
+  <li>Player can only regain health when damaged</li>
+</details>
