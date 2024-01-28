@@ -315,5 +315,30 @@ Also noted how much simpler some mechanics are to create if I were to use static
   <li>Developer Quality of Life changes</li>
   <li>Player can only regain health when damaged</li>
 </details>
+<details>
+  <Summary>
+        Part 15 - Boss Time.
+  </Summary>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/d7d08722-e6bd-4b98-8bcb-023b9a117fe2"/>
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/7a48e494-bc81-4d93-8150-4d87b5ade92b"/>
+
+  Finally started to tackle the difficulty that is bossfights. Design of mechanics is not very hard with my extensive background of mmorpgs and raiding. However how to implement X mechanic and how does the boss rotate between different mechanics is the hard part.
+
+  Did my best to reuse MobBaseline class but had to make some changes to it.
+
+  Boss mechanics and features:
+  <li>When bosses appear, their name and HP are displayed in UI.</li>
+  <li>Shield protects boss from taking damage.</li>
+  <li>Mines, boss throws occasionally mines, moving over it's own mine destroys shield.</li>
+  <li>Spin around spawning large number of projectiles firing in all directions.</li>
+  <li>Occasionally recharges shield.</li>
+  <li>(Not implemented yet) Spawn multiple frontals, find safe space between.</li>
+  
+  TODO:
+  <li>Decide and implement how boss spawns</li>
+  <li>Endless map?</li>
+  <li>Mob knockback on damage</li>
+</details>
 
 </details>
