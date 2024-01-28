@@ -107,12 +107,13 @@ Game Mechanics:
 Rocket boost, fast speedup if needed to run away/dodge mechanics etc, uses fuel, fuel charges overtime.
 Game specific powerups (balls/needles in HoT)
  - Flamethrower on thrusters
- - Forward shot, automated, many bullets? shotgun?
  - EMP, aoe pulse
  done
  - 360 spinning beam on intervals
  - Mines, automated, drops still mine that explodes aoe
+  - Forward shot, automated, many bullets? shotgun?
 
 Post match powerups/items for long term progression?
 Upgrade tracking
 Infinite world?
+Mob knockback on damage?

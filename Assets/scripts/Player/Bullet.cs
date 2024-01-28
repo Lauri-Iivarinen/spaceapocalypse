@@ -80,6 +80,10 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D objectName)
     {
+        if (objectName.gameObject.name.Contains("shield")){
+            this.bulletPen = 0;
+            this.damage = 0;
+        }
         if (objectName.gameObject.name.Contains("Mob") && !objectName.gameObject.name.Contains("MobBullet"))
         {
             if (talentBullet) damage = TalentController.bulletDamage;

@@ -21,6 +21,7 @@ public class UiDisplay : MonoBehaviour
     private TextMeshProUGUI penetration;
     private TextMeshProUGUI killCount;
 
+    [SerializeField] private Slider bossHealthBar;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider boostBar;
     [SerializeField] private Slider xpBar;
@@ -35,18 +36,33 @@ public class UiDisplay : MonoBehaviour
 
     private Player player;
     private string gunName = "empty";
-
     private static float iconX = 0;
+
+    public MobBaseline boss;
+    GameObject bossData;
+    private TextMeshProUGUI bossName;
 
     public void setWeaponName(string name){
         this.gunName = name;
     }
 
+    public void SpawnBoss(MobBaseline bossStats){
+        Debug.Log("spawned boss");
+        Debug.Log(bossStats);
+        //GameObject bossData = GameObject.Find("boss_data");
+        bossData.SetActive(true);
+        boss = bossStats;
+        bossName.text = bossStats.mobName;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        this.bossName = GameObject.Find("boss_name").GetComponent<TextMeshProUGUI>();
+        this.bossHealthBar = GameObject.Find("boss_health_bar").GetComponent<Slider>();
         this.xpBar = GameObject.Find("xp_bar").GetComponent<Slider>();
         this.healthBar = GameObject.Find("health_bar").GetComponent<Slider>();
+        
         this.boostBar = GameObject.Find("boost_bar").GetComponent<Slider>();
         this.player = GameObject.Find("Player").GetComponent<Player>();
         this.gunDisplay = GameObject.Find("gun_display").GetComponent<TextMeshProUGUI>();
@@ -62,9 +78,9 @@ public class UiDisplay : MonoBehaviour
         this.hps = GameObject.Find("HPS").GetComponent<TextMeshProUGUI>();
         this.penetration = GameObject.Find("Penetration").GetComponent<TextMeshProUGUI>();
 
-
         this.killCount = GameObject.Find("Counter").GetComponent<TextMeshProUGUI>();
-        
+        bossData = GameObject.Find("boss_data");
+        bossData.SetActive(false);
         beamPowerup = _beamPowerup;
         minePowerup = _minePowerup;
         multiShotPowerUp = _multiShotPowerUp;
@@ -101,6 +117,9 @@ public class UiDisplay : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (boss != null){
+            this.bossHealthBar.value = boss.health / boss.maxHealth;
+        }
         this.xpBar.value = (float)player.stats.currXp / player.stats.xpRequired;
         this.healthBar.value = (float)player.stats.currHealth / player.stats.maxHealth;
         this.boostBar.value = player.stats.currBoost / player.stats.BOOSTCAP;

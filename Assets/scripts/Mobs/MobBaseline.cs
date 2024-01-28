@@ -5,23 +5,37 @@ interface MobActions
     void TakeDamage(float dmg, bool crit);
     float GetDamage();
     void SetInRange(bool inRange);
+
+    (float, float) GetHealth();
 }
 
 public class MobBaseline : MonoBehaviour, MobActions{
+
+    public bool boss = false;
+    public string mobName = "";
     public float health = 0;
     public float damage = 0;
+    public float maxHealth = 0;
     public Player player;
     public Rigidbody2D m_Rigidbody;
     public Animator anim;
     public int XPREWARD = 20;
     public bool alive = true;
+    [SerializeField]
     private GameObject healthPickup;
+    [SerializeField]
     private GameObject dmgTxt;
     public bool inRange = false;
     public float mobSpeed = 4.0f;
+
+    public (float, float) GetHealth(){
+        return (health, maxHealth);
+    }
+
     public void TakeDamage(float dmg, bool crit){
+        Debug.Log("dmg taken");
         this.health -= dmg;
-        DisplayDamage(dmg, crit);
+        if (!boss) DisplayDamage(dmg, crit);
     }
     public void SetInRange(bool range){
         inRange = range;
@@ -66,12 +80,23 @@ public class MobBaseline : MonoBehaviour, MobActions{
         this.player.stats.gainXp(XPREWARD);
     }
 
+    IEnumerator DisplayBossData(){
+        yield return new WaitForSeconds(0.5f);
+        UiDisplay display = GameObject.Find("Canvas").GetComponent<UiDisplay>();
+        display.SpawnBoss(this);
+    }
+
        void Start()
-    {
+    {   
+        if (boss){
+            StartCoroutine(DisplayBossData());    
+        }
+        
+        maxHealth = health;
         anim = GetComponent<Animator>();
         this.m_Rigidbody = GetComponent<Rigidbody2D>();
         this.player = GameObject.Find("Player").GetComponent<Player>();
-        this.dmgTxt = MobObjects.dmgTxt;
-        this.healthPickup = MobObjects.healthPickup;
+        //this.dmgTxt = MobObjects.dmgTxt;
+        //this.healthPickup = MobObjects.healthPickup;
     }
 }

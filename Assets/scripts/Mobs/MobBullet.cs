@@ -6,7 +6,7 @@ using UnityEngine;
 public class MobBullet : MonoBehaviour, MobActions
 {
     private int lifetime = 150;
-    private float vel = 5f;
+    public float vel = 5f;
     private int bulletPen = 1;
     public float damage;
     Rigidbody2D m_Rigidbody;
@@ -20,6 +20,10 @@ public class MobBullet : MonoBehaviour, MobActions
         return damage;
     }
 
+        public (float, float) GetHealth(){
+        return (0f, 0f);
+    }
+
     public void SetInRange(bool range){}
 
     void Start() //On bullet spawn get dir and pos
@@ -28,11 +32,13 @@ public class MobBullet : MonoBehaviour, MobActions
         player = GameObject.Find("Player").GetComponent<Player>();
         float playerX = player.GetX();
         float playerY = player.GetY();
-        float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
-        transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, angle));
-        Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
-        this.m_Rigidbody.velocity = movementDirection * vel * -1;
-        transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, angle + 90));
+        //float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
+        //transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, 90f));
+        //Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
+        //this.m_Rigidbody.velocity = movementDirection * vel * -1;
+        transform.TransformDirection(Vector3.forward * 10);
+        //transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, angle + 90));
+        transform.Rotate(new Vector3 ( 0, 0, 90f));
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
@@ -53,6 +59,9 @@ public class MobBullet : MonoBehaviour, MobActions
         if (destroyed){
 
         }else{
+            Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
+            m_Rigidbody.velocity = movementDirection * vel;
+
             lifetime--;
 
             if (bulletPen <= 0){

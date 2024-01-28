@@ -40,6 +40,8 @@ public class RangedMob : MobBaseline
             //Fire
             Vector3 pos = transform.position;
 			pos.z = +1f;
+            Quaternion rot = transform.rotation;
+            rot.z += 90f;
             Instantiate(bulletPrefab, pos, transform.rotation);
             this.currentRate = fireRate;
         } else
