@@ -4,6 +4,8 @@ This readme will be in a form of a diary of sorts where I track the progress I h
 
 Note that most of the UI elements / menu screens / even some mobs and animations are placeholders and will be tuned to look good later 😄.
 
+### Playtest 31.1.2024
+<a href="https://youtu.be/w7QM6t7E6bs">https://youtu.be/w7QM6t7E6bs</a>
 
 ## Idea is to make a 2d ~roguelike~ roguelite where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
 <details>
@@ -354,12 +356,16 @@ Also noted how much simpler some mechanics are to create if I were to use static
   Up until this point my workflow in creating sprites has been to use 32x32 or 64x64 canvas to keep creations simple, however when I was scaling the boss the sprite became very bad quality because of the large scaling. I found a <a href="https://lospec.com/pixel-art-scaler/">website</a> that upscales pixel art and redid all boss sprites and animations with high resolution sprites. Im happy with outcome and will probably use the website more in the future.
 
   Also finalized the last bossmechanic "frontal" randomly chooses 2-4 frontals that spawn on fixed locations (Gun barrels). Player has always room to dodge but needs to be fast to find cover before beams explode.
+
+  And to top things off, created a system for spawning mobs in waves and the match now consists of 8 minutes of increasing mob waves and a boss is waiting at the end.
+
+  At the end of all this I built the project and did a proper <a href="https://youtu.be/w7QM6t7E6bs">playtrough</a> which I recorded for playback and debugging purposes.
   
   <li>Last mechanic, multi frontal</li>
   <li>Changed how mechanics rotate, instead of being random, mechanics are rotating on a fixed schedule</li>
   <li>Upscaled boss sprites</li>
   <li>Tuned boss sprite layering</li>
-  
+  <li>Mobs spawn in waves</li>
 </details>
 
 </details>
