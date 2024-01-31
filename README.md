@@ -340,5 +340,26 @@ Also noted how much simpler some mechanics are to create if I were to use static
   <li>Endless map?</li>
   <li>Mob knockback on damage</li>
 </details>
+</details>
+<details>
+  <summary>Parts 16-30</summary>
+
+  <details>
+  <Summary>
+        Part 16 - Finalize bossfight
+  </Summary>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/8f5db596-52e9-494e-ba38-6577ed780aa4"/>
+
+  Up until this point my workflow in creating sprites has been to use 32x32 or 64x64 canvas to keep creations simple, however when I was scaling the boss the sprite became very bad quality because of the large scaling. I found a <a href="https://lospec.com/pixel-art-scaler/">website</a> that upscales pixel art and redid all boss sprites and animations with high resolution sprites. Im happy with outcome and will probably use the website more in the future.
+
+  Also finalized the last bossmechanic "frontal" randomly chooses 2-4 frontals that spawn on fixed locations (Gun barrels). Player has always room to dodge but needs to be fast to find cover before beams explode.
+  
+  <li>Last mechanic, multi frontal</li>
+  <li>Changed how mechanics rotate, instead of being random, mechanics are rotating on a fixed schedule</li>
+  <li>Upscaled boss sprites</li>
+  <li>Tuned boss sprite layering</li>
+  
+</details>
 
 </details>
