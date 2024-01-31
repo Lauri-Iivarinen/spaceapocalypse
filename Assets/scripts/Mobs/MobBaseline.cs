@@ -33,7 +33,6 @@ public class MobBaseline : MonoBehaviour, MobActions{
     }
 
     public void TakeDamage(float dmg, bool crit){
-        Debug.Log("dmg taken");
         this.health -= dmg;
         if (!boss) DisplayDamage(dmg, crit);
     }

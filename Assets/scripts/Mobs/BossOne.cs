@@ -10,7 +10,7 @@ public class BossOne : MobBaseline
 
     [SerializeField]
     private GameObject minePrefab;
-    public float fireRate = 600f;
+    public float fireRate = 700f;
     private float currentRate = 0f;
 
     //Mechanic 1, spin around fire fast
@@ -29,6 +29,15 @@ public class BossOne : MobBaseline
     public static bool shieldDown = false;
     public static GameObject shield;// = GameObject.Find("boss1-shield");
     public int shieldRechargeDelay = 0;
+
+    //Mechanic 33
+    [SerializeField]
+    private GameObject frontalPrefab;
+
+    private bool castingThree = false;
+    private bool castInitiated = false;
+
+    private int mechanicIndex = 0;
 
     public void ChasePlayer(){
         float playerX = player.GetX();
@@ -84,14 +93,14 @@ public class BossOne : MobBaseline
         if (oneCurrRate <= 0){
             Vector3 pos = transform.position;
             pos.z += 0.5f;
-            GameObject bullet = Instantiate(bulletPrefab, pos, transform.rotation);
-            bullet.GetComponent<MobBullet>().vel = 7f;
-            GameObject bulletTwo = Instantiate(bulletPrefab, pos, transform.rotation);
-            bulletTwo.GetComponent<MobBullet>().vel = 7f;
-            bulletTwo.transform.Rotate(new Vector3 ( 0, 0, 120f));
-            GameObject bulletThree = Instantiate(bulletPrefab, pos, transform.rotation);
-            bulletThree.GetComponent<MobBullet>().vel = 7f;
-            bulletThree.transform.Rotate(new Vector3 ( 0, 0, 240f));
+            float rotation = 0f;
+            for(int i = 0; i<3; i++){
+                GameObject bullet = Instantiate(bulletPrefab, pos, transform.rotation);
+                bullet.GetComponent<MobBullet>().vel = 7f;
+                bullet.GetComponent<MobBullet>().lifetime = 300;
+                bullet.transform.Rotate(new Vector3 ( 0, 0, rotation));
+                rotation += 120f;
+            }
             oneCurrRate = oneFireRate;
         }else {
             oneCurrRate--;
@@ -110,6 +119,47 @@ public class BossOne : MobBaseline
         }
     }
 
+    void SpawnFrontal(Vector3 position){
+        GameObject obj = Instantiate(frontalPrefab, position, Quaternion.identity);
+        obj.transform.parent = transform;
+        obj.transform.rotation = transform.rotation;
+        obj.transform.localScale = new Vector3(-0.2f, -20f, 1f);
+    }
+
+    List<Vector3> GetPositions(List<Vector3> pos, int count){
+        count--;
+        if (count == 0) return pos;
+        int removeIndex = UnityEngine.Random.Range(0, pos.Count);
+        pos.RemoveAt(removeIndex);
+        return GetPositions(pos, count);
+    }
+
+    void mechanicThree(){
+        Vector3 currPos = transform.position;
+        currPos.z -= 0.5f;
+        Vector3[] positions = {
+            currPos + transform.up * 8f, 
+            currPos + transform.right * 3.8f + transform.up * 6.5f, 
+            currPos + transform.right * 7.4f + transform.up * 5.5f, 
+            currPos + transform.right * -3.8f + transform.up * 6.5f, 
+            currPos + transform.right * -7.4f + transform.up * 5.5f
+        };
+        // shoot 2-4 frontals from barrels
+        int count = UnityEngine.Random.Range(2, 5);
+        List<Vector3> pos = GetPositions(new List<Vector3>(positions), count);
+        foreach(Vector3 position in pos){
+            SpawnFrontal(position);
+        }
+    }
+
+        public IEnumerator CastComplete(){
+        yield return new WaitForSeconds(1.6f);
+        casting = false;
+        castingThree = false;
+        castInitiated = false;
+        m_Rigidbody.constraints = RigidbodyConstraints2D.None;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -119,12 +169,16 @@ public class BossOne : MobBaseline
         
         if (inRange && this.currentRate <= 0 && !casting)
         {   
+            int[] mechanics = {0,1,2,0,2,2,1,0,2,0};
             //Mechanics here
             //Fire
             m_Rigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
             this.currentRate = fireRate;
             casting = true;
-            int mechanic = UnityEngine.Random.Range(0, 2);
+            int mechanic = mechanics[mechanicIndex];
+            mechanicIndex++;
+            if(mechanicIndex == mechanics.Length) mechanicIndex = 0;
+
             if ( mechanic == 0){
                 castingOne = true;
             } else if (mechanic == 1){
@@ -138,6 +192,8 @@ public class BossOne : MobBaseline
                     castingTwo = true;
                 }
 
+            }else if (mechanic == 2){
+                castingThree = true;
             }
 
         } else if (casting && castingOne){
@@ -150,7 +206,7 @@ public class BossOne : MobBaseline
                 oneCount = 0;
                 m_Rigidbody.constraints = RigidbodyConstraints2D.None;
             }
-        }else if (casting && castingTwo){
+        } else if (casting && castingTwo){
             if (twoCount <= 50){
                 mechanicTwo();
                 twoCount++;
@@ -160,7 +216,14 @@ public class BossOne : MobBaseline
                 castingTwo = false;
                 m_Rigidbody.constraints = RigidbodyConstraints2D.None;
             }
-        }else
+
+        } else if (casting && castingThree){
+            if (!castInitiated) {
+                castInitiated = true;
+                mechanicThree();
+                StartCoroutine(CastComplete());
+            }
+        } else
         {
             this.currentRate--;
         }

@@ -131,6 +131,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2287348812561191519, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 41ac0d16643f6a547b3b309da16c94b7, type: 2}
+    - target: {fileID: 4015742349272246603, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0cb7e586b64ce77408f384c7022845d4, type: 3}
+    - target: {fileID: 4262484252650211415, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262484252650211415, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4262484252650211415, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.3899994
@@ -171,13 +187,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4872926172151136555, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4872926172151136555, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907937496482025014, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e05c22818684e60439cb89b7aee7110c, type: 3}
+    - target: {fileID: 6198667694659836419, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 6198667694659836419, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 7807012997136589397, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
       propertyPath: m_Name
       value: Mob-boss1
       objectReference: {fileID: 0}
-    - target: {fileID: 8823297104732354573, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
-      propertyPath: m_Radius
-      value: 3.7
+    - target: {fileID: 7920960427650998608, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 37dec84f81caeea4eb545855bca96870, type: 2}
+    - target: {fileID: 9159900461002991538, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_Size.x
+      value: 8.470006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159900461002991538, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_Size.y
+      value: 7.165187
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159900461002991538, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.090404674
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159900461002991538, guid: 43daf98a7061cb04ca87cc4f42025ef5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.01649711
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MobBullet : MonoBehaviour, MobActions
 {
-    private int lifetime = 150;
+    public int lifetime = 150;
     public float vel = 5f;
     private int bulletPen = 1;
     public float damage;
