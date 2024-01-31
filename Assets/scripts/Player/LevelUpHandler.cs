@@ -24,6 +24,7 @@ public class LevelUpHandler : MonoBehaviour
         upgrades = options;
         pause.allowPause = false;
         StartCoroutine(LevelUp());
+        //Cursor.visible = true;
     }
 
     IEnumerator LevelUp(){
@@ -57,6 +58,7 @@ public class LevelUpHandler : MonoBehaviour
         obj.SetActive(false);
         Time.timeScale = 1f;
         pause.allowPause = true;
+        //Cursor.visible = false;
     }
 
     // Update is called once per frame

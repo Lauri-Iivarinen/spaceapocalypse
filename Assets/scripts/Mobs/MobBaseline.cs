@@ -90,7 +90,7 @@ public class MobBaseline : MonoBehaviour, MobActions{
         if (boss){
             StartCoroutine(DisplayBossData());    
         }
-        
+        health *= 1+0.1f*MobSpawner.waveIndex; //Increase mob difficulty for each wave
         maxHealth = health;
         anim = GetComponent<Animator>();
         this.m_Rigidbody = GetComponent<Rigidbody2D>();

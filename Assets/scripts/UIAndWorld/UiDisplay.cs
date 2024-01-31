@@ -10,6 +10,10 @@ public class UiDisplay : MonoBehaviour
     private TextMeshProUGUI gunDisplay;
     private TextMeshProUGUI levelDisplay;
 
+    private TextMeshProUGUI timer;
+    public static bool timeRunning = true;
+    private float timeRemaining = 0;
+
     private TextMeshProUGUI hp;
     private TextMeshProUGUI dmg;
     private TextMeshProUGUI rawDmg;
@@ -47,9 +51,6 @@ public class UiDisplay : MonoBehaviour
     }
 
     public void SpawnBoss(MobBaseline bossStats){
-        Debug.Log("spawned boss");
-        Debug.Log(bossStats);
-        //GameObject bossData = GameObject.Find("boss_data");
         bossData.SetActive(true);
         boss = bossStats;
         bossName.text = bossStats.mobName;
@@ -57,7 +58,8 @@ public class UiDisplay : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        timeRunning = true;
         this.bossName = GameObject.Find("boss_name").GetComponent<TextMeshProUGUI>();
         this.bossHealthBar = GameObject.Find("boss_health_bar").GetComponent<Slider>();
         this.xpBar = GameObject.Find("xp_bar").GetComponent<Slider>();
@@ -84,6 +86,8 @@ public class UiDisplay : MonoBehaviour
         beamPowerup = _beamPowerup;
         minePowerup = _minePowerup;
         multiShotPowerUp = _multiShotPowerUp;
+
+        this.timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
     }
 
     public static void PickedUpBeam(){
@@ -114,9 +118,25 @@ public class UiDisplay : MonoBehaviour
         }
     }
 
+    void displayTime(float time){
+        time+=1;
+        float minutes = Mathf.FloorToInt(time/60);
+        float seconds = Mathf.FloorToInt(time%60);
+
+        if (minutes < 0){
+            timer.text = "0:00";
+        }else{
+            timer.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        timeRemaining += Time.deltaTime;
+        displayTime(8*60 - timeRemaining);
+
         if (boss != null){
             this.bossHealthBar.value = boss.health / boss.maxHealth;
         }

@@ -22,7 +22,7 @@ public class BossOneMineController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj)
     {
         if(active && obj.gameObject.name.Contains("boss1-shield")){
-            BossOne boss = GameObject.Find("Mob-boss1").GetComponent<BossOne>();
+            BossOne boss = GameObject.Find("Mob-boss1(Clone)").GetComponent<BossOne>();
             boss.DisableShield();
             anim.SetBool("Destroyed", true);
             StartCoroutine(DestroySprite());

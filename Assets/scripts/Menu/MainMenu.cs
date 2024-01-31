@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    void Start(){
+        //Cursor.visible = true;
+    }
     public void StartGame(){
         SceneManager.LoadSceneAsync("ClassSelectScreen");
         SceneManager.UnloadSceneAsync("MainMenu");

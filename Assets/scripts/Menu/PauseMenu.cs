@@ -26,13 +26,16 @@ public class PauseMenu : MonoBehaviour
         paused = false;
         obj.SetActive(false);
         Time.timeScale = 1f;
-
+        //UiDisplay.timeRunning = true;
+        //Cursor.visible = false;
     }
 
     public void PauseGame(){
+        //UiDisplay.timeRunning = false;
         obj.SetActive(true);
         paused = true;
         Time.timeScale = 0f;
+        //Cursor.visible = true;
     }
 
     public void ReturnToMenu(){
