@@ -31,14 +31,14 @@ public class MobSpawner : MonoBehaviour
     private bool spawnBoss = false;
     public float waveDuration = 60f;
     // Wave (mobIndex, mobCount)
-    static (int,int)[] wave1 = {(0, 3)};
-    static (int, int)[] wave2 = {(0, 2), (1, 2)};
-    static (int, int)[] wave3 = {(0, 3), (2, 2)};
-    static (int, int)[] wave4 = {(2, 2), (1, 3), (4, 1)};
-    static (int, int)[] wave5 = {(0, 2), (2, 2), (3, 2)};
-    static (int, int)[] wave6 = {(2, 2), (1, 3), (4, 2)};
-    static (int, int)[] wave7 = {(0, 3), (2, 2), (1, 2), (3, 2)};
-    static (int, int)[] wave8 = {(0, 2), (1, 2), (2, 2), (3, 2), (4, 2)};
+    static (int,int)[] wave1 = {(0, 4)};
+    static (int, int)[] wave2 = {(0, 3), (1, 3)};
+    static (int, int)[] wave3 = {(0, 4), (2, 3)};
+    static (int, int)[] wave4 = {(2, 3), (1, 4), (4, 2)};
+    static (int, int)[] wave5 = {(0, 3), (2, 3), (3, 3)};
+    static (int, int)[] wave6 = {(2, 3), (1, 4), (4, 3)};
+    static (int, int)[] wave7 = {(0, 4), (2, 3), (1, 3), (3, 3)};
+    static (int, int)[] wave8 = {(0, 3), (1, 3), (2, 3), (3, 3), (4, 3)};
 
     private List<(int, int)[]> mobOrder = new List<(int, int)[]>(){
         wave1, wave2, wave3, wave4, wave5, wave6, wave7, wave8

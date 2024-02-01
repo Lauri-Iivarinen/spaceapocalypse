@@ -131,12 +131,40 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 495852424737451790, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 495852424737451790, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2131210423453237636, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2131210423453237636, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514630786193920552, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514630786193920552, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823885952794945649, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e7692718219af79449042926c51ba9ec, type: 2}
+    - target: {fileID: 3823885952794945649, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1320503459856292758, guid: e7692718219af79449042926c51ba9ec, type: 2}
+    - target: {fileID: 3823885952794945649, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4547675023574450560, guid: b8837490dc262054ba2917b351c50a3b, type: 3}
@@ -455,6 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 291937890}
+  allowPause: 1
 --- !u!4 &1207034926
 Transform:
   m_ObjectHideFlags: 0

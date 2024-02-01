@@ -5140,6 +5140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec328933b9505d488c67ad512dfc8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FontAsset: {fileID: 11400000, guid: e7692718219af79449042926c51ba9ec, type: 2}
   bossHealthBar: {fileID: 0}
   healthBar: {fileID: 0}
   boostBar: {fileID: 0}

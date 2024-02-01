@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 
 public class UiDisplay : MonoBehaviour
 {
+    [SerializeField] public TMP_FontAsset FontAsset;
     private TextMeshProUGUI gunDisplay;
     private TextMeshProUGUI levelDisplay;
 
