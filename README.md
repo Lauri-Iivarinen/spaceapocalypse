@@ -367,5 +367,42 @@ Also noted how much simpler some mechanics are to create if I were to use static
   <li>Tuned boss sprite layering</li>
   <li>Mobs spawn in waves</li>
 </details>
+<details>
+  <Summary>
+        Part 17 - Some big not so visible tasks
+  </Summary>
+
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/3fd20230-4be9-46c0-b406-ff61019783fb"/>
+<img height="200px" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/85ebd5a5-e1a0-4bd6-9266-6c0da7a62991"/>
+
+  Finally decided to tackle the issue of confined play area. Ended up being more simple and easy as I had feared. Play area consists of 4 tiles (could be all unique but for now they are identical). Player starts at the center of 1 tile and the rest of the tiles are moved to the edges (and corner) closest where the player is in regards to the currently active tile.
+
+Player starts at the center of the red 🔴 tile:
+
+    🟩 🟥
+    🟦 🟨
+
+Moving right (player is still in red 🔴 square but close to the right edge):
+
+    🟥 🟩
+    🟨 🟦 
+    
+Then moving up (player is still in red 🔴 square but now closer to the top than bottom)
+    
+    🟨 🟦 
+    🟥 🟩
+
+  Now that the play area is "infinite" also tackled the way players can collect powerups, awarding is not yet decided but for now powerups are scattered quite far from each other. To be able to find the powerups I created indicators showing where the player should move to reach the powerup. Would be nice in the future if the arrows always hugged the edge of the canvas but after a very long debugging session I couldnt come up with a proper solution so sticking with the current implementation for now.
+
+While implementing arrows I was happy 😃 to notice how easily I came up with the initial solution and how I quickly realised to create a new interface for pickups to allow for easy scalability.
+
+  To top things off I downloaded some free to use fonts and imported them into the project to make it look more futuristic.
+  
+  <li>Infinite world</li>
+  <li>Indicators indicating powerup locations</li>
+  <li>Changed fonts in all menus and player UI:s</li>
+  <li>Mob spawn tuning</li>
+
+</details>
 
 </details>
