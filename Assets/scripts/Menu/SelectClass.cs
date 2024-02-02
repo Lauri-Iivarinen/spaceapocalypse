@@ -40,7 +40,7 @@ public class SelectClass : MonoBehaviour
 
     void LoadGame()
     {
-        SceneManager.LoadSceneAsync("PlayerSandbox");
+        SceneManager.LoadSceneAsync("Level1");
         SceneManager.UnloadSceneAsync("ClassSelectScreen");
     }
 }

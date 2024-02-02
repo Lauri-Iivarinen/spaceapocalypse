@@ -11,7 +11,6 @@ public class MapController : MonoBehaviour
     void Start()
     {
         SpriteRenderer obj = GameObject.Find("backgroundBlack").GetComponent<SpriteRenderer>();
-        Debug.Log(obj.bounds.size.x);
         width = obj.bounds.size.x;
         height = obj.bounds.size.y;
         //GetComponent<SpriteRenderer>().bounds.size.x;

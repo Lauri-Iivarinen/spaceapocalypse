@@ -32,13 +32,13 @@ public class MobSpawner : MonoBehaviour
     public float waveDuration = 60f;
     // Wave (mobIndex, mobCount)
     static (int,int)[] wave1 = {(0, 4)};
-    static (int, int)[] wave2 = {(0, 3), (1, 3)};
-    static (int, int)[] wave3 = {(0, 4), (2, 3)};
-    static (int, int)[] wave4 = {(2, 3), (1, 4), (4, 2)};
-    static (int, int)[] wave5 = {(0, 3), (2, 3), (3, 3)};
-    static (int, int)[] wave6 = {(2, 3), (1, 4), (4, 3)};
-    static (int, int)[] wave7 = {(0, 4), (2, 3), (1, 3), (3, 3)};
-    static (int, int)[] wave8 = {(0, 3), (1, 3), (2, 3), (3, 3), (4, 3)};
+    static (int, int)[] wave2 = {(0, 3), (1, 2)};
+    static (int, int)[] wave3 = {(0, 3), (2, 3)};
+    static (int, int)[] wave4 = {(2, 2), (1, 3), (4, 2)};
+    static (int, int)[] wave5 = {(0, 2), (2, 3), (3, 3)};
+    static (int, int)[] wave6 = {(2, 3), (1, 4), (4, 2)};
+    static (int, int)[] wave7 = {(0, 3), (2, 3), (1, 2), (3, 2)};
+    static (int, int)[] wave8 = {(0, 2), (1, 3), (2, 3), (3, 2), (4, 3)};
 
     private List<(int, int)[]> mobOrder = new List<(int, int)[]>(){
         wave1, wave2, wave3, wave4, wave5, wave6, wave7, wave8
@@ -49,6 +49,7 @@ public class MobSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        waveIndex = 0;
         player = GameObject.Find("Player").GetComponent<Player>();
         GameObject[] mobArr = {mobOne, mobTwo, mobThree, mobFour, mobFive};
         mobs = new List<GameObject>(mobArr);
@@ -99,8 +100,9 @@ public class MobSpawner : MonoBehaviour
     }
 
     private IEnumerator spawnBossAfterDelay(){
-        yield return new WaitForSeconds(15f);
-        Instantiate(mobBoss, calcRange() , Quaternion.identity);
+        yield return new WaitForSeconds(1f);
+        GameObject obj = Instantiate(mobBoss, calcRange() , Quaternion.identity);
+        obj.GetComponent<MobBaseline>().isImmune = true;
     }
 
    private IEnumerator spawnMob(){

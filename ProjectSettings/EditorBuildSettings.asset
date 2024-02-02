@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ClassSelectScreen.unity
     guid: 803bb7eaac9454677956d123250b7bd0
   - enabled: 1
-    path: Assets/Prefabs/Scenes/playerSandbox.unity
+    path: Assets/Scenes/Level1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/DeathScreen.unity

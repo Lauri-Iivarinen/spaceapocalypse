@@ -73,6 +73,7 @@ public class BossOne : MobBaseline
     public void DisableShield(){
         if (!shieldDown){
             shieldDown = true;
+            isImmune = false;
             shield = GameObject.Find("boss1-shield");
             shield.GetComponent<Animator>().SetBool("Disabled", true);
             StartCoroutine(ToggleShield());
@@ -82,6 +83,7 @@ public class BossOne : MobBaseline
     void ActivateShield(){
         if (shieldDown){
             shieldDown = false;
+            isImmune = true;
             //GameObject shield = GameObject.Find("boss1-shield");
             shield.SetActive(true);
             StartCoroutine(EnableShield());
@@ -169,7 +171,7 @@ public class BossOne : MobBaseline
         
         if (inRange && this.currentRate <= 0 && !casting)
         {   
-            int[] mechanics = {0,1,2,0,2,2,1,0,2,0};
+            int[] mechanics = {0,1,2,0,0,1,1,2,0,2,1};
             //Mechanics here
             //Fire
             m_Rigidbody.constraints = RigidbodyConstraints2D.FreezePosition;

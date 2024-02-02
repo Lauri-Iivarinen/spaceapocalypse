@@ -90,8 +90,8 @@ public class PlayerStats{
             critDamageMultiplier *= 1.1f;
         }else if(toolTip.Equals("HPS +1")){
             healthRegen += 4f;
-        }else if(toolTip.Equals("Bullet penetration +20%")){
-            bulletPenetration += 0.2f;
+        }else if(toolTip.Equals("Bullet penetration +40%")){
+            bulletPenetration += 0.4f;
         }else if (toolTip.Equals("Damage reduction 10%")){
             damageReduction += 0.1f;
         }else if (toolTip.Equals("Laser Beam Damage +10")){
@@ -130,6 +130,7 @@ public class PlayerStats{
             currHealth = maxHealth;
         }
         pl.DisplayDamage(amount, new Color(0,100,0,1f));
+        pl.playHealSound();
     }
 
     public void GainHealth(){

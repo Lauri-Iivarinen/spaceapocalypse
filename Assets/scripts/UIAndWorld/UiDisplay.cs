@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.AI;
 
 public class UiDisplay : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class UiDisplay : MonoBehaviour
     GameObject bossData;
     private TextMeshProUGUI bossName;
 
+    private bool gameEnding = false;
+    GameObject gameEndScreen;
+    GameObject gameEndingScreenText;
+    float fill = 0f;
     public void setWeaponName(string name){
         this.gunName = name;
     }
@@ -55,6 +60,25 @@ public class UiDisplay : MonoBehaviour
         bossData.SetActive(true);
         boss = bossStats;
         bossName.text = bossStats.mobName;
+    }
+
+    IEnumerator EndGameText(){
+        yield return new WaitForSeconds(4.5f);
+        Time.timeScale = 0f;
+        gameEndingScreenText.SetActive(true);
+        GameObject.Find("EndGameKillCount").GetComponent<TextMeshProUGUI>().text = "" + PlayerStats.killCount;
+    }
+
+    IEnumerator EndGame(){
+        yield return new WaitForSeconds(2);
+        gameEnding = true;
+        gameEndScreen.SetActive(true);
+        StartCoroutine(EndGameText());
+    }
+
+    public void BossDied(){
+        bossData.SetActive(false);
+        StartCoroutine(EndGame());
     }
 
     // Start is called before the first frame update
@@ -89,6 +113,10 @@ public class UiDisplay : MonoBehaviour
         multiShotPowerUp = _multiShotPowerUp;
 
         this.timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        gameEndScreen = GameObject.Find("GameCompleted");
+        gameEndingScreenText = GameObject.Find("GameCompletedView");
+        gameEndingScreenText.SetActive(false);
+        gameEndScreen.SetActive(false);
     }
 
     public static void PickedUpBeam(){
@@ -134,6 +162,11 @@ public class UiDisplay : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(gameEnding){
+            Image img = gameEndScreen.GetComponentInChildren<Image>();
+            img.color = new Color(0f,0f,0f,fill);
+            fill += 0.005f;
+        }
 
         timeRemaining += Time.deltaTime;
         displayTime(8*60 - timeRemaining);

@@ -42,6 +42,6 @@ public class PauseMenu : MonoBehaviour
         paused = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
-        SceneManager.UnloadSceneAsync("playerSandbox");
+        SceneManager.UnloadSceneAsync("Level1");
     }
 }

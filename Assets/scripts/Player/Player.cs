@@ -25,6 +25,12 @@ public class Player : MonoBehaviour
     private const int HPREGENDELAY = 200;
     private int hpRegen = 0;
 
+    [SerializeField]
+    private AudioSource takeDmgSound;
+
+    [SerializeField]
+    private AudioSource healSound;
+
     public void LevelUpAnim(){
         GameObject obj = Instantiate(lvlUpPrefab, transform.position, Quaternion.identity, transform);
         StartCoroutine(ToggleSkillSelection(obj));
@@ -43,6 +49,10 @@ public class Player : MonoBehaviour
         return stats.currHealth;
     }
 
+    public void playHealSound(){
+        healSound.Play();
+    }
+
     string[] GetUpgradeOptions(List<string> upgradesAll,List<string> currUpgrades, int count){
         if (count == 3){
             return currUpgrades.ToArray();
@@ -57,7 +67,17 @@ public class Player : MonoBehaviour
     }
 
     string[] getTalentOptions(){
-        string[] initialOptions = {"Damage Increase +5%", "Rocket Speed +5%", "Attack Speed +5%", "Maximum Health +150", "Critical Chance +5%", "Critical Damage +10%", "HPS +1", "Bullet penetration +20%", "Damage reduction 10%"};
+        string[] initialOptions = {
+        "Damage Increase +5%", 
+        "Rocket Speed +5%", 
+        "Attack Speed +5%", 
+        "Maximum Health +150", 
+        "Critical Chance +5%", 
+        "Critical Damage +10%", 
+        "HPS +1", 
+        "Bullet penetration +40%", 
+        "Damage reduction 10%"
+        };
         List<string> options = new List<string>(initialOptions);
         if (TalentController.beamPickedUp){
             options.Add("Laser Beam Damage +10");
@@ -98,6 +118,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float amount){
         if (this.damageInterval <= 0){
+            takeDmgSound.Play();
             float dmg = amount/this.stats.damageReduction;
             this.stats.currHealth -= dmg;
             this.damageInterval = DAMAGETICK;

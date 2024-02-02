@@ -15,6 +15,8 @@ public class MineRadiusController : MonoBehaviour
     public static float explosionRadius = 1f;
 
     CircleCollider2D coll;
+    [SerializeField]
+    private AudioSource explosionSound;
     
     void Start(){
         this.coll = GetComponent<CircleCollider2D>();
@@ -57,11 +59,12 @@ public class MineRadiusController : MonoBehaviour
     }
 
     IEnumerator DestroySprite(){
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 
     public void Explode(){
+        explosionSound.Play();
         StartCoroutine(DestroySprite());
         if (!exploded){
             foreach (Collider2D obj in mobsInRange){

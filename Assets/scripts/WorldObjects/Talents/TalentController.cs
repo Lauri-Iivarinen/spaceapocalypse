@@ -21,6 +21,9 @@ public class TalentController : MonoBehaviour
     public static float bulletDamage = 85f;
     public static int multiShotCount = 3;
 
+    [SerializeField]
+    private AudioSource mineSpawnAudio;
+
     void ResetPowerups(){
         beamPickedUp = false;
         beamSpawnRate = 1f;
@@ -86,6 +89,7 @@ public class TalentController : MonoBehaviour
 
     IEnumerator SpawnMine(){
         yield return new WaitForSeconds(8f/mineSpawnRate);
+        mineSpawnAudio.Play();
         Instantiate(mine, transform.position, transform.rotation);
         StartCoroutine(SpawnMine());
     }

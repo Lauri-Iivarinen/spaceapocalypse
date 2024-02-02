@@ -27,13 +27,18 @@ public class MobBaseline : MonoBehaviour, MobActions{
     private GameObject dmgTxt;
     public bool inRange = false;
     public float mobSpeed = 4.0f;
-
+    public bool isImmune = false;
+    [SerializeField]
+    private AudioSource takingDamage;
+    [SerializeField]
+    private AudioSource explosionSound;
     public (float, float) GetHealth(){
         return (health, maxHealth);
     }
 
     public void TakeDamage(float dmg, bool crit){
-        this.health -= dmg;
+        takingDamage.Play();
+        if (!isImmune) this.health -= dmg;
         if (!boss) DisplayDamage(dmg, crit);
     }
     public void SetInRange(bool range){
@@ -72,11 +77,17 @@ public class MobBaseline : MonoBehaviour, MobActions{
     }
 
     public void Die(){
+        explosionSound.Play();
         m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         alive = false;
         anim.SetBool("Alive", alive);
         StartCoroutine(DestroySprite());
         this.player.stats.gainXp(XPREWARD);
+
+        if(boss){
+            UiDisplay display = GameObject.Find("Canvas").GetComponent<UiDisplay>();
+            display.BossDied();
+        }
     }
 
     IEnumerator DisplayBossData(){
