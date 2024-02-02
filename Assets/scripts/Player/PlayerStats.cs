@@ -58,7 +58,7 @@ public class PlayerStats{
     }
 
     public void checkBoost(){
-        if (Input.GetKey(KeyCode.Space) && currBoost > 0 && currentBoostDelay == 0){
+        if (!LevelUpHandler.paused && Input.GetKey(KeyCode.Space) && currBoost > 0 && currentBoostDelay == 0){
             if (!usingBoost){
                 usingBoost = true;
                 speed = speed*2;
