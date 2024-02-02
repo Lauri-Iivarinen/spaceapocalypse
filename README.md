@@ -404,5 +404,23 @@ While implementing arrows I was happy 😃 to notice how easily I came up with t
   <li>Mob spawn tuning</li>
 
 </details>
+<details>
+  <Summary>
+        Part 18 - Game Audio, Navigation, Tuning
+  </Summary>
+
+No screenshots today. Created a level end screen after player successfully defeats a boss. This allows for multiply playtroughs in row.
+
+Also started finally looking into game audio and how its played. Added initial sounds to basic mechanics (shooting/taking damage, talent mechanics etc.). Not quite happy with allthe effects but will have to do for now (I used free sound packages from Unity store).
+
+Also did some small color changes to Main menu etc.
+  
+  <li>Game audio</li>
+  <li>Bakcground music</li>
+  <li>Level end screen after defeating a boss</li>
+  <li>More mob spawn tuning</li>
+  <li>Ui QoL changes</li>
+
+</details>
 
 </details>
