@@ -422,5 +422,25 @@ Also did some small color changes to Main menu etc.
   <li>Ui QoL changes</li>
 
 </details>
+<details>
+  <Summary>
+        Part 19 - Its 2 am... (At least it's Saturday😄)
+  </Summary>
+  
+<img height="200px" alt="Näyttökuva 2024-2-4 kello 2 07 23" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/bdf928b8-306e-41a7-8fb8-badc7a5b3a2d">
+<img height="200px" alt="Näyttökuva 2024-2-4 kello 2 13 18" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/3e0866e3-5140-48c4-b4a9-90690cafbab1">
+
+I need sleep. Did a lot of things over the day...
+  
+  <li>Implemented currency system</li>
+  <li>Implemented 2nd life permanent stat that hadnt been implemented yet (2nd screenshot).</li>
+  <li>Mobs have 85% chance to drop a piece of currency that the player can then pickup to actually gain it.</li>
+  <li>Permanent upgrade stats are now saved in a .dat file</li>
+  <li>Player kills and currency are now saved in a .dat file</li>
+  <li>Mob tuning</li>
+  <li>Decided on initial values for all upgrade costs and increments</li>
+  <li>Audio changes</li>
+
+</details>
 
 </details>
