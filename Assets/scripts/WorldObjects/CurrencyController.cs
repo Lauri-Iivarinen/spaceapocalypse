@@ -21,7 +21,6 @@ public class CurrencyController : MonoBehaviour
             currency++;
             Destroy(gameObject);
             pl.PlayPickupSound();
-            Debug.Log(currency);
         }
     }
 }

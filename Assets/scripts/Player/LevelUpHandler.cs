@@ -10,6 +10,9 @@ public class LevelUpHandler : MonoBehaviour
     public static bool paused;
     public PauseMenu pause;
 
+    [SerializeField]
+    private AudioSource btnClick;
+
     // Start is called before the first frame update
     public string[] upgrades;
     //public Player pl;
@@ -54,6 +57,7 @@ public class LevelUpHandler : MonoBehaviour
     }
 
     public void ResumeGame(){
+        btnClick.Play();
         paused = false;
         obj.SetActive(false);
         Time.timeScale = 1f;

@@ -10,6 +10,9 @@ public class SelectClass : MonoBehaviour
 
     private List<ClassSpecs> classes;
 
+    [SerializeField]
+    private AudioSource btnClick;
+
     // Use this for initialization
     void Start()
     {
@@ -40,6 +43,12 @@ public class SelectClass : MonoBehaviour
 
     void LoadGame()
     {
+        btnClick.Play();
+        StartCoroutine(StartGame());
+    }
+
+    IEnumerator StartGame(){
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadSceneAsync("Level1");
         SceneManager.UnloadSceneAsync("ClassSelectScreen");
     }

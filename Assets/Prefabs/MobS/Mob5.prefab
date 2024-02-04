@@ -64,7 +64,7 @@ MonoBehaviour:
   dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
   currency: {fileID: 4082964413733805363, guid: e952d1cdf7e204595943876b9be8d498, type: 3}
   inRange: 0
-  mobSpeed: 4
+  mobSpeed: 3
   isImmune: 0
   takingDamage: {fileID: -6625749261324625543}
   explosionSound: {fileID: 8355492886224439540}
@@ -213,10 +213,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.06
-  m_Pitch: 0.8
+  m_Volume: 0.1
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0

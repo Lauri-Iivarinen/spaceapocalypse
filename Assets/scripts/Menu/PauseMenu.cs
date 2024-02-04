@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject obj;
     public static bool paused;
     public bool allowPause = true;
+    [SerializeField]
+    private AudioSource btnClick;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class PauseMenu : MonoBehaviour
         paused = false;
         obj.SetActive(false);
         Time.timeScale = 1f;
+        btnClick.Play();
         //UiDisplay.timeRunning = true;
         //Cursor.visible = false;
     }
@@ -40,7 +43,12 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToMenu(){
         paused = false;
+        btnClick.Play();
         Time.timeScale = 1f;
+        StartCoroutine(NavigateToMenu());
+    }
+    IEnumerator NavigateToMenu(){
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene("MainMenu");
         SceneManager.UnloadSceneAsync("Level1");
     }

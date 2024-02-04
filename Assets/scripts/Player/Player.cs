@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
     }
 
     public void TakeDamage(float amount){
-        if (this.damageInterval <= 0){
+        if (this.damageInterval <= 0 && !dead){
             takeDmgSound.Play();
             float dmg = amount/this.stats.damageReduction;
             this.stats.currHealth -= dmg;

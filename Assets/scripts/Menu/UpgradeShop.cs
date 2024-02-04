@@ -11,28 +11,18 @@ public class UpgradeShop : MonoBehaviour
     public GameObject btnPrefab;
     private TextMeshProUGUI currency;
     private TextMeshProUGUI killTracker;
+        [SerializeField]
+    private AudioSource btnClick;
     // Start is called before the first frame update
     void Start()
     {
-        int count = 0;
-        float x = -550f;
-        float y = 200f;
 
         foreach (PermanentUpgrade upgr in PermanentStats.upgrades)
         {   
-            Vector3 pos = new Vector3(x, y, 0f);
-            GameObject btn = Instantiate(btnPrefab, pos, transform.rotation);
-            btn.transform.SetParent(GameObject.Find("Canvas").transform, false);
+            GameObject btn = Instantiate(btnPrefab);
+            btn.transform.SetParent(GameObject.Find("BuffPanel").transform, false);
             BuffButton buff = btn.GetComponent<BuffButton>();
             buff.upgrade = upgr;
-            count++;
-            x += 450f;
-            if (count == 4)
-            {
-                y -= 200f;
-                x = -550f;
-                count = 0;
-            }
         }
 
         this.currency = GameObject.Find("Currency").GetComponent<TextMeshProUGUI>();
@@ -56,6 +46,12 @@ public class UpgradeShop : MonoBehaviour
         int[] arr = { PermanentStats.currency, PermanentStats.killCount };
         DatabaseHandler.SaveStatTrackers(arr);
         DatabaseHandler.SaveStatsArray(PermanentStats.upgrades);
+        btnClick.Play();
+        StartCoroutine(NavigateToMenu());
+    }
+
+    IEnumerator NavigateToMenu(){
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene("MainMenu");
     }
 }
