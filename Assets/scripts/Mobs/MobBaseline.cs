@@ -75,7 +75,7 @@ public class MobBaseline : MonoBehaviour, MobActions{
             Quaternion rot = transform.rotation;
             rot.z = 0;
             Instantiate(healthPickup, transform.position, rot);
-        } else if (rand > 0.15f)
+        } else if (rand > 0.6f)//1% chance for magnet (not implemented)
         {
             Quaternion rot = transform.rotation;
             rot.z = 0;

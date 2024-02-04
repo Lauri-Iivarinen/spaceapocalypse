@@ -108,6 +108,7 @@ Rocket boost, fast speedup if needed to run away/dodge mechanics etc, uses fuel,
 Game specific powerups (balls/needles in HoT)
  - Flamethrower on thrusters
  - EMP, aoe pulse
+ - Flaming ball frontal
  done
  - 360 spinning beam on intervals
  - Mines, automated, drops still mine that explodes aoe
