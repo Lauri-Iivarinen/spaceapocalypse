@@ -143,6 +143,7 @@ MonoBehaviour:
   alive: 1
   healthPickup: {fileID: 7216160803684880014, guid: 61fd620f07687354e925d8411269a612, type: 3}
   dmgTxt: {fileID: 751593882883815093, guid: 1a52f60d9f7e09d4597c8437e78705ee, type: 3}
+  currency: {fileID: 4082964413733805363, guid: e952d1cdf7e204595943876b9be8d498, type: 3}
   inRange: 0
   mobSpeed: 4
   isImmune: 0

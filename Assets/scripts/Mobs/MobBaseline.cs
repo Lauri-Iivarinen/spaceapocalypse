@@ -25,6 +25,8 @@ public class MobBaseline : MonoBehaviour, MobActions{
     private GameObject healthPickup;
     [SerializeField]
     private GameObject dmgTxt;
+    [SerializeField]
+    private GameObject currency;
     public bool inRange = false;
     public float mobSpeed = 4.0f;
     public bool isImmune = false;
@@ -68,10 +70,18 @@ public class MobBaseline : MonoBehaviour, MobActions{
     IEnumerator DestroySprite(){
         yield return new WaitForSeconds(0.5f);
         //Roll for health drop (10%) //23.1 changed to 5%
-        if (UnityEngine.Random.Range(0, 1f) < 0.05f){
+        float rand = UnityEngine.Random.Range(0, 1f);
+        if ( rand < 0.05f){
             Quaternion rot = transform.rotation;
             rot.z = 0;
             Instantiate(healthPickup, transform.position, rot);
+        } else if (rand > 0.15f)
+        {
+            Quaternion rot = transform.rotation;
+            rot.z = 0;
+            Vector3 pos = transform.position;
+            pos.z = 4.9f;
+            Instantiate(currency, pos, rot);
         }
         Destroy(gameObject);
     }

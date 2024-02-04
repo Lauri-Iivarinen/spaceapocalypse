@@ -26,6 +26,7 @@ public class UiDisplay : MonoBehaviour
     private TextMeshProUGUI hps;
     private TextMeshProUGUI penetration;
     private TextMeshProUGUI killCount;
+    private GameObject extraLife;
 
     [SerializeField] private Slider bossHealthBar;
     [SerializeField] private Slider healthBar;
@@ -64,6 +65,7 @@ public class UiDisplay : MonoBehaviour
 
     IEnumerator EndGameText(){
         yield return new WaitForSeconds(4.5f);
+        player.saveCurrencyAndKills();
         Time.timeScale = 0f;
         gameEndingScreenText.SetActive(true);
         GameObject.Find("EndGameKillCount").GetComponent<TextMeshProUGUI>().text = "" + PlayerStats.killCount;
@@ -79,6 +81,13 @@ public class UiDisplay : MonoBehaviour
     public void BossDied(){
         bossData.SetActive(false);
         StartCoroutine(EndGame());
+    }
+
+    public void UseExtraLife()
+    {
+        extraLife.SetActive(true);
+        extraLife.GetComponent<Animator>().SetBool("LifeUsed", true);
+        Destroy(extraLife, 1.5f);
     }
 
     // Start is called before the first frame update
@@ -104,6 +113,8 @@ public class UiDisplay : MonoBehaviour
         this.atkSpeed = GameObject.Find("atkSpeed").GetComponent<TextMeshProUGUI>();
         this.hps = GameObject.Find("HPS").GetComponent<TextMeshProUGUI>();
         this.penetration = GameObject.Find("Penetration").GetComponent<TextMeshProUGUI>();
+        extraLife = GameObject.Find("ExtraLifeHeart");
+        extraLife.SetActive(false);
 
         this.killCount = GameObject.Find("Counter").GetComponent<TextMeshProUGUI>();
         bossData = GameObject.Find("boss_data");

@@ -15,7 +15,7 @@ public class PlayerAnimator : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (player.stats.currHealth <= 0) {
+        if (player.dead) {
             anim.SetBool("Alive", false);
         } else if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")){
             //Debug.Log("walkingggg");

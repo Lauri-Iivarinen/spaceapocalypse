@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class UpgradeShop : MonoBehaviour
 {
@@ -48,5 +49,13 @@ public class UpgradeShop : MonoBehaviour
     void FixedUpdate()
     {
         currency.text = "Currency: " + PermanentStats.currency;
+    }
+
+    public void ReturnToMenu()
+    {
+        int[] arr = { PermanentStats.currency, PermanentStats.killCount };
+        DatabaseHandler.SaveStatTrackers(arr);
+        DatabaseHandler.SaveStatsArray(PermanentStats.upgrades);
+        SceneManager.LoadScene("MainMenu");
     }
 }

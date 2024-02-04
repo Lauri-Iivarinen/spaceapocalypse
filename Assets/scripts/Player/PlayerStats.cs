@@ -22,7 +22,8 @@ public class PlayerStats{
     public float currentPenetration = 0f;
     public float damageReduction = 1f;
     public float xpMultiplier = 1f;
-
+    public float extraLives = 0f;
+    public float currencyGain = 1f;
     //Boost
     public float BOOSTCAP = 50f;
     public float currBoost = 50f;
@@ -36,17 +37,19 @@ public class PlayerStats{
 
     public PlayerStats(){
         killCount = 0;
-        damageMultiplier += PermanentStats.damage.currAmount;
-        speed += PermanentStats.speed.currAmount;
-        attackSpeed += PermanentStats.atkSpeed.currAmount;
-        maxHealth *= PermanentStats.hp.currAmount;
-        critChance += PermanentStats.critChance.currAmount;
-        critDamageMultiplier *= PermanentStats.critDamage.currAmount;
-        boosterRecharge += PermanentStats.boosterRate.currAmount;
-        healthRegen += PermanentStats.hpRegen.currAmount;
-        bulletPenetration += PermanentStats.bulletPenetration.currAmount;
-        damageReduction += PermanentStats.damageReduction.currAmount;
-        xpMultiplier += PermanentStats.xpGain.currAmount;
+        damageMultiplier += PermanentStats.upgrades[0].currAmount;
+        speed += PermanentStats.upgrades[4].currAmount;
+        attackSpeed += PermanentStats.upgrades[6].currAmount;
+        maxHealth *= PermanentStats.upgrades[1].currAmount;
+        critChance += PermanentStats.upgrades[7].currAmount;
+        critDamageMultiplier *= PermanentStats.upgrades[8].currAmount;
+        boosterRecharge += PermanentStats.upgrades[9].currAmount;
+        healthRegen += PermanentStats.upgrades[2].currAmount;
+        bulletPenetration += PermanentStats.upgrades[12].currAmount;
+        damageReduction += PermanentStats.upgrades[3].currAmount;
+        xpMultiplier += PermanentStats.upgrades[5].currAmount;
+        extraLives += PermanentStats.upgrades[11].currAmount;
+        currencyGain = PermanentStats.upgrades[10].currAmount;
     }
     
     public void levelUp(){
@@ -75,12 +78,12 @@ public class PlayerStats{
     }
     
     public void IncreaseStat(string toolTip){
-        if (toolTip.Equals("Damage Increase +5%")){
-            damageMultiplier *= 1.05f;
-        }else if (toolTip.Equals("Rocket Speed +5%")){
-            speed *= 1.05f;
-        }else if (toolTip.Equals("Attack Speed +5%")){
-            attackSpeed *= 1.05f;
+        if (toolTip.Equals("Damage Increase +10%")){
+            damageMultiplier *= 1.1f;
+        }else if (toolTip.Equals("Rocket Speed +10%")){
+            speed *= 1.1f;
+        }else if (toolTip.Equals("Attack Speed +8%")){
+            attackSpeed *= 1.08f;
         }else if (toolTip.Equals("Maximum Health +150")){
             maxHealth += 150;
             currHealth += 150;
@@ -101,8 +104,8 @@ public class PlayerStats{
             BeamController.beamSize *= 1.1f;
         }else if (toolTip.Equals("Laser Beam Firerate + 10%")){
             TalentController.beamSpawnRate *= 1.1f;
-        }else if (toolTip.Equals("XP gain +10%")){
-            xpMultiplier *= 1.1f;
+        }else if (toolTip.Equals("XP gain +15%")){
+            xpMultiplier *= 1.15f;
         }else if (toolTip.Equals("Mine Damage +10%")){
             Mine.damage *= 1.1f;
         }

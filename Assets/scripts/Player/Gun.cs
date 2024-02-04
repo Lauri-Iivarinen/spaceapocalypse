@@ -13,6 +13,9 @@ public class Gun : MonoBehaviour
 	private Player player;
 	private bool autoShoot = false;
 
+	[SerializeField]
+	private AudioSource gunSound;
+
 	void Start(){
 		Player pl = GameObject.Find("Player").GetComponent<Player>();
 		this.player = pl;
@@ -52,6 +55,7 @@ public class Gun : MonoBehaviour
 				// Instantiate the projectile at the position and rotation of this transform
 				
 				Instantiate(bulletPrefab, pos, GetAngle());
+				gunSound.Play();
 			}
 		}else{
 			this.gunCooldown--;

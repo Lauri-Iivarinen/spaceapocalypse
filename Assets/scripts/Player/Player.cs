@@ -24,17 +24,25 @@ public class Player : MonoBehaviour
     private int damageInterval = 0; //Restricts taking damage in every tick
     private const int HPREGENDELAY = 200;
     private int hpRegen = 0;
-
+    public bool dead = false;
     [SerializeField]
     private AudioSource takeDmgSound;
 
     [SerializeField]
     private AudioSource healSound;
 
+    [SerializeField]
+    private AudioSource currencyPickupSound;
+
     public void LevelUpAnim(){
         GameObject obj = Instantiate(lvlUpPrefab, transform.position, Quaternion.identity, transform);
         StartCoroutine(ToggleSkillSelection(obj));
         
+    }
+
+    public void PlayPickupSound()
+    {
+        currencyPickupSound.Play();
     }
 
     public float GetX(){
@@ -68,15 +76,16 @@ public class Player : MonoBehaviour
 
     string[] getTalentOptions(){
         string[] initialOptions = {
-        "Damage Increase +5%", 
-        "Rocket Speed +5%", 
-        "Attack Speed +5%", 
+        "Damage Increase +10%", 
+        "Rocket Speed +10%", 
+        "Attack Speed +8%", 
         "Maximum Health +150", 
         "Critical Chance +5%", 
         "Critical Damage +10%", 
         "HPS +1", 
         "Bullet penetration +40%", 
-        "Damage reduction 10%"
+        "Damage reduction 10%",
+        "XP gain +15%"
         };
         List<string> options = new List<string>(initialOptions);
         if (TalentController.beamPickedUp){
@@ -148,27 +157,32 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //this.activeClass = new ClassSpecs("XBS-238", 100f, 10, 30f, 60, 1, 15f, 1.1f, 1000);
-        //UNCOMMENT ON FINISHED PRODUCT
+        CurrencyController.currency = 0;
         this.activeClass = SelectClass.activeClass;
         stats = new PlayerStats();
         stats.maxHealth = activeClass.rocketHealth;
         stats.currHealth = activeClass.rocketHealth;
         stats.speed = activeClass.rocketSpeed;
         movementSpeed = 0.1f * stats.speed;
-        //WeaponSpecs rocket1 = new WeaponSpecs("XBS-238", 1f, 10, 30, 60, 1, 15f);
-
-        //this.weapons = new List<WeaponSpecs>{rocket1};
         
         this.display = GameObject.Find("Canvas").GetComponent<UiDisplay>();
         display.setWeaponName(this.activeClass.className);
         Debug.Log("Logging started");
     }
 
+    public void saveCurrencyAndKills()
+    {
+        PermanentStats.killCount += PlayerStats.killCount;
+        PermanentStats.currency += (int)(CurrencyController.currency * stats.currencyGain);
+
+        int[] arr = { PermanentStats.currency, PermanentStats.killCount };
+        DatabaseHandler.SaveStatTrackers(arr);
+    }
+
 
     IEnumerator DestroySprite(){
         yield return new WaitForSeconds(1f);
-        PermanentStats.killCount += PlayerStats.killCount;
+        saveCurrencyAndKills();
         SceneManager.LoadScene("DeathScreen");
     }
 
@@ -202,7 +216,19 @@ public class Player : MonoBehaviour
             //transform.Translate(this.x * movementSpeed, this.y * movementSpeed, 0);
             transform.position += moveDir * 0.1f * stats.speed;
         }else if(stats.currHealth <= 0){
-            playerDies();
+            if (stats.extraLives > 0)
+            {
+                stats.HealthPickup(stats.maxHealth * 0.4f);
+                stats.extraLives--;
+                display.UseExtraLife();
+                //Push mobs back?
+            }
+            else
+            {
+                playerDies();
+                dead = true;
+            }
+            
         }
         if (damageInterval > 0){//Prevents player from taking damage every tick
             damageInterval--;
