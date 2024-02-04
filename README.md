@@ -4,8 +4,8 @@ This readme will be in a form of a diary of sorts where I track the progress I h
 
 Note that most of the UI elements / menu screens / even some mobs and animations are placeholders and will be tuned to look good later 😄.
 
-### Playtest 31.1.2024
-<a href="https://youtu.be/w7QM6t7E6bs">https://youtu.be/w7QM6t7E6bs</a>
+### Playtest 4.2.2024
+<a href="https://www.youtube.com/watch?v=V9ToXcrTs7w">https://www.youtube.com/watch?v=V9ToXcrTs7w</a>
 
 ## Idea is to make a 2d ~roguelike~ roguelite where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
 <details>
@@ -440,6 +440,35 @@ I need sleep. Did a lot of things over the day...
   <li>Mob tuning</li>
   <li>Decided on initial values for all upgrade costs and increments</li>
   <li>Audio changes</li>
+
+</details>
+<details>
+  <Summary>
+        Part 20 - Big UI changes, playtest tuning.
+  </Summary>
+
+
+<img height="200px" alt="Näyttökuva 2024-2-4 kello 2 07 23" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/ba5f0665-f460-411d-8e1e-27d28b3975ae">
+<img height="200px" alt="Näyttökuva 2024-2-4 kello 2 13 18" src="https://github.com/Lauri-Iivarinen/spaceapocalypse/assets/94760484/f2e5fb3a-f554-4849-a6e5-dabdfaec92a6">
+
+I think I can finally say that first level is "done", and will not need changes maybe other than mob tuning and if I add more talents.
+
+Did some more playtesting, this time I had some others testing as well giving good feedback on what to change.
+
+Started changing the ui to be more user friendly, changed the menu to "float in space". Changed the upgrade shop to have a scrollable list of buffs with visual indicators for amount of upgrades aivailable instead of numbers.
+
+Fixed some bugs as well.
+
+
+
+New Playtest aivailable as well <a href="https://www.youtube.com/watch?v=V9ToXcrTs7w">https://www.youtube.com/watch?v=V9ToXcrTs7w</a>
+  
+  <li>Main menu UI changed</li>
+  <li>Upgrade shop UI changed</li>
+  <li>Level 1 mob tuning</li>
+  <li>Audio changes</li>
+  <li>Added audio to buttons</li>
+  <li>Bug fixes</li>
 
 </details>
 
