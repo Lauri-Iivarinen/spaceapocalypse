@@ -48,7 +48,7 @@ public class UpgradeShop : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        currency.text = "Currency: " + PermanentStats.currency;
+        currency.text = ": " + PermanentStats.currency;
     }
 
     public void ReturnToMenu()

@@ -61,20 +61,26 @@ public class PlayerStats{
     }
 
     public void checkBoost(){
-        if (!LevelUpHandler.paused && Input.GetKey(KeyCode.Space) && currBoost > 0 && currentBoostDelay == 0){
-            if (!usingBoost){
+
+        if (Input.GetKey(KeyCode.Space) && currBoost > 0 && currentBoostDelay == 0)
+        {
+            if (!usingBoost)
+            {
                 usingBoost = true;
-                speed = speed*2;
+                speed = speed * 2;
             }
             currBoost--;
-        }else if (usingBoost){
-            speed = speed/2;
+        }
+        else if (usingBoost)
+        {
+            speed = speed / 2;
             usingBoost = false;
             currentBoostDelay = boostDelay;
-        }else if (currBoost < BOOSTCAP){
-            currBoost += boosterRecharge;
         }
+        else if (currBoost < BOOSTCAP) currBoost += boosterRecharge;
+
         if (currentBoostDelay > 0) currentBoostDelay--;
+        
     }
     
     public void IncreaseStat(string toolTip){

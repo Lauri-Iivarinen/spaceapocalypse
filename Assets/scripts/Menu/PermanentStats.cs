@@ -69,7 +69,7 @@ public class PermanentUpgrade
 public class PermanentStats
 {
     public static int killCount = 0;
-    public static int currency = 0;
+    public static int currency = 9999999;
 
     public static PermanentUpgrade damage = new PermanentUpgrade(0,"Damage", "Increse damage done by +3% per level.", 0f, 0.18f, 0.03f, 30, 45);
     public static PermanentUpgrade hp = new PermanentUpgrade(1,"Health", "Increase max health by 2% per level.", 1f, 1.1f, 0.02f, 20, 35);

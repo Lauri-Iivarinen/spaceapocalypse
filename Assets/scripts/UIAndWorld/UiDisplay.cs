@@ -26,6 +26,7 @@ public class UiDisplay : MonoBehaviour
     private TextMeshProUGUI hps;
     private TextMeshProUGUI penetration;
     private TextMeshProUGUI killCount;
+    private TextMeshProUGUI currencyCount;
     private GameObject extraLife;
 
     [SerializeField] private Slider bossHealthBar;
@@ -117,6 +118,7 @@ public class UiDisplay : MonoBehaviour
         extraLife.SetActive(false);
 
         this.killCount = GameObject.Find("Counter").GetComponent<TextMeshProUGUI>();
+        this.currencyCount = GameObject.Find("CCounter").GetComponent<TextMeshProUGUI>();
         bossData = GameObject.Find("boss_data");
         bossData.SetActive(false);
         beamPowerup = _beamPowerup;
@@ -201,5 +203,6 @@ public class UiDisplay : MonoBehaviour
         this.hps.text = "HPS: " + player.stats.healthRegen/4;
         this.penetration.text = "Penetration: " + (player.stats.bulletPenetration + player.activeClass.penetration).ToString("0.0");
         this.killCount.text = "" + PlayerStats.killCount;
+        this.currencyCount.text = "" + CurrencyController.currency;
     }
 }

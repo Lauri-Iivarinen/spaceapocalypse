@@ -34,7 +34,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AudioSource currencyPickupSound;
 
+    [SerializeField]
+    private AudioSource lvlUpAudio;
+
     public void LevelUpAnim(){
+        lvlUpAudio.Play();
         GameObject obj = Instantiate(lvlUpPrefab, transform.position, Quaternion.identity, transform);
         StartCoroutine(ToggleSkillSelection(obj));
         
@@ -230,9 +234,10 @@ public class Player : MonoBehaviour
             }
             
         }
-        if (damageInterval > 0){//Prevents player from taking damage every tick
-            damageInterval--;
-        }
+
+        //Prevents player from taking damage every tick
+        if (damageInterval > 0) damageInterval--;
+        
         
     }
 }

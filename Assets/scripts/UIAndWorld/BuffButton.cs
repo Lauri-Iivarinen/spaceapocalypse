@@ -26,7 +26,25 @@ public class BuffButton : MonoBehaviour
     void FixedUpdate()
     {
         buff.text = upgrade.name + " " + upgrade.currUpgrades + "/" + upgrade.maxUpgrades;
-        buyText.text = "Buy " + upgrade.upgradeCost;
+        
+        if (upgrade.currUpgrades == upgrade.maxUpgrades) {
+            buyText.text = "MAX";
+            gameObject.transform.Find("BuyButton").GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            gameObject.transform.Find("BuyButton").GetComponent<Button>().interactable = true;
+            buyText.text = "" + upgrade.upgradeCost;
+        }
+
+        if(upgrade.currUpgrades == 0)
+        {
+            gameObject.transform.Find("RefundButton").GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            gameObject.transform.Find("RefundButton").GetComponent<Button>().interactable = true;
+        }
         refundText.text = "Refund";
     }
 
