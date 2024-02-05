@@ -2,7 +2,7 @@
 
 This readme will be in a form of a diary of sorts where I track the progress I have made in Unity and C#
 
-Note that most of the UI elements / menu screens / even some mobs and animations are placeholders and will be tuned to look good later 😄.
+Note that its a work in progress, things will change😄.
 
 ### Playtest 4.2.2024
 <a href="https://www.youtube.com/watch?v=V9ToXcrTs7w">https://www.youtube.com/watch?v=V9ToXcrTs7w</a>
@@ -344,7 +344,7 @@ Also noted how much simpler some mechanics are to create if I were to use static
 </details>
 </details>
 <details>
-  <summary>Parts 16-30</summary>
+  <summary>Parts 16-</summary>
 
   <details>
   <Summary>
