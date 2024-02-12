@@ -7,6 +7,20 @@ Note that its a work in progress, things will change😄.
 ### Playtest 4.2.2024
 <a href="https://www.youtube.com/watch?v=V9ToXcrTs7w">https://www.youtube.com/watch?v=V9ToXcrTs7w</a>
 
+## Potential future implementations
+<li>Accessibility settings (For thesis work.)
+  
+- Audio
+    
+- Visuals
+    
+- Controller support
+</li>
+<li>Next Levels</li>
+<li>More powerups</li>
+<li>In depth stat tracking</li>
+
+
 ## Idea is to make a 2d ~roguelike~ roguelite where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
 <details>
   <Summary>
