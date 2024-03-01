@@ -46,7 +46,6 @@ public class MobSpawner : MonoBehaviour
 
     public static int waveCount = 8;
 
-    // Start is called before the first frame update
     void Start()
     {
         waveIndex = 0;

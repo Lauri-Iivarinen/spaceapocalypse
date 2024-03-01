@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MobRangeFinder : MonoBehaviour
 {
-    //public MobActions mob;
-    // Start is called before the first frame update
     void Start()
     {
         MobActions mob = transform.parent.gameObject.GetComponent<MobActions>();

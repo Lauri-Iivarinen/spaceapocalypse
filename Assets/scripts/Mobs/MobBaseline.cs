@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
+
 interface MobActions
 {
     void TakeDamage(float dmg, bool crit);
     float GetDamage();
     void SetInRange(bool inRange);
-
     (float, float) GetHealth();
 }
 
@@ -116,7 +116,5 @@ public class MobBaseline : MonoBehaviour, MobActions{
         anim = GetComponent<Animator>();
         this.m_Rigidbody = GetComponent<Rigidbody2D>();
         this.player = GameObject.Find("Player").GetComponent<Player>();
-        //this.dmgTxt = MobObjects.dmgTxt;
-        //this.healthPickup = MobObjects.healthPickup;
     }
 }

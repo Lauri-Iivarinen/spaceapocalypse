@@ -16,7 +16,6 @@ public class RangedMob : MobBaseline
         float playerY = player.GetY();
         float mobX = transform.position.x;
         float mobY = transform.position.y;
-        //Debug.Log("Player: " + playerX + "," + playerY + " | Mob: " + mobX + "," + mobY);
 		float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
 		transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle));
         Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
@@ -31,7 +30,6 @@ public class RangedMob : MobBaseline
         transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle+90));
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         this.ChasePlayer();

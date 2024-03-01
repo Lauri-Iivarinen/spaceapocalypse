@@ -27,10 +27,10 @@ public class BossOne : MobBaseline
     private bool castingTwo = false;
     private bool casting = false;
     public static bool shieldDown = false;
-    public static GameObject shield;// = GameObject.Find("boss1-shield");
+    public static GameObject shield;
     public int shieldRechargeDelay = 0;
 
-    //Mechanic 33
+    //Mechanic 3
     [SerializeField]
     private GameObject frontalPrefab;
 
@@ -44,7 +44,6 @@ public class BossOne : MobBaseline
         float playerY = player.GetY();
         float mobX = transform.position.x;
         float mobY = transform.position.y;
-        //Debug.Log("Player: " + playerX + "," + playerY + " | Mob: " + mobX + "," + mobY);
 		float angle = AngleBetweenTwoPoints(new Vector2(transform.position.x, transform.position.y), new Vector2(playerX, playerY));
 		transform.rotation = Quaternion.Euler (new Vector3(transform.rotation.x,transform.rotation.y,angle));
         Vector2 movementDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z));
@@ -84,7 +83,6 @@ public class BossOne : MobBaseline
         if (shieldDown){
             shieldDown = false;
             isImmune = true;
-            //GameObject shield = GameObject.Find("boss1-shield");
             shield.SetActive(true);
             StartCoroutine(EnableShield());
         }
@@ -162,7 +160,6 @@ public class BossOne : MobBaseline
         m_Rigidbody.constraints = RigidbodyConstraints2D.None;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (!casting){
@@ -171,9 +168,7 @@ public class BossOne : MobBaseline
         
         if (inRange && this.currentRate <= 0 && !casting)
         {   
-            int[] mechanics = {0,1,2,0,0,1,1,2,0,2,1};
-            //Mechanics here
-            //Fire
+            int[] mechanics = {0,1,2,0,0,1,1,2,0,2,1}; //Order of mechanics that rotate
             m_Rigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
             this.currentRate = fireRate;
             casting = true;
