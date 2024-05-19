@@ -8,7 +8,7 @@ Note that its a work in progress, things will change😄.
 <a href="https://www.youtube.com/watch?v=V9ToXcrTs7w">https://www.youtube.com/watch?v=V9ToXcrTs7w</a>
 
 ## Potential future implementations
-<li>Accessibility settings (For thesis work.)
+<li>Accessibility settings
   
 - Audio
     
