@@ -1,5 +1,7 @@
 # Journey to Unity and C# game development
 
+## Idea is to make a 2d ~roguelike~ roguelite where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
+
 This readme will be in a form of a diary of sorts where I track the progress I have made in Unity and C#
 
 Note that its a work in progress, things will change😄.
@@ -46,8 +48,8 @@ Use rocket boosters:
 <li>More powerups</li>
 <li>In depth stat tracking</li>
 
+## Diary ##
 
-## Idea is to make a 2d ~roguelike~ roguelite where player fights waves of ~zombies~ Zombie Spaceships and can gain perks when leveling up
 <details>
   <Summary>
         Parts 1-15
