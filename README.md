@@ -7,6 +7,32 @@ Note that its a work in progress, things will change😄.
 ### Playtest 4.2.2024
 <a href="https://www.youtube.com/watch?v=V9ToXcrTs7w">https://www.youtube.com/watch?v=V9ToXcrTs7w</a>
 
+## How to try out the game yourself ##
+
+### Game release ###
+
+Game has not yet been released in any platform.
+
+### Download from Drive (Windows only) ###
+
+Built version of game can be found <a href="https://drive.google.com/drive/folders/1Ha3dPmnlT53kzcoakL0fJMSqqvh2m2uR?usp=sharing">here</a>:
+
+### How to play ###
+
+Moving: 
+```
+ W
+ASD
+```
+Shooting:
+    ``` Mouse 2 ```
+    
+Toggle automatic shooting:
+    ``` T ```
+    
+Use rocket boosters:
+    ``` Spacebar ```
+
 ## Potential future implementations
 <li>Accessibility settings
   
